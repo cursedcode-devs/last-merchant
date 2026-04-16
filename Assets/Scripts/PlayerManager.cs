@@ -14,22 +14,18 @@ public class PlayerManager : MonoBehaviour
     public event Action<int, int> OnFuelChanged;
 
     void Awake()
+{
+    if (Instance == null)
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+        player = new Player(startFuel, startFood, startParts); 
     }
-
-    void Start()
+    else
     {
-        player = new Player(startFuel, startFood, startParts);
+        Destroy(gameObject);
     }
+}
     public void RaiseFuelChanged(int oldValue, int newValue)
     {
         OnFuelChanged?.Invoke(oldValue, newValue);

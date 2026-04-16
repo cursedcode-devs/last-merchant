@@ -4,9 +4,10 @@ public class FuelUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI fuelText;
 
-    void OnEnable()
+    void Start()
     {
         PlayerManager.Instance.OnFuelChanged += HandleFuelChanged;
+        fuelText.text = $"Fuel: {PlayerManager.Instance.GetFuel()}";
     }
 
     void OnDisable()

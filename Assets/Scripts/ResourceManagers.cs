@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class ResourceManagers
 {
-    private int fuel;
-    private int food;
-    private int parts;
+    protected int fuel;
+    protected int food;
+    protected int parts;
 
     public int GetFuel() {  return fuel; }
     public int GetFood() { return food; }

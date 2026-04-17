@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8f4aa388c713774386c59cb600b76c4, type: 3}
+  m_Name: DialoguePARNAS-C
+  m_EditorClassIdentifier: Assembly-CSharp::Dialogue
+  dialogues:
+  - "Przylecia\u0142e\u015B tu bo jeste\u015B zainspirowany nasz\u0105 poezj\u0105?"
+  - "Czy to prawda, \u017Ce tutejsi poeci rzucaj\u0105 si\u0119 w przepa\u015B\u0107
+    bo maszyna Trurla rymuje lepiej od ich matek? "
+  - "Jest to jak\u017Ce smutna prawda. U\u017Cywamy ich niedoko\u0144czonych epos\xF3w
+    jako podpa\u0142ki."
+  - "Ja bym sie na waszym miejscu nie bawi\u0142 si\u0119 ogniem w tym miejscu. Jeden
+    b\u0142\u0105d i wszystko b\u0119dzie w innej galaktyce."
+  - "Nie b\xF3j \u017Caby, albo kr\xF3la \u017Cab. Mam wra\u017Cenie, \u017Ce to
+    jaki\u015B go\u015B\u0107 przebrany za \u017Cab\u0119\u2026 mniejsza o to. To
+    moja propozycja wymiany:"

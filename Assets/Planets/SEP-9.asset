@@ -12,8 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f29a306f1b856674c8482fb2ec261213, type: 3}
   m_Name: SEP-9
   m_EditorClassIdentifier: Assembly-CSharp::PlanetScriptObject
-  name: 'KAYT '
+  name: SEP-9
   planetType: 0
   startHp: 100
+  planetColor: {r: 0.30892828, g: 0.8207547, b: 0.28261834, a: 0}
+  sprite: {fileID: -2037269849112367076, guid: e5d71655154092b47981918678841733, type: 3}
   firstDialogue: {fileID: 11400000, guid: bfd4fc7f116dbbe45bc7b734c8ac91a5, type: 2}
   genericTrade: {fileID: 11400000, guid: a014bc321bf08b1448e8f452ee6cd054, type: 2}
+  dialogues:
+  - {fileID: 11400000, guid: 87a44b83c5e32a74da7bb3b33257e6c1, type: 2}
+  - {fileID: 11400000, guid: a014bc321bf08b1448e8f452ee6cd054, type: 2}

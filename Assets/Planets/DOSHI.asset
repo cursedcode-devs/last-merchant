@@ -12,8 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f29a306f1b856674c8482fb2ec261213, type: 3}
   m_Name: DOSHI
   m_EditorClassIdentifier: Assembly-CSharp::PlanetScriptObject
-  name: 'KAYT '
+  name: DOSHI
   planetType: 0
   startHp: 100
+  planetColor: {r: 0.9528302, g: 0.40899786, b: 0.8149697, a: 0}
+  sprite: {fileID: 8984852561843311897, guid: 558e29be388a96f4d8e6d82aa40f9224, type: 3}
   firstDialogue: {fileID: 11400000, guid: bfd4fc7f116dbbe45bc7b734c8ac91a5, type: 2}
   genericTrade: {fileID: 11400000, guid: a014bc321bf08b1448e8f452ee6cd054, type: 2}
+  dialogues:
+  - {fileID: 11400000, guid: f2c126fd721595e4d8ad550536522b18, type: 2}
+  - {fileID: 11400000, guid: a014bc321bf08b1448e8f452ee6cd054, type: 2}

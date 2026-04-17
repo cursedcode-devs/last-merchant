@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8f4aa388c713774386c59cb600b76c4, type: 3}
+  m_Name: DialogueDOSHI
+  m_EditorClassIdentifier: Assembly-CSharp::Dialogue
+  dialogues:
+  - "Hejka m\xF3j ty podr\xF3\u017Cniku hihi."
+  - "Znowu to samo. Czy te kajdanki przyczepione do dystrybutora to element dekoracyjny,
+    czy kolejna sugestia, \u017Ce mam zosta\u0107 z tob\u0105 na zawsze?"
+  - "To tylko zabezpieczenie. M\xF3wi\u0142e\u015B kiedy\u015B, \u017Ce we\u017Amiesz
+    mnie ze sob\u0105, nudzi mi si\u0119 ju\u017C tutaj na tej planecie tak sameeeej.
+    B\u0119d\u0119 robi\u0142a Ci herbatk\u0119."
+  - "Herbata nie nap\u0119dzi mi statku, a tw\xF3j wzrok sprawia, \u017Ce zaraz sprawdz\u0119
+    czy \u015Bluzy s\u0105 zaryglowane. Nie m\xF3wi\u0142em nigdy takich bredni."
+  - "A R\xD3B CO CHCESZ, ja b\u0119d\u0119 tu siedzie\u0107 i zastanawia\u0107 si\u0119
+    jaki kolor paznokci zrobi\u0107. Z dobroci serduszka mog\u0119 da\u0107 ci troszeczk\u0119
+    paliwa po dobrej cenie."

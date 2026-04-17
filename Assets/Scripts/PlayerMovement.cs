@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     private int maxSpeed = 15;
     private int accelerationRate = 1;
     private int decelerationRate = 1;
-    private int currentSpeed;
+    public int currentSpeed;
 
     private bool acceleratePending;
     private bool deceleratePending;
@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
 
     private const float ACTION_DELAY = 0.2f;
     private const float TURN_DELAY = 0.1f;
+<<<<<<< HEAD
     void OnTriggerEnter2D(Collider2D collision) => Log(collision);
     private void Log(Collider2D collision)
     {
@@ -31,33 +32,41 @@ public class PlayerMovement : MonoBehaviour
             PlayerManager.Instance?.ConsumeParts(5);
         }
     }
+=======
+    public FMODUnity.EventReference accelerateSound;
+    public FMODUnity.EventReference startSound;
+    public FMODUnity.EventReference stopSound;
+>>>>>>> origin/Alpha
 
     private void Start()
     {
         currentSpeed = 0;
     }
-
     private void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.UpArrow) && !acceleratePending)
+        if ((Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) && !acceleratePending)
         {
             StartCoroutine(DelayedAccelerate());
         }
-        else if (Input.GetKey(KeyCode.DownArrow) && !deceleratePending)
+        else if ((Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) && !deceleratePending)
         {
             StartCoroutine(DelayedDecelerate());
         }
-        else if (Input.GetKey(KeyCode.RightArrow) && !turnRightPending)
+        else if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) && !turnRightPending)
         {
             StartCoroutine(DelayedTurnRight());
         }
-        else if (Input.GetKey(KeyCode.LeftArrow) && !turnLeftPending)
+        else if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) && !turnLeftPending)
         {
             StartCoroutine(DelayedTurnLeft());
         }
 
+<<<<<<< HEAD
         transform.Translate(Vector3.up * currentSpeed * Time.deltaTime);
 
+=======
+        transform.Translate(Vector3.up * currentSpeed * Time.fixedDeltaTime);
+>>>>>>> origin/Alpha
     }
 
     private IEnumerator DelayedAccelerate()
@@ -94,6 +103,7 @@ public class PlayerMovement : MonoBehaviour
 
     public int Accelerate()
     {
+<<<<<<< HEAD
         if(PlayerManager.Instance?.GetFuel() > 0)
         {
             if (currentSpeed < maxSpeed)
@@ -101,13 +111,26 @@ public class PlayerMovement : MonoBehaviour
                 currentSpeed += accelerationRate;
                 PlayerManager.Instance?.ConsumeFuel(2);
             }
+=======
+        FMODUnity.RuntimeManager.PlayOneShot(accelerateSound, this.transform.position);
+        if (currentSpeed < maxSpeed)
+        {
+            currentSpeed += accelerationRate;
+            PlayerManager.Instance?.ConsumeFuel(2);
+
+>>>>>>> origin/Alpha
         }
         return currentSpeed;
     }
 
     public int Decelerate()
     {
+<<<<<<< HEAD
         if(PlayerManager.Instance?.GetFuel() > 0)
+=======
+        FMODUnity.RuntimeManager.PlayOneShot(stopSound, this.transform.position);
+        if (currentSpeed > -maxSpeed)
+>>>>>>> origin/Alpha
         {
             if (currentSpeed < maxSpeed)
             {
@@ -120,11 +143,16 @@ public class PlayerMovement : MonoBehaviour
 
     public void TurnRight()
     {
+<<<<<<< HEAD
         if(PlayerManager.Instance?.GetFuel() > 0)
         {
             transform.Rotate(0, 0, -10);
             PlayerManager.Instance?.ConsumeFuel(1);
         }    
+=======
+        transform.Rotate(0, 0, -10);
+        PlayerManager.Instance?.ConsumeFuel(1);
+>>>>>>> origin/Alpha
     }
 
     public void TurnLeft()

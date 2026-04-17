@@ -422,12 +422,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 286dce8782e507741bb378cd51a17536, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  crtMaterial: {fileID: 0}
+  bloomPropertyName: _Bloom_color
+  interactionSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  dialogueSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   dialoguePromptText: {fileID: 126183789}
+  playerManager: {fileID: 0}
   playerNearPlanet: 0
   isDialogueActive: 0
   time: 0
-  Dialogue: {fileID: 291469413}
+  DialogueObject: {fileID: 0}
+  DialogueImage: {fileID: 0}
   dialogueText: {fileID: 1891619447}
+  currentPlanet: {fileID: 0}
+  dialogueSentence: 0
+  tradeActive: 0
+  planetNumber: 10
 --- !u!4 &144625418
 Transform:
   m_ObjectHideFlags: 0
@@ -1735,6 +1757,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FuelUI
   fuelText: {fileID: 17662868}
+  partsText: {fileID: 0}
+  foodText: {fileID: 0}
 --- !u!1001 &1072299946
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2294,10 +2318,10 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
+  m_SortingOrder: 12
+  m_MaskInteraction: 2
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.30588236}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

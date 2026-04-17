@@ -80,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
         if (currentSpeed < maxSpeed)
         {
             currentSpeed += accelerationRate;
-            PlayerManager.Instance?.ConsumeFuel(2);
+            PlayerManager.Instance?.ConsumeFuel(0.2f);
         }
         return currentSpeed;
     }
@@ -90,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
         if (currentSpeed > -maxSpeed)
         {
             currentSpeed -= decelerationRate;
-            PlayerManager.Instance?.ConsumeFuel(2);
+            PlayerManager.Instance?.ConsumeFuel(0.2f);
         }
         return currentSpeed;
     }
@@ -98,12 +98,12 @@ public class PlayerMovement : MonoBehaviour
     public void TurnRight()
     {
         transform.Rotate(0, 0, -10);
-        PlayerManager.Instance?.ConsumeFuel(1);    
+        PlayerManager.Instance?.ConsumeFuel(0.1f);    
     }
 
     public void TurnLeft()
     {
         transform.Rotate(0, 0, 10);
-        PlayerManager.Instance?.ConsumeFuel(1);
+        PlayerManager.Instance?.ConsumeFuel(0.1f);
     }
 }

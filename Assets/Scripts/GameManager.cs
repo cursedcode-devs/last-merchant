@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     [Header("Ustawienia CRT")]
     [SerializeField] private Material crtMaterial;
     [SerializeField] private string bloomPropertyName = "_Bloom_color";
+    public FMODUnity.EventReference interactionSound;
+    public FMODUnity.EventReference dialogueSound;
 
     private Color originalBloomColor;
     private PlanetScriptObject currentPlanetS;
@@ -80,6 +82,7 @@ public class GameManager : MonoBehaviour
             {
                 crtMaterial.SetColor(bloomPropertyName, currentPlanetS.planetColor);
             }
+            FMODUnity.RuntimeManager.PlayOneShot(interactionSound, this.transform.position);
         }
     }
 
@@ -89,6 +92,7 @@ public class GameManager : MonoBehaviour
         {
             dialogueText.text = dialogue.dialogues[dialogueSentence];
             dialogueSentence++;
+            FMODUnity.RuntimeManager.PlayOneShot(dialogueSound, this.transform.position);
         }
         if (dialogueSentence == dialogue.dialogues.Length && tradeActive == false)
         {

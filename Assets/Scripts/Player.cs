@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class Player : ResourceManagers
 {
-    public int startFuel = 100;
+    public float startFuel = 100;
     public int startFood = 100;
     public int startParts = 100;
 
-    public Player(int fuel, int food, int parts)
+    public Player(float fuel, int food, int parts)
     {
         this.fuel = fuel;
         this.food = food;
@@ -15,14 +15,14 @@ public class Player : ResourceManagers
 
     public override void SetFuel(int value)
     {
-        int old = fuel;
+        float old = fuel;
         base.SetFuel(value);
         if (old != fuel) PlayerManager.Instance?.RaiseFuelChanged(old, fuel);
     }
 
-    public override void AddFuel(int value)
+    public override void AddFuel(float value)
     {
-        int old = fuel;
+        float old = fuel;
         base.AddFuel(value);
         if (old != fuel) PlayerManager.Instance?.RaiseFuelChanged(old, fuel);
     }

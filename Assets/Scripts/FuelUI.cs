@@ -23,7 +23,7 @@ public class ResourceUI : MonoBehaviour
         PlayerManager.Instance.OnFoodChanged -= HandleFoodChanged;
     }
 
-    void HandleFuelChanged(int oldFuel, int newFuel)
+    void HandleFuelChanged(float oldFuel, float newFuel)
     {
         fuelText.text = $"Fuel: {newFuel}";
     }

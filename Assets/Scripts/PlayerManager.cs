@@ -11,7 +11,7 @@ public class PlayerManager : MonoBehaviour
 
     private Player player;
 
-    public event Action<int, int> OnFuelChanged;
+    public event Action<float, float> OnFuelChanged;
     public event Action<int, int> OnFoodChanged;
     public event Action<int, int> OnPartsChanged;
 
@@ -28,12 +28,12 @@ public class PlayerManager : MonoBehaviour
         Destroy(gameObject);
     }
 }
-    public void RaiseFuelChanged(int oldValue, int newValue)
+    public void RaiseFuelChanged(float oldValue, float newValue)
     {
         OnFuelChanged?.Invoke(oldValue, newValue);
     }
 
-    public bool ConsumeFuel(int amount)
+    public bool ConsumeFuel(float amount)
     {
         if (player.GetFuel() < amount) return false;
         player.AddFuel(-amount);
@@ -63,7 +63,7 @@ public class PlayerManager : MonoBehaviour
         return true;
     }
 
-    public void AddFuel(int amount)
+    public void AddFuel(float amount)
     {
         player.AddFuel(amount);
     }
@@ -78,7 +78,7 @@ public class PlayerManager : MonoBehaviour
         player.AddParts(amount);
     }
 
-    public int GetFuel() => player.GetFuel();
+    public float GetFuel() => player.GetFuel();
     public int GetParts() => player.GetParts();
     public int GetFood() => player.GetFood();
 

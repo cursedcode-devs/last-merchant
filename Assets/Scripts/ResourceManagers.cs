@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class ResourceManagers
 {
-    protected int fuel;
+    protected float fuel;
     protected int food;
     protected int parts;
 
-    public int GetFuel() {  return fuel; }
+    public float GetFuel() {  return fuel; }
     public int GetFood() { return food; }
     public int GetParts() { return parts; } 
 
@@ -25,7 +25,7 @@ public class ResourceManagers
         this.parts = parts;
     }
 
-    public virtual void AddFuel(int fuel)
+    public virtual void AddFuel(float fuel)
     {
         this.fuel += fuel;
     }

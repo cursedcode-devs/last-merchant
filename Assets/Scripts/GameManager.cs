@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public bool playerNearPlanet = false;
     public bool isDialogueActive = false;
     public float time;
+    public GameObject Dialogue;
+    public TextMeshProUGUI dialogueText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -19,9 +21,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!isDialogueActive)
-        time += Time.deltaTime;
-        fPress();
+        if (!isDialogueActive)
+        {
+            time += Time.deltaTime;
+            fPress();
+        }
     }
 
     public void fPress()
@@ -31,11 +35,14 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Klikniêto f");
             PromptTextSetActive(false);
+            isDialogueActive=true;
+            Dialogue.SetActive(true);
         }
     }
 
     public void PromptTextSetActive(bool isActive)
     {
+        if (dialoguePromptText == null) { return; }
         dialoguePromptText.gameObject.SetActive(isActive);
     }
 

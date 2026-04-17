@@ -86,7 +86,7 @@ public class Sonar : MonoBehaviour
             float t = 1f - (closestDistance / distance);
             float beepRate = Mathf.Lerp(slowBeep, fastBeep, t);
 
-            Debug.Log($"[Sonar] foundHit | timer: {timer:F3} | beepRate: {beepRate:F3}");
+            //Debug.Log($"[Sonar] foundHit | timer: {timer:F3} | beepRate: {beepRate:F3}");
 
             if (timer <= 0f)
             {

@@ -40,4 +40,18 @@ public class Player : ResourceManagers
         base.AddParts(value);
         if (old != parts) PlayerManager.Instance?.RaisePartsChanged(old, parts);
     }
+
+    public override void SetFood(int value)
+    {
+        int old = food;
+        base.SetFood(value);
+        if (old != food) PlayerManager.Instance?.RaiseFoodChanged(old, food);
+    }
+
+    public override void AddFood(int value)
+    {
+        int old = food;
+        base.AddFood(value);
+        if (old != food) PlayerManager.Instance?.RaiseFoodChanged(old, food);
+    }
 }

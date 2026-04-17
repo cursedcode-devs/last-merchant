@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,21 +12,25 @@ public class GameManager : MonoBehaviour
     public float time;
     public GameObject Dialogue;
     public TextMeshProUGUI dialogueText;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private float lastFoodDiminish;
     void Start()
     {
         PromptTextSetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (!isDialogueActive)
         {
             time += Time.deltaTime;
             fPress();
         }
+        if (PlayerManager.Instance.GetFood()>0 && (time - lastFoodDiminish) > 10f)
+        {
+            PlayerManager.Instance?.ConsumeFood(1);
+            lastFoodDiminish = time;
+        }
+
     }
 
     public void fPress()
@@ -33,7 +38,7 @@ public class GameManager : MonoBehaviour
         if (!playerNearPlanet) return;
         if (Keyboard.current.fKey.wasPressedThisFrame)
         {
-            Debug.Log("Klikniêto f");
+            Debug.Log("Klikniï¿½to f");
             PromptTextSetActive(false);
             isDialogueActive=true;
             Dialogue.SetActive(true);

@@ -5,7 +5,7 @@ public class PlanetScriptObject : ScriptableObject
 {
     [SerializeField] public string name;
     [SerializeField] public PlanetTypes planetType;
-    [SerializeField] public int startHp;
+    [SerializeField] public int startHp;    //100 to maks
 
     // [SerializeField] Quest quest;
 }

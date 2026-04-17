@@ -1,6 +1,8 @@
+using System;
 using UnityEditor.Tilemaps;
 using UnityEngine;
 
+[Serializable]
 public class Planet : ResourceManagers
 {
     public PlanetTypes planetType;

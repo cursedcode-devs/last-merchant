@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialoguePromptText;
 
     public bool playerNearPlanet = false;
-
+    public bool isDialogueActive = false;
     public float time;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!isDialogueActive)
+        time += Time.deltaTime;
         fPress();
     }
 
@@ -31,8 +33,6 @@ public class GameManager : MonoBehaviour
             PromptTextSetActive(false);
         }
     }
-
-   
 
     public void PromptTextSetActive(bool isActive)
     {

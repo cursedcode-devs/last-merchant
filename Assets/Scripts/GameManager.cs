@@ -40,6 +40,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void CreateDialogue(Dialogue dialogue)
+    {
+
+    }
+
     public void PromptTextSetActive(bool isActive)
     {
         if (dialoguePromptText == null) { return; }

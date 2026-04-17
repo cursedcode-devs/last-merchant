@@ -29,10 +29,7 @@ public class Sonar : MonoBehaviour
         audioSource.pitch = 1f;
         audioSource.panStereo = 0f;
 
-        Debug.Log($"[Sonar] START — beepClip: {(beepClip == null ? "NULL ❌" : beepClip.name + " ✅")}");
-        Debug.Log($"[Sonar] START — AudioSource: {(audioSource == null ? "NULL ❌" : "found ✅")}");
         int mask = LayerMask.GetMask("Planet");
-        Debug.Log($"[Sonar] START — Planet layer mask: {mask} {(mask == 0 ? "❌ (layer not found!)" : "✅")}");
 
         Physics2D.queriesStartInColliders = false;
     }
@@ -86,11 +83,9 @@ public class Sonar : MonoBehaviour
             float t = 1f - (closestDistance / distance);
             float beepRate = Mathf.Lerp(slowBeep, fastBeep, t);
 
-            Debug.Log($"[Sonar] foundHit | timer: {timer:F3} | beepRate: {beepRate:F3}");
 
             if (timer <= 0f)
             {
-                Debug.Log("[Sonar] >>> Calling PlayBeep NOW <<<");
                 FMODUnity.RuntimeManager.PlayOneShot(sonarSound, this.transform.position);
                 timer = beepRate;
             }
@@ -100,21 +95,6 @@ public class Sonar : MonoBehaviour
             timer = 0f;
         }
     }
-
-    //void PlayBeep(float closeness, float side)
-    //{
-    //    if (beepClip == null)
-    //    {
-    //        Debug.LogError("[Sonar] PlayBeep called but beepClip is NULL ❌");
-    //        return;
-    //    }
-
-    //    audioSource.pitch = Mathf.Lerp(farPitch, closePitch, closeness);
-    //    audioSource.panStereo = side;
-    //    audioSource.PlayOneShot(beepClip, volume);
-
-    //    Debug.Log($"[Sonar] PlayOneShot fired ✅ | clip: {beepClip.name} | pitch: {audioSource.pitch:F2} | pan: {audioSource.panStereo:F2} | volume: {volume}");
-    //}
 
     Vector2 RotateVector(Vector2 v, float degrees)
     {

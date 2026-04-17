@@ -4,9 +4,8 @@ using UnityEngine;
 public class DatabaseManager : MonoBehaviour
 {
     [Header("Plik z dialogami")]
-    public TextAsset jsonFile; // Przeci¹gnij tu swój plik JSON z zak³adki Project
+    public TextAsset jsonFile; 
 
-    // S³ownik to najlepszy sposób na b³yskawiczne wyszukiwanie dialogów po ich ID
     private Dictionary<string, SingleDialogue> dialogueDictionary;
 
     void Awake()
@@ -19,7 +18,7 @@ public class DatabaseManager : MonoBehaviour
         // 1. Zmiana tekstu JSON na obiekty C# (Parsowanie)
         DialogueDatabase database = JsonUtility.FromJson<DialogueDatabase>(jsonFile.text);
 
-        // 2. Przerzucamy je do S³ownika dla wygody
+        // 2. Przerzucamy je do Sï¿½ownika dla wygody
         dialogueDictionary = new Dictionary<string, SingleDialogue>();
 
         foreach (var dialog in database.dialogues)
@@ -27,10 +26,10 @@ public class DatabaseManager : MonoBehaviour
             dialogueDictionary.Add(dialog.name, dialog);
         }
 
-        Debug.Log($"Wczytano {dialogueDictionary.Count} dialogów!");
+        Debug.Log($"Wczytano {dialogueDictionary.Count} dialogï¿½w!");
     }
 
-    // Funkcja do wyci¹gania konkretnego dialogu
+    // Funkcja do wyciï¿½gania konkretnego dialogu
     public SingleDialogue GetDialogue(string id)
     {
         if (dialogueDictionary.ContainsKey(id))

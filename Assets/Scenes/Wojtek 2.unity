@@ -426,7 +426,7 @@ MonoBehaviour:
   playerNearPlanet: 0
   isDialogueActive: 0
   time: 0
-  DialogueObject: {fileID: 291469413}
+  DialogueObject: {fileID: 560909561}
   dialogueText: {fileID: 1891619447}
   dialogueSentence: 0
 --- !u!4 &144625418

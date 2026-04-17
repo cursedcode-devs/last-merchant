@@ -65,7 +65,7 @@ public class PlanetObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (manager.time >= lastTimeDamaged + 1 && planet.GetHp() > 0)
+        if (manager.time >= lastTimeDamaged + 5 && planet.GetHp() > 0)
         {
             planet.AddHp(-1);
             Debug.Log("Odejmowanie hp");

@@ -26,4 +26,32 @@ public class Player : ResourceManagers
         base.AddFuel(value);
         if (old != fuel) PlayerManager.Instance?.RaiseFuelChanged(old, fuel);
     }
+
+    public override void SetParts(int value)
+    {
+        int old = parts;
+        base.SetParts(value);
+        if (old != parts) PlayerManager.Instance?.RaisePartsChanged(old, parts);
+    }
+
+    public override void AddParts(int value)
+    {
+        int old = parts;
+        base.AddParts(value);
+        if (old != parts) PlayerManager.Instance?.RaisePartsChanged(old, parts);
+    }
+
+    public override void SetFood(int value)
+    {
+        int old = food;
+        base.SetFood(value);
+        if (old != food) PlayerManager.Instance?.RaiseFoodChanged(old, food);
+    }
+
+    public override void AddFood(int value)
+    {
+        int old = food;
+        base.AddFood(value);
+        if (old != food) PlayerManager.Instance?.RaiseFoodChanged(old, food);
+    }
 }

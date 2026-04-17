@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public int dialogueSentence = 0;
     public bool tradeActive = false;
     public int planetNumber = 10;
+    private float lastFoodDiminish;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -50,6 +51,11 @@ public class GameManager : MonoBehaviour
         else
         {
             NextDialogue();
+        }
+        if (PlayerManager.Instance.GetFood() > 0 && (time - lastFoodDiminish) > 10f)
+        {
+            PlayerManager.Instance?.ConsumeFood(1);
+            lastFoodDiminish = time;
         }
     }
 

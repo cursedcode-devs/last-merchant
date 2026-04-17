@@ -631,6 +631,7 @@ MonoBehaviour:
   crtMaterial: {fileID: 2100000, guid: 07707da9db40b0b4dbb0b295125ecf0e, type: 2}
   bloomPropertyName: _Bloom_color
   dialoguePromptText: {fileID: 126183789}
+  playerManager: {fileID: 152029041}
   playerNearPlanet: 0
   isDialogueActive: 0
   time: 0
@@ -799,11 +800,11 @@ MonoBehaviour:
   closePitch: 1.6
   sonarSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 441235815
+      Data2: 1193320324
+      Data3: -379745867
+      Data4: 536283237
+    Path: event:/Sonar_impulse
 --- !u!114 &152029041
 MonoBehaviour:
   m_ObjectHideFlags: 0

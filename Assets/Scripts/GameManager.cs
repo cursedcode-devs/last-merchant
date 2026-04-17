@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     private PlanetScriptObject currentPlanetS;
     // -------------------------------
     [SerializeField] private TextMeshProUGUI dialoguePromptText;
-
+    public PlayerManager playerManager;
     public bool playerNearPlanet = false;
     public bool isDialogueActive = false;
     public float time;
@@ -100,6 +100,24 @@ public class GameManager : MonoBehaviour
             if (Keyboard.current.yKey.wasPressedThisFrame)
             {
                 ResetDialogue();
+                switch(currentPlanet.planetData.planetTypeGive)
+                {
+                    case PlanetTypes.Food:
+                        {
+                            playerManager.AddFood(-currentPlanet.trade.GetRecive());
+                            break;
+                        }
+                    case PlanetTypes.Fuel:
+                        {
+                            playerManager.AddFuel(-currentPlanet.trade.GetRecive());
+                            break;
+                        }
+                    case PlanetTypes.Parts:
+                        {
+                            playerManager.AddParts(-currentPlanet.trade.GetRecive());
+                            break;
+                        }
+                }
                 currentPlanet.trade.GenerateTrade(currentPlanet.planetData.planetTypeRecive, currentPlanet.planetData.planetTypeGive);
                 currentPlanet.planet.AddHp(currentPlanet.trade.restoreHealth);
             }

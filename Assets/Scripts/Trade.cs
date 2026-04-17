@@ -12,6 +12,9 @@ public class Trade
         GenerateTrade(planetTypesRecive, planetTypesGive);
     }
 
+    public int GetRecive()
+        { return recive; }
+
     public void GenerateTrade(PlanetTypes planetTypesRecive, PlanetTypes planetTypesGive)
     {
         recive = 17 + Random.Range(0, 4);

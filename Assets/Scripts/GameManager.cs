@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour
     public GameObject DialogueObject;
     public GameObject DialogueImage;
     public TextMeshProUGUI dialogueText;
+    private float lastFoodDiminish;
     public FMODUnity.EventReference interactionSound;
     public FMODUnity.EventReference dialogueSound;
 
@@ -42,18 +44,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (!isDialogueActive)
         {
             time += Time.deltaTime;
             fPress();
         }
-        else
+         else
         {
             playerMovement.currentSpeed = 0;
             NextDialogue();
+        }
+        if (PlayerManager.Instance.GetFood()>0 && (time - lastFoodDiminish) > 10f)
+        {
+            PlayerManager.Instance?.ConsumeFood(1);
+            lastFoodDiminish = time;
         }
     }
 
@@ -62,8 +68,7 @@ public class GameManager : MonoBehaviour
         if (!playerNearPlanet) return;
         if (Keyboard.current.fKey.wasPressedThisFrame)
         {
-            Debug.Log("Kliknij to f");
-            dialogueText.text = "";
+            Debug.Log("Klikni�to f");
             PromptTextSetActive(false);
             isDialogueActive = true;
             DialogueObject.SetActive(true);

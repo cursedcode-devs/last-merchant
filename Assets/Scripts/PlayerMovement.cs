@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Diagnostics;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -15,6 +16,21 @@ public class PlayerMovement : MonoBehaviour
 
     private const float ACTION_DELAY = 0.2f;
     private const float TURN_DELAY = 0.1f;
+    void OnTriggerEnter2D(Collider2D collision) => Log(collision);
+    private void Log(Collider2D collision)
+    {
+        UnityEngine.Debug.Log($"Collided with {collision.gameObject.name}");
+        if (collision.gameObject.CompareTag("Asteroid"))
+        {
+            UnityEngine.Debug.Log("Collided with an asteroid! Consuming parts... Current parts: " + PlayerManager.Instance.GetParts());
+            PlayerManager.Instance?.ConsumeParts(5);
+        }
+        if (collision.gameObject.CompareTag("Planet"))
+        {
+            UnityEngine.Debug.Log("Collided with a planet! Consuming parts... Current parts: " + PlayerManager.Instance.GetParts());
+            PlayerManager.Instance?.ConsumeParts(5);
+        }
+    }
     public FMODUnity.EventReference accelerateSound;
     public FMODUnity.EventReference startSound;
     public FMODUnity.EventReference stopSound;
@@ -79,36 +95,49 @@ public class PlayerMovement : MonoBehaviour
 
     public int Accelerate()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(accelerateSound, this.transform.position);
-        if (currentSpeed < maxSpeed)
+        if(PlayerManager.Instance?.GetFuel() > 0)
         {
-            currentSpeed += accelerationRate;
-            PlayerManager.Instance?.ConsumeFuel(2);
-
+        FMODUnity.RuntimeManager.PlayOneShot(accelerateSound, this.transform.position);
+            if (currentSpeed < maxSpeed)
+            {
+                currentSpeed += accelerationRate;
+                PlayerManager.Instance?.ConsumeFuel(2);
+            }
         }
         return currentSpeed;
     }
 
     public int Decelerate()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(stopSound, this.transform.position);
-        if (currentSpeed > -maxSpeed)
-        {
-            currentSpeed -= decelerationRate;
-            PlayerManager.Instance?.ConsumeFuel(2);
+        if(PlayerManager.Instance?.GetFuel() > 0){
+          FMODUnity.RuntimeManager.PlayOneShot(stopSound, this.transform.position);
+          if (currentSpeed > -maxSpeed)
+          {
+              if (currentSpeed < maxSpeed)
+              {
+                  currentSpeed -= decelerationRate;
+                  PlayerManager.Instance?.ConsumeFuel(2);
+              }
+         }
         }
         return currentSpeed;
     }
 
     public void TurnRight()
     {
-        transform.Rotate(0, 0, -10);
-        PlayerManager.Instance?.ConsumeFuel(1);
+        if(PlayerManager.Instance?.GetFuel() > 0)
+        {
+            transform.Rotate(0, 0, -10);
+            PlayerManager.Instance?.ConsumeFuel(1);
+        }    
     }
 
     public void TurnLeft()
     {
-        transform.Rotate(0, 0, 10);
-        PlayerManager.Instance?.ConsumeFuel(1);
+        if(PlayerManager.Instance?.GetFuel() > 0)
+        {
+            transform.Rotate(0, 0, 10);
+            PlayerManager.Instance?.ConsumeFuel(1);
+        }
     }
 }

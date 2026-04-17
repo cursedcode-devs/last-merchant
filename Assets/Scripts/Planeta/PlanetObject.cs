@@ -62,12 +62,16 @@ public class PlanetObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (manager.time >= lastTimeDamaged + 1)
+        if (manager.time >= lastTimeDamaged + 1 && planet.GetHp() > 0)
         {
             planet.AddHp(-1);
             Debug.Log("Odejmowanie hp");
             UpdateHealthBarUI();
-
+            if (planet.GetHp() <= 0)
+            {
+                healthBar.SetActive(false);
+                nameText.gameObject.SetActive(false);
+            }
             lastTimeDamaged = manager.time;
         }
     }
@@ -99,7 +103,7 @@ public class PlanetObject : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             Debug.Log("Wesz³o na planete");
-            manager.currentPlanet = null;
+           // manager.currentPlanet = null;
             manager.SetPlayerNearPlanet(false);
             manager.PromptTextSetActive(false);
         }

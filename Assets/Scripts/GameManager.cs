@@ -42,25 +42,27 @@ public class GameManager : MonoBehaviour
     public void fPress()
     {
         if (!playerNearPlanet) return;
+        if (currentPlanet.planet.GetHp() <= 0)
+        {
+            return;
+        }
         if (Keyboard.current.fKey.wasPressedThisFrame)
         {
             Debug.Log("Klikniêto f");
+            currentPlanet.planet.GetHp();
             dialogueText.text = "";
             PromptTextSetActive(false);
             isDialogueActive = true;
             DialogueObject.SetActive(true);
-            if (currentPlanet != null)
-            {
-                currentPlanet.IncrementDialogueIndex();
-            }
+            currentPlanet.IncrementDialogueIndex();
         }
     }
 
     public void NextDialogue()
     {
-        if ( Keyboard.current.enterKey.wasPressedThisFrame )
+        if (Keyboard.current.enterKey.wasPressedThisFrame)
         {
-            dialogueText.text=dialogue.dialogues[dialogueSentence];
+            dialogueText.text = dialogue.dialogues[dialogueSentence];
             dialogueSentence++;
         }
         if (dialogueSentence == dialogue.dialogues.Length)
@@ -68,6 +70,7 @@ public class GameManager : MonoBehaviour
             dialogueSentence = 0;
             isDialogueActive = false;
             DialogueObject.SetActive(false);
+            dialogue = currentPlanet.planetData.dialogues[currentPlanet.whichDialogue];
         }
     }
 

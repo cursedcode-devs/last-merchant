@@ -492,6 +492,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   dialoguePromptText: {fileID: 126183789}
+  crtMaterial: {fileID: 2100000, guid: 07707da9db40b0b4dbb0b295125ecf0e, type: 2}
+  bloomPropertyName: _Bloom_color
   playerNearPlanet: 0
   isDialogueActive: 0
   time: 0

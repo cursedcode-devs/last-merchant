@@ -9,7 +9,7 @@ public class PlanetObject : MonoBehaviour
     public PlanetScriptObject planetData;
     public TextMeshPro nameText;
     public GameObject healthBar;
-    public int whichDialogue = 1;
+    public int whichDialogue = 0;
     private int maxHealth = 100;
     private float maxHealthBarWidth = 5f;
     private float lastTimeDamaged = 0f;
@@ -39,7 +39,7 @@ public class PlanetObject : MonoBehaviour
         maxHealth = planetData.startHp;
 
         initHealthBar();
-        // 1. Tworzymy nowy pusty obiekt w scenie i nadajemy mu nazwê
+        // 1. Tworzymy nowy pusty obiekt w scenie i nadajemy mu nazwÄ™
         GameObject textObject = new GameObject(planetData.name + " Text");
         textObject.transform.SetParent(this.transform, false);
         nameText = textObject.AddComponent<TextMeshPro>();
@@ -67,39 +67,38 @@ public class PlanetObject : MonoBehaviour
 
     private void UpdateHealthBarUI()
     {
-        // WA¯NE: Zak³adam, ¿e masz dostêp do aktualnego HP planety. 
-        // Jeœli zmienna nazywa siê inaczej ni¿ 'hp' (np. currentHp, GetHp()), podmieñ to poni¿ej.
         float currentHp = planet.GetHp();
-
-        // Rzutujemy na (float), ¿eby wynik z dzielenia nie zaokr¹gli³ siê do 0 lub 1
         float healthPercentage = currentHp / (float)maxHealth;
-
-        // Zabezpieczenie, ¿eby pasek nie zacz¹³ rysowaæ siê w drug¹ stronê, jeœli HP spadnie poni¿ej zera
         healthPercentage = Mathf.Clamp01(healthPercentage);
-
-        // Ustawiamy now¹ szerokoœæ: maksymalna szerokoœæ * procent zdrowia
         healthBar.transform.localScale = new Vector3(maxHealthBarWidth * healthPercentage, 1f, 1f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Wesz³o na planete NIE GRACZ");
+        Debug.Log("WeszÅ‚o na planete NIE GRACZ");
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("Wesz³o na planete");
+            Debug.Log("WeszÅ‚o na planete");
+            manager.SetDialogue(planetData.dialogues[whichDialogue], planetData.sprite);
             manager.SetPlayerNearPlanet(true);
             manager.PromptTextSetActive(true);
+            
+            // Przekazujemy planete do GameManagera
+            manager.SetCurrentPlanet(planetData);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("Wesz³o na planete NIE GRACZ");
+        Debug.Log("WeszÅ‚o na planete NIE GRACZ");
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("Wesz³o na planete");
+            Debug.Log("WeszÅ‚o na planete");
             manager.SetPlayerNearPlanet(false);
             manager.PromptTextSetActive(false);
+            
+            // CzyÅ›cimy informacje po odejÅ›ciu od planety
+            manager.SetCurrentPlanet(null);
         }
     }
 }

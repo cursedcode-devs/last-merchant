@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     private PlanetScriptObject currentPlanet;
     // -------------------------------
 
+    [SerializeField] private PlayerMovement playerMovement;
     public bool playerNearPlanet = false;
     public bool isDialogueActive = false;
     public float time;
@@ -24,6 +25,8 @@ public class GameManager : MonoBehaviour
     public GameObject DialogueObject;
     public GameObject DialogueImage;
     public TextMeshProUGUI dialogueText;
+    public FMODUnity.EventReference interactionSound;
+    public FMODUnity.EventReference dialogueSound;
 
     public int dialogueSentence = 0;
 
@@ -49,6 +52,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            playerMovement.currentSpeed = 0;
             NextDialogue();
         }
     }
@@ -58,7 +62,7 @@ public class GameManager : MonoBehaviour
         if (!playerNearPlanet) return;
         if (Keyboard.current.fKey.wasPressedThisFrame)
         {
-            Debug.Log("Kliknięto f");
+            Debug.Log("Kliknij to f");
             dialogueText.text = "";
             PromptTextSetActive(false);
             isDialogueActive = true;
@@ -69,6 +73,7 @@ public class GameManager : MonoBehaviour
             {
                 crtMaterial.SetColor(bloomPropertyName, currentPlanet.planetColor);
             }
+            FMODUnity.RuntimeManager.PlayOneShot(interactionSound, this.transform.position);
         }
     }
 
@@ -78,6 +83,7 @@ public class GameManager : MonoBehaviour
         {
             dialogueText.text=dialogue.dialogues[dialogueSentence];
             dialogueSentence++;
+            FMODUnity.RuntimeManager.PlayOneShot(dialogueSound, this.transform.position);
         }
         if (dialogueSentence == dialogue.dialogues.Length)
         {
@@ -90,6 +96,7 @@ public class GameManager : MonoBehaviour
             {
                 crtMaterial.SetColor(bloomPropertyName, originalBloomColor);
             }
+            
         }
     }
 

@@ -12,4 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8f4aa388c713774386c59cb600b76c4, type: 3}
   m_Name: DialogueSEP-9
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
-  dialogues: []
+  dialogues:
+  - "*S\u0142ycha\u0107 jak posta\u0107 wynurza si\u0119 z wody,a jej oczy patrz\u0105
+    w twoim kierunku*"
+  - "Ca\u0142kiem tu u was przyjemnie chocia\u017C kwiatki patrz\u0105 na mnie, jakbym
+    by\u0142 darmowym cateringiem na czwartkowy poranek."
+  - "Zazwyczaj jedz\u0105 tych, kt\xF3rych nie sta\u0107 na op\u0142aty portowe,
+    a ty wygl\u0105dasz na kogo\u015B kto ma jeszcze wszystkie organy na miejscu."
+  - "Wol\u0119 je zachowa\u0107, wi\u0119c sprzedaj mi troch\u0119 tego paliwa, zanim
+    zaczn\u0105 sprawdza\u0107 moj\u0105 cierpliwo\u015B\u0107."
+  - "Nie b\u0105d\u017A taki hop do przodu bo ci\u0119 rzuc\u0119 ro\u015Blinom,
+    niech ci b\u0119dzie, to s\u0105 moje towary:"

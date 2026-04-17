@@ -632,18 +632,18 @@ MonoBehaviour:
   bloomPropertyName: _Bloom_color
   interactionSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1684245184
+      Data2: 1202688685
+      Data3: -1378258035
+      Data4: 1239938234
+    Path: event:/Planet_interaction
   dialogueSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1925795376
+      Data2: 1203694326
+      Data3: 801302716
+      Data4: -1985281226
+    Path: event:/Lenora_Dialogue
   dialoguePromptText: {fileID: 126183789}
   playerManager: {fileID: 152029041}
   playerNearPlanet: 0
@@ -687,6 +687,7 @@ GameObject:
   - component: {fileID: 152029041}
   - component: {fileID: 152029040}
   - component: {fileID: 152029039}
+  - component: {fileID: 152029047}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -998,6 +999,37 @@ Transform:
   - {fileID: 687793373}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &152029047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152029038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -92974940
+      Data2: 1289326046
+      Data3: 824787591
+      Data4: -1664043578
+    Path: event:/Level_loop
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: -1
+  OverrideMaxDistance: -1
 --- !u!1 &218812822
 GameObject:
   m_ObjectHideFlags: 0

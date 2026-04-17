@@ -4,9 +4,8 @@ using UnityEngine;
 public class PlanetScriptObject : ScriptableObject
 {
     [SerializeField] public string name;
-    [SerializeField] public int startFuel;
-    [SerializeField] public int startFood;
-    [SerializeField] public int startParts;
+    [SerializeField] public PlanetTypes planetType;
+    [SerializeField] public int startHp;    //100 to maks
 
-   // [SerializeField] Quest quest;
+    // [SerializeField] Quest quest;
 }

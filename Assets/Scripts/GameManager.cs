@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,8 +10,11 @@ public class GameManager : MonoBehaviour
     public bool playerNearPlanet = false;
     public bool isDialogueActive = false;
     public float time;
-    public GameObject Dialogue;
+    Dialogue dialogue;
+    public GameObject DialogueObject;
     public TextMeshProUGUI dialogueText;
+
+    public int dialogueSentence = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,6 +30,10 @@ public class GameManager : MonoBehaviour
             time += Time.deltaTime;
             fPress();
         }
+        else
+        {
+            NextDialogue();
+        }
     }
 
     public void fPress()
@@ -35,8 +43,23 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Klikniêto f");
             PromptTextSetActive(false);
-            isDialogueActive=true;
-            Dialogue.SetActive(true);
+            isDialogueActive = true;
+            DialogueObject.SetActive(true);
+        }
+    }
+
+    public void NextDialogue()
+    {
+        if ( Keyboard.current.enterKey.wasPressedThisFrame )
+        {
+            dialogueText.text=dialogue.dialogues[dialogueSentence];
+            dialogueSentence++;
+        }
+        if (dialogueSentence == dialogue.dialogues.Length)
+        {
+            dialogueSentence = 0;
+            isDialogueActive = false;
+            DialogueObject.SetActive(false);
         }
     }
 
@@ -44,6 +67,11 @@ public class GameManager : MonoBehaviour
     {
         if (dialoguePromptText == null) { return; }
         dialoguePromptText.gameObject.SetActive(isActive);
+    }
+
+    public void SetDialogue(Dialogue dialogue)
+    {
+        this.dialogue = dialogue;
     }
 
     public void SetPlayerNearPlanet(bool near)

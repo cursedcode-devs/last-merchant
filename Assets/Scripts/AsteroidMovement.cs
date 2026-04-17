@@ -1,43 +1,63 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class AsteroidMovement : MonoBehaviour
 {
     public Asteroid[] prefabs;
-    public int rows = 70;
-    public int columns = 100;
-    public float ellipseRadiusX = 20.0f;
-    public float ellipseRadiusY = 15.5f;
-    [Range(0f, 1f)]
-    public float spawnChance = 0.75f;
-    private Vector3 direction = Vector3.right;
-    public float speed = 5f;
+    public int asteroidCount = 60;
 
-    private void Awake()
+    public float herdSpeed = 4f;
+    public float spawnRadius = 1.5f;
+
+    public EdgeCollider2D border;
+
+    [HideInInspector] public float borderRadiusX;
+    [HideInInspector] public float borderRadiusY;
+    [HideInInspector] public Vector3 borderCenter;
+
+    [HideInInspector] public Vector3 herdVelocity;
+
+    private List<Asteroid> asteroids = new List<Asteroid>();
+
+    void Awake()
     {
-        for (int row = 0; row < rows; row++)
-        {
-            for (int col = 0; col < columns; col++)
-            {
-                float nx = (col / (float)(columns - 1)) * 2f - 1f;
-                float ny = (row / (float)(rows - 1)) * 2f - 1f;
+        Bounds bounds = new Bounds(border.transform.TransformPoint(border.points[0]), Vector3.zero);
 
-                if ((nx * nx) + (ny * ny) > 1f) continue;
-                if (Random.value > spawnChance) continue;
+        foreach (Vector2 point in border.points)
+            bounds.Encapsulate(border.transform.TransformPoint(point));
 
-                Vector3 position = new Vector3(
-                    nx * ellipseRadiusX,
-                    ny * ellipseRadiusY,
-                    0f
-                );
+        borderCenter = bounds.center;
+        borderRadiusX = bounds.extents.x;
+        borderRadiusY = bounds.extents.y;
 
-                int prefabIndex = Random.Range(0, prefabs.Length);
-                Asteroid asteroid = Instantiate(prefabs[prefabIndex], this.transform);
-                asteroid.transform.localPosition = position;
-            }
-        }
+        SpawnHerd();
     }
-    private void Update()
+
+    void SpawnHerd()
     {
-        this.transform.position += direction * this.speed * Time.deltaTime;
+        float angle = Random.Range(0f, Mathf.PI * 2f);
+
+        Vector3 spawnCenter = new Vector3(
+            borderCenter.x + Mathf.Cos(angle) * borderRadiusX,
+            borderCenter.y + Mathf.Sin(angle) * borderRadiusY,
+            0f
+        );
+
+        Vector3 inward = (borderCenter - spawnCenter).normalized;
+
+        herdVelocity = inward * herdSpeed;
+
+        for (int i = 0; i < asteroidCount; i++)
+        {
+            int prefabIndex = Random.Range(0, prefabs.Length);
+
+            Asteroid asteroid = Instantiate(prefabs[prefabIndex], transform);
+
+            Vector3 offset = Random.insideUnitCircle * spawnRadius;
+
+            asteroid.Init(this, spawnCenter + offset);
+
+            asteroids.Add(asteroid);
+        }
     }
 }

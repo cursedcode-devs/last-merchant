@@ -63,6 +63,21 @@ public class PlayerManager : MonoBehaviour
         return true;
     }
 
+    public void AddFuel(int amount)
+    {
+        player.AddFuel(amount);
+    }
+
+    public void AddFood(int amount)
+    {
+        player.AddFood(amount);
+    }
+
+    public void AddParts(int amount)
+    {
+        player.AddParts(amount);
+    }
+
     public int GetFuel() => player.GetFuel();
 
     public int GetParts() => player.GetParts();

@@ -4,24 +4,50 @@ public class Asteroid : MonoBehaviour
 {
     public Sprite[] animationSprites;
     public float animationSpeed = 0.1f;
+
     private SpriteRenderer spriteRenderer;
     private int animationFrame;
 
-    private void Awake()
+    private AsteroidMovement spawner;
+
+    private Vector3 localOffset;
+
+    void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
-    private void Start()
+
+    public void Init(AsteroidMovement spawnerRef, Vector3 startPos)
     {
-        InvokeRepeating(nameof(Animate), this.animationSpeed, this.animationSpeed);
+        spawner = spawnerRef;
+
+        transform.position = startPos;
+
+        localOffset = startPos - spawner.transform.position;
+
+        InvokeRepeating(nameof(Animate), animationSpeed, animationSpeed);
     }
-    private void Animate()
+
+    void Update()
     {
-        animationFrame++;
-        if (animationFrame >= this.animationSprites.Length)
+        transform.position += spawner.herdVelocity * Time.deltaTime;
+
+        Vector3 pos = transform.position - spawner.borderCenter;
+
+        float ex = pos.x / spawner.borderRadiusX;
+        float ey = pos.y / spawner.borderRadiusY;
+
+        if ((ex * ex) + (ey * ey) >= 1f)
         {
-            animationFrame = 0;
+            Destroy(gameObject);
         }
-        spriteRenderer.sprite = this.animationSprites[animationFrame];
+    }
+
+    void Animate()
+    {
+        if (animationSprites.Length == 0) return;
+
+        animationFrame = (animationFrame + 1) % animationSprites.Length;
+        spriteRenderer.sprite = animationSprites[animationFrame];
     }
 }

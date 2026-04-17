@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public GameObject DialogueObject;
     public GameObject DialogueImage;
     public TextMeshProUGUI dialogueText;
+    public FMODUnity.EventReference interactionSound;
+    public FMODUnity.EventReference dialogueSound;
 
     public int dialogueSentence = 0;
 
@@ -43,11 +45,13 @@ public class GameManager : MonoBehaviour
         if (!playerNearPlanet) return;
         if (Keyboard.current.fKey.wasPressedThisFrame)
         {
+            
             Debug.Log("Klikniêto f");
             dialogueText.text = "";
             PromptTextSetActive(false);
             isDialogueActive = true;
             DialogueObject.SetActive(true);
+            FMODUnity.RuntimeManager.PlayOneShot(interactionSound, this.transform.position);
         }
     }
 
@@ -57,12 +61,14 @@ public class GameManager : MonoBehaviour
         {
             dialogueText.text=dialogue.dialogues[dialogueSentence];
             dialogueSentence++;
+            FMODUnity.RuntimeManager.PlayOneShot(dialogueSound, this.transform.position);
         }
         if (dialogueSentence == dialogue.dialogues.Length)
         {
             dialogueSentence = 0;
             isDialogueActive = false;
             DialogueObject.SetActive(false);
+            
         }
     }
 

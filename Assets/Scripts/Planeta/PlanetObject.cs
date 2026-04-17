@@ -13,6 +13,7 @@ public class PlanetObject : MonoBehaviour
     private int maxHealth = 100;
     private float maxHealthBarWidth = 5f;
     private float lastTimeDamaged = 0f;
+    public Trade trade;
 
     public void IncrementDialogueIndex()
     {
@@ -41,7 +42,9 @@ public class PlanetObject : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        planet = new Planet(planetData.startHp, planetData.planetType);
+        planet = new Planet(planetData.startHp, planetData.planetTypeRecive, planetData.planetTypeGive);
+
+        trade = new Trade(planetData.planetTypeRecive, planetData.planetTypeGive);
 
         maxHealth = planetData.startHp;
 

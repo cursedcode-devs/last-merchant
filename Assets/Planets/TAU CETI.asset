@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: TAU CETI
   m_EditorClassIdentifier: Assembly-CSharp::PlanetScriptObject
   name: TAU CETI
-  planetType: 0
+  planetTypeRecive: 1
+  planetTypeGive: 0
   startHp: 100
   planetColor: {r: 0.9245283, g: 0.7718939, b: 0.7718939, a: 0}
   sprite: {fileID: 8087709837291185135, guid: 3c5367369ab71aa4a956a60d69849060, type: 3}

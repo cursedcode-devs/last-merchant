@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: SEP-9
   m_EditorClassIdentifier: Assembly-CSharp::PlanetScriptObject
   name: SEP-9
-  planetType: 0
+  planetTypeRecive: 0
+  planetTypeGive: 1
   startHp: 100
   planetColor: {r: 0.30892828, g: 0.8207547, b: 0.28261834, a: 0}
   sprite: {fileID: -2037269849112367076, guid: e5d71655154092b47981918678841733, type: 3}

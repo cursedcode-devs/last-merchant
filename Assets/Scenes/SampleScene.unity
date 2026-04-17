@@ -635,7 +635,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.22272372, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -882,6 +882,13 @@ MonoBehaviour:
   volume: 1
   farPitch: 0.9
   closePitch: 1.6
+  sonarSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!82 &907032199
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1438,7 +1445,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9f4f89822814274a943df753bfd0e55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlanetObject
+  planet:
+    planetType: 0
+    hp: 0
+  manager: {fileID: 0}
   planetData: {fileID: 11400000, guid: 6d738f0b43bc3234894c97022440f5c9, type: 2}
+  nameText: {fileID: 0}
+  healthBar: {fileID: 0}
 --- !u!212 &1926743839
 SpriteRenderer:
   serializedVersion: 2
@@ -1556,9 +1569,9 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 907032193}
-  - {fileID: 1954794712}
   - {fileID: 1184831377}
   - {fileID: 936915274}
   - {fileID: 754252859}
   - {fileID: 281165495}
   - {fileID: 1914367361}
+  - {fileID: 1926743840}

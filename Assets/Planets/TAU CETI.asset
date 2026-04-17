@@ -15,7 +15,7 @@ MonoBehaviour:
   name: TAU CETI
   planetType: 0
   startHp: 100
-  planetColor: {r: 0.9245283, g: 0.7718939, b: 0.7718939, a: 0}
+  planetColor: {r: 0.9245283, g: 0.7718939, b: 0.7718939, a: 1}
   sprite: {fileID: 8087709837291185135, guid: 3c5367369ab71aa4a956a60d69849060, type: 3}
   firstDialogue: {fileID: 11400000, guid: bfd4fc7f116dbbe45bc7b734c8ac91a5, type: 2}
   genericTrade: {fileID: 11400000, guid: a014bc321bf08b1448e8f452ee6cd054, type: 2}

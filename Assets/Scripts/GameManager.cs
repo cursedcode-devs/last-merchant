@@ -1,6 +1,5 @@
 using JetBrains.Annotations;
 using TMPro;
-using Unity.Multiplayer.PlayMode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEditor.Rendering.MaterialUpgrader;
@@ -9,6 +8,15 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI dialoguePromptText;
 
+    // --- NOWE ZMIENNE DO SHADERA ---
+    [Header("Ustawienia CRT")]
+    [SerializeField] private Material crtMaterial;
+    [SerializeField] private string bloomPropertyName = "_Bloom_color";
+    
+    private Color originalBloomColor;
+    private PlanetScriptObject currentPlanet;
+    // -------------------------------
+
     public bool playerNearPlanet = false;
     public bool isDialogueActive = false;
     public float time;
@@ -16,13 +24,19 @@ public class GameManager : MonoBehaviour
     public GameObject DialogueObject;
     public GameObject DialogueImage;
     public TextMeshProUGUI dialogueText;
-    public PlanetObject currentPlanet;
+
     public int dialogueSentence = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         PromptTextSetActive(false);
+
+        // Zapisujemy domyślny kolor z materiału na starcie gry
+        if (crtMaterial != null)
+        {
+            originalBloomColor = crtMaterial.GetColor(bloomPropertyName);
+        }
     }
 
     // Update is called once per frame
@@ -42,27 +56,27 @@ public class GameManager : MonoBehaviour
     public void fPress()
     {
         if (!playerNearPlanet) return;
-        if (currentPlanet.planet.GetHp() <= 0)
-        {
-            return;
-        }
         if (Keyboard.current.fKey.wasPressedThisFrame)
         {
-            Debug.Log("Klikni�to f");
-            currentPlanet.planet.GetHp();
+            Debug.Log("Kliknięto f");
             dialogueText.text = "";
             PromptTextSetActive(false);
             isDialogueActive = true;
             DialogueObject.SetActive(true);
-            currentPlanet.IncrementDialogueIndex();
+
+            // Zmieniamy kolor shadera na kolor planety
+            if (crtMaterial != null && currentPlanet != null)
+            {
+                crtMaterial.SetColor(bloomPropertyName, currentPlanet.planetColor);
+            }
         }
     }
 
     public void NextDialogue()
     {
-        if (Keyboard.current.enterKey.wasPressedThisFrame)
+        if ( Keyboard.current.enterKey.wasPressedThisFrame )
         {
-            dialogueText.text = dialogue.dialogues[dialogueSentence];
+            dialogueText.text=dialogue.dialogues[dialogueSentence];
             dialogueSentence++;
         }
         if (dialogueSentence == dialogue.dialogues.Length)
@@ -70,7 +84,12 @@ public class GameManager : MonoBehaviour
             dialogueSentence = 0;
             isDialogueActive = false;
             DialogueObject.SetActive(false);
-            dialogue = currentPlanet.planetData.dialogues[currentPlanet.whichDialogue];
+
+            // Przywracamy domyślny kolor shadera po zakończeniu dialogu
+            if (crtMaterial != null)
+            {
+                crtMaterial.SetColor(bloomPropertyName, originalBloomColor);
+            }
         }
     }
 
@@ -89,5 +108,11 @@ public class GameManager : MonoBehaviour
     public void SetPlayerNearPlanet(bool near)
     {
         playerNearPlanet = near;
+    }
+
+    // Nowa metoda do odbierania danych o planecie
+    public void SetCurrentPlanet(PlanetScriptObject planet)
+    {
+        currentPlanet = planet;
     }
 }

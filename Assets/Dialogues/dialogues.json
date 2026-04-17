@@ -1,0 +1,15 @@
+{
+  "dialogues": [
+    {
+      "name": "KYT",
+      "sentences": [
+        "Witaj w mojej kuźni, wędrowcze!",
+        "Potrzebujesz nowego miecza, czy mam naprawić stary?"
+      ]
+    },
+    {
+      "name": "planeta2",
+      "sentences": ["Stój! Kto idzie?", "Nie wyglądasz na tutejszego."]
+    }
+  ]
+}

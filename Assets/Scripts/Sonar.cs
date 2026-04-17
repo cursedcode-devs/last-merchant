@@ -3,6 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class Sonar : MonoBehaviour
 {
+
     [Header("Radar Scan")]
     public float distance = 20f;
     public float angle = 90f;
@@ -20,7 +21,7 @@ public class Sonar : MonoBehaviour
 
     private AudioSource audioSource;
     private float timer = 0f;
-
+    public FMODUnity.EventReference sonarSound;
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -90,7 +91,7 @@ public class Sonar : MonoBehaviour
             if (timer <= 0f)
             {
                 Debug.Log("[Sonar] >>> Calling PlayBeep NOW <<<");
-                PlayBeep(t, bestSide);
+                FMODUnity.RuntimeManager.PlayOneShot(sonarSound, this.transform.position);
                 timer = beepRate;
             }
         }
@@ -100,20 +101,20 @@ public class Sonar : MonoBehaviour
         }
     }
 
-    void PlayBeep(float closeness, float side)
-    {
-        if (beepClip == null)
-        {
-            Debug.LogError("[Sonar] PlayBeep called but beepClip is NULL ❌");
-            return;
-        }
+    //void PlayBeep(float closeness, float side)
+    //{
+    //    if (beepClip == null)
+    //    {
+    //        Debug.LogError("[Sonar] PlayBeep called but beepClip is NULL ❌");
+    //        return;
+    //    }
 
-        audioSource.pitch = Mathf.Lerp(farPitch, closePitch, closeness);
-        audioSource.panStereo = side;
-        audioSource.PlayOneShot(beepClip, volume);
+    //    audioSource.pitch = Mathf.Lerp(farPitch, closePitch, closeness);
+    //    audioSource.panStereo = side;
+    //    audioSource.PlayOneShot(beepClip, volume);
 
-        Debug.Log($"[Sonar] PlayOneShot fired ✅ | clip: {beepClip.name} | pitch: {audioSource.pitch:F2} | pan: {audioSource.panStereo:F2} | volume: {volume}");
-    }
+    //    Debug.Log($"[Sonar] PlayOneShot fired ✅ | clip: {beepClip.name} | pitch: {audioSource.pitch:F2} | pan: {audioSource.panStereo:F2} | volume: {volume}");
+    //}
 
     Vector2 RotateVector(Vector2 v, float degrees)
     {

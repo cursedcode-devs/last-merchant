@@ -110,7 +110,8 @@ public class GameManager : MonoBehaviour
                         }
                     case PlanetTypes.Fuel:
                         {
-                            playerManager.AddFuel(-currentPlanet.trade.GetRecive());
+                            int x = -currentPlanet.trade.GetRecive();
+                            playerManager.AddFuel((float)x);
                             break;
                         }
                     case PlanetTypes.Parts:
@@ -119,6 +120,27 @@ public class GameManager : MonoBehaviour
                             break;
                         }
                 }
+
+                switch (currentPlanet.planetData.planetTypeRecive)
+                {
+                    case PlanetTypes.Food:
+                        {
+                            playerManager.AddFood(currentPlanet.trade.GetGive());
+                            break;
+                        }
+                    case PlanetTypes.Fuel:
+                        {
+                            int x = currentPlanet.trade.GetGive();
+                            playerManager.AddFuel(x);
+                            break;
+                        }
+                    case PlanetTypes.Parts:
+                        {
+                            playerManager.AddParts(currentPlanet.trade.GetGive());
+                            break;
+                        }
+                }
+
                 currentPlanet.trade.GenerateTrade(currentPlanet.planetData.planetTypeRecive, currentPlanet.planetData.planetTypeGive);
                 currentPlanet.planet.AddHp(currentPlanet.trade.restoreHealth);
             }

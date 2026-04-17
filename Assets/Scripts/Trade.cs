@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public class Trade
@@ -14,6 +15,9 @@ public class Trade
 
     public int GetRecive()
         { return recive; }
+
+    public int GetGive()
+    { return give; }
 
     public void GenerateTrade(PlanetTypes planetTypesRecive, PlanetTypes planetTypesGive)
     {

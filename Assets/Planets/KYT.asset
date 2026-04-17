@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: KYT
   m_EditorClassIdentifier: Assembly-CSharp::PlanetScriptObject
   name: KYT
-  startFuel: 15
-  startFood: 15
-  startParts: 15
+  planetType: 0
+  startHp: 100

@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
 
     private const float ACTION_DELAY = 0.2f;
     private const float TURN_DELAY = 0.1f;
-<<<<<<< HEAD
+
     void OnTriggerEnter2D(Collider2D collision) => Log(collision);
     private void Log(Collider2D collision)
     {
@@ -32,11 +32,10 @@ public class PlayerMovement : MonoBehaviour
             PlayerManager.Instance?.ConsumeParts(5);
         }
     }
-=======
     public FMODUnity.EventReference accelerateSound;
     public FMODUnity.EventReference startSound;
     public FMODUnity.EventReference stopSound;
->>>>>>> origin/Alpha
+
 
     private void Start()
     {
@@ -61,12 +60,7 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(DelayedTurnLeft());
         }
 
-<<<<<<< HEAD
-        transform.Translate(Vector3.up * currentSpeed * Time.deltaTime);
-
-=======
         transform.Translate(Vector3.up * currentSpeed * Time.fixedDeltaTime);
->>>>>>> origin/Alpha
     }
 
     private IEnumerator DelayedAccelerate()
@@ -103,34 +97,25 @@ public class PlayerMovement : MonoBehaviour
 
     public int Accelerate()
     {
-<<<<<<< HEAD
+
         if(PlayerManager.Instance?.GetFuel() > 0)
         {
+        FMODUnity.RuntimeManager.PlayOneShot(accelerateSound, this.transform.position);
             if (currentSpeed < maxSpeed)
             {
                 currentSpeed += accelerationRate;
                 PlayerManager.Instance?.ConsumeFuel(2);
             }
-=======
-        FMODUnity.RuntimeManager.PlayOneShot(accelerateSound, this.transform.position);
-        if (currentSpeed < maxSpeed)
-        {
-            currentSpeed += accelerationRate;
-            PlayerManager.Instance?.ConsumeFuel(2);
-
->>>>>>> origin/Alpha
         }
         return currentSpeed;
     }
 
     public int Decelerate()
     {
-<<<<<<< HEAD
+
         if(PlayerManager.Instance?.GetFuel() > 0)
-=======
         FMODUnity.RuntimeManager.PlayOneShot(stopSound, this.transform.position);
         if (currentSpeed > -maxSpeed)
->>>>>>> origin/Alpha
         {
             if (currentSpeed < maxSpeed)
             {
@@ -143,16 +128,13 @@ public class PlayerMovement : MonoBehaviour
 
     public void TurnRight()
     {
-<<<<<<< HEAD
+
         if(PlayerManager.Instance?.GetFuel() > 0)
         {
             transform.Rotate(0, 0, -10);
             PlayerManager.Instance?.ConsumeFuel(1);
         }    
-=======
-        transform.Rotate(0, 0, -10);
-        PlayerManager.Instance?.ConsumeFuel(1);
->>>>>>> origin/Alpha
+
     }
 
     public void TurnLeft()

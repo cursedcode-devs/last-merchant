@@ -39,7 +39,7 @@ public class PlanetObject : MonoBehaviour
         maxHealth = planetData.startHp;
 
         initHealthBar();
-        // 1. Tworzymy nowy pusty obiekt w scenie i nadajemy mu nazwÍ
+        // 1. Tworzymy nowy pusty obiekt w scenie i nadajemy mu nazwƒô
         GameObject textObject = new GameObject(planetData.name + " Text");
         textObject.transform.SetParent(this.transform, false);
         nameText = textObject.AddComponent<TextMeshPro>();
@@ -75,24 +75,30 @@ public class PlanetObject : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Wesz≥o na planete NIE GRACZ");
+        Debug.Log("Wesz≈Ço na planete NIE GRACZ");
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("Wesz≥o na planete");
+            Debug.Log("Wesz≈Ço na planete");
             manager.SetDialogue(planetData.dialogues[whichDialogue], planetData.sprite);
             manager.SetPlayerNearPlanet(true);
             manager.PromptTextSetActive(true);
+            
+            // Przekazujemy planete do GameManagera
+            manager.SetCurrentPlanet(planetData);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("Wesz≥o na planete NIE GRACZ");
+        Debug.Log("Wesz≈Ço na planete NIE GRACZ");
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("Wesz≥o na planete");
+            Debug.Log("Wesz≈Ço na planete");
             manager.SetPlayerNearPlanet(false);
             manager.PromptTextSetActive(false);
+            
+            // Czy≈õcimy informacje po odej≈õciu od planety
+            manager.SetCurrentPlanet(null);
         }
     }
 }

@@ -9,6 +9,8 @@ public class PlanetObject : MonoBehaviour
     public PlanetScriptObject planetData;
     public TextMeshPro nameText;
     public GameObject healthBar;
+    public Dialogue firstDialogue;
+    public Dialogue genericTrade;
     private int maxHealth = 100;
     private float maxHealthBarWidth = 5f;
     private float lastTimeDamaged = 0f; 

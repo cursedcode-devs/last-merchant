@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
     private int maxSpeed = 15;
     private int accelerationRate = 1;
     private int decelerationRate = 1;
-    private int currentSpeed;
+    public int currentSpeed;
 
     private bool acceleratePending;
     private bool deceleratePending;
@@ -15,32 +15,34 @@ public class PlayerMovement : MonoBehaviour
 
     private const float ACTION_DELAY = 0.2f;
     private const float TURN_DELAY = 0.1f;
+    public FMODUnity.EventReference accelerateSound;
+    public FMODUnity.EventReference startSound;
+    public FMODUnity.EventReference stopSound;
 
     private void Start()
     {
         currentSpeed = 0;
     }
-
     private void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.UpArrow) && !acceleratePending)
+        if ((Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) && !acceleratePending)
         {
             StartCoroutine(DelayedAccelerate());
         }
-        else if (Input.GetKey(KeyCode.DownArrow) && !deceleratePending)
+        else if ((Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) && !deceleratePending)
         {
             StartCoroutine(DelayedDecelerate());
         }
-        else if (Input.GetKey(KeyCode.RightArrow) && !turnRightPending)
+        else if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) && !turnRightPending)
         {
             StartCoroutine(DelayedTurnRight());
         }
-        else if (Input.GetKey(KeyCode.LeftArrow) && !turnLeftPending)
+        else if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) && !turnLeftPending)
         {
             StartCoroutine(DelayedTurnLeft());
         }
 
-        transform.Translate(Vector3.up * currentSpeed * Time.deltaTime);
+        transform.Translate(Vector3.up * currentSpeed * Time.fixedDeltaTime);
     }
 
     private IEnumerator DelayedAccelerate()
@@ -77,16 +79,19 @@ public class PlayerMovement : MonoBehaviour
 
     public int Accelerate()
     {
+        FMODUnity.RuntimeManager.PlayOneShot(accelerateSound, this.transform.position);
         if (currentSpeed < maxSpeed)
         {
             currentSpeed += accelerationRate;
             PlayerManager.Instance?.ConsumeFuel(2);
+
         }
         return currentSpeed;
     }
 
     public int Decelerate()
     {
+        FMODUnity.RuntimeManager.PlayOneShot(stopSound, this.transform.position);
         if (currentSpeed > -maxSpeed)
         {
             currentSpeed -= decelerationRate;
@@ -98,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
     public void TurnRight()
     {
         transform.Rotate(0, 0, -10);
-        PlayerManager.Instance?.ConsumeFuel(1);    
+        PlayerManager.Instance?.ConsumeFuel(1);
     }
 
     public void TurnLeft()

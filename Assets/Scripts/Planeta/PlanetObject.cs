@@ -15,13 +15,6 @@ public class PlanetObject : MonoBehaviour
     private float lastTimeDamaged = 0f;
     public Trade trade;
 
-    public void IncrementDialogueIndex()
-    {
-        if (planetData.dialogues != null && whichDialogue < planetData.dialogues.Length - 1)
-        {
-            whichDialogue++;
-        }
-    }
     private void initHealthBar()
     {
         healthBar = new GameObject(planetData.name + " bar");
@@ -49,7 +42,7 @@ public class PlanetObject : MonoBehaviour
         maxHealth = planetData.startHp;
 
         initHealthBar();
-        // 1. Tworzymy nowy pusty obiekt w scenie i nadajemy mu nazwÍ
+        // 1. Tworzymy nowy pusty obiekt w scenie i nadajemy mu nazwƒô
         GameObject textObject = new GameObject(planetData.name + " Text");
         textObject.transform.SetParent(this.transform, false);
         nameText = textObject.AddComponent<TextMeshPro>();
@@ -65,7 +58,7 @@ public class PlanetObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (manager.time >= lastTimeDamaged + 1 && planet.GetHp() > 0)
+        if (manager.time >= lastTimeDamaged + 1)
         {
             planet.AddHp(-1);
             Debug.Log("Odejmowanie hp");
@@ -90,26 +83,30 @@ public class PlanetObject : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Wesz≥o na planete NIE GRACZ");
+        Debug.Log("Wesz≈Ço na planete NIE GRACZ");
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("Wesz≥o na planete");
-            manager.currentPlanet = this;
+            Debug.Log("Wesz≈Ço na planete");
             manager.SetDialogue(planetData.dialogues[whichDialogue], planetData.sprite);
             manager.SetPlayerNearPlanet(true);
             manager.PromptTextSetActive(true);
+            
+            // Przekazujemy planete do GameManagera
+            manager.SetCurrentPlanet(planetData);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("Wesz≥o na planete NIE GRACZ");
+        Debug.Log("Wesz≈Ço na planete NIE GRACZ");
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("Wesz≥o na planete");
-           // manager.currentPlanet = null;
+            Debug.Log("Wesz≈Ço na planete");
             manager.SetPlayerNearPlanet(false);
             manager.PromptTextSetActive(false);
+            
+            // Czy≈õcimy informacje po odej≈õciu od planety
+            manager.SetCurrentPlanet(null);
         }
     }
 }

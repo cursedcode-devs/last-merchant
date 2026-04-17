@@ -72,6 +72,7 @@ public class PlanetObject : MonoBehaviour
             UpdateHealthBarUI();
             if (planet.GetHp() <= 0)
             {
+                manager.planetNumber--;
                 healthBar.SetActive(false);
                 nameText.gameObject.SetActive(false);
             }

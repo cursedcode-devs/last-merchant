@@ -12,6 +12,7 @@ public class PlayerManager : MonoBehaviour
     private Player player;
 
     public event Action<int, int> OnFuelChanged;
+    public event Action<int, int> OnPartsChanged;
 
     void Awake()
 {
@@ -38,6 +39,20 @@ public class PlayerManager : MonoBehaviour
         return true;
     }
 
+    public void RaisePartsChanged(int oldValue, int newValue)
+    {
+        OnPartsChanged?.Invoke(oldValue, newValue);
+    }
+
+    public bool ConsumeParts(int amount)
+    {
+        if (player.GetParts() < amount) return false;
+        player.AddParts(-amount);
+        return true;
+    }
+
     public int GetFuel() => player.GetFuel();
+
+    public int GetParts() => player.GetParts();
     
 }

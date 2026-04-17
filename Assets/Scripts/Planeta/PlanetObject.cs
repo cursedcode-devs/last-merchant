@@ -66,7 +66,6 @@ public class PlanetObject : MonoBehaviour
             if (planet.GetHp() <= 0)
             {
                 healthBar.SetActive(false);
-                manager.planetNumber--;
                 nameText.gameObject.SetActive(false);
             }
             lastTimeDamaged = manager.time;

@@ -41,6 +41,6 @@ Material:
     - _Number_of_Lines: 200
     - _Speed_of_lines: 0.0055
     m_Colors:
-    - _Bloom_color: {r: 0.8490566, g: 0.6622459, b: 0.31639373, a: 1}
+    - _Bloom_color: {r: 6.276673, g: 2.2585354, b: 0, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

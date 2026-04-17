@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public PlanetObject currentPlanet;
     public int dialogueSentence = 0;
     public bool tradeActive = false;
+    public int planetNumber = 10;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

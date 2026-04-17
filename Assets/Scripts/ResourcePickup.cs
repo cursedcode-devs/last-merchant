@@ -4,9 +4,12 @@
 
 using UnityEngine;
 using System.Collections;
+using TMPro;
 
 public class ResourcePickup : MonoBehaviour
 {
+    public TextMeshProUGUI pickupPrompt;
+
     private ResourceClusterSpawner spawner;
 
     private bool playerInRange = false;
@@ -19,6 +22,9 @@ public class ResourcePickup : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
         col = GetComponent<Collider2D>();
+
+        if (pickupPrompt != null)
+            pickupPrompt.gameObject.SetActive(false);
     }
 
     public void Setup(ResourceClusterSpawner owner)
@@ -46,6 +52,9 @@ public class ResourcePickup : MonoBehaviour
 
         collected = true;
         col.enabled = false;
+
+        if (pickupPrompt != null)
+            pickupPrompt.gameObject.SetActive(false);
 
         Debug.Log("Collecting resource...");
 
@@ -104,6 +113,10 @@ public class ResourcePickup : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
+
+            if (pickupPrompt != null)
+                pickupPrompt.gameObject.SetActive(true);
+
             Debug.Log("Player entered pickup range.");
         }
     }
@@ -113,6 +126,10 @@ public class ResourcePickup : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
+
+            if (pickupPrompt != null)
+                pickupPrompt.gameObject.SetActive(false);
+
             Debug.Log("Player left pickup range.");
         }
     }

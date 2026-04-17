@@ -39,6 +39,7 @@ public class Asteroid : MonoBehaviour
 
         if ((ex * ex) + (ey * ey) >= 1f)
         {
+            spawner.OnAsteroidDestroyed(this);
             Destroy(gameObject);
         }
     }

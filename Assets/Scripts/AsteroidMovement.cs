@@ -33,8 +33,18 @@ public class AsteroidMovement : MonoBehaviour
         SpawnHerd();
     }
 
+    public void OnAsteroidDestroyed(Asteroid asteroid)
+    {
+        asteroids.Remove(asteroid);
+
+        if (asteroids.Count == 0)
+            SpawnHerd();
+    }
+
     void SpawnHerd()
     {
+        asteroids.Clear();
+
         float angle = Random.Range(0f, Mathf.PI * 2f);
 
         Vector3 spawnCenter = new Vector3(

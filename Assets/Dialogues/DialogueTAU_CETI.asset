@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8f4aa388c713774386c59cb600b76c4, type: 3}
+  m_Name: DialogueTAU_CETI
+  m_EditorClassIdentifier: Assembly-CSharp::Dialogue
+  dialogues:
+  - "Mam wra\u017Cenie, \u017Ce osoby kt\xF3re rz\u0105dz\u0105 nasz\u0105 galaktyk\u0105
+    nie wiedz\u0105 co robi\u0105\u2026 "
+  - "Pani wci\u0105\u017C wierzy, \u017Ce ten transport tu dotrze? "
+  - "To jest nasza ostatnia nadzieja, nie pozwol\u0119 by cywilizacja upad\u0142a
+    tylko dlatego, \u017Ce w centrali zgubili moje formularze. "
+  - "Skoro cywilizacja utkn\u0119\u0142a w korku, mo\u017Ce odsprzeda mi pani te
+    zapasy, zanim same zaczn\u0105 ewoluowa\u0107 i \u017Cy\u0107 w\u0142asnym \u017Cyciem? "
+  - "Mam puszki, kt\xF3re przetrwaj\u0105 wybuch supernowej ale ich zapach sugeruje,
+    \u017Ce to one mog\u0105 by\u0107 przyczyn\u0105 wybuchu. "

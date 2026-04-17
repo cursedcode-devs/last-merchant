@@ -14,6 +14,13 @@ public class PlanetObject : MonoBehaviour
     private float maxHealthBarWidth = 5f;
     private float lastTimeDamaged = 0f;
 
+    public void IncrementDialogueIndex()
+    {
+        if (planetData.dialogues != null && whichDialogue < planetData.dialogues.Length - 1)
+        {
+            whichDialogue++;
+        }
+    }
     private void initHealthBar()
     {
         healthBar = new GameObject(planetData.name + " bar");
@@ -79,6 +86,7 @@ public class PlanetObject : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             Debug.Log("Wesz³o na planete");
+            manager.currentPlanet = this;
             manager.SetDialogue(planetData.dialogues[whichDialogue], planetData.sprite);
             manager.SetPlayerNearPlanet(true);
             manager.PromptTextSetActive(true);
@@ -91,6 +99,7 @@ public class PlanetObject : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             Debug.Log("Wesz³o na planete");
+            manager.currentPlanet = null;
             manager.SetPlayerNearPlanet(false);
             manager.PromptTextSetActive(false);
         }

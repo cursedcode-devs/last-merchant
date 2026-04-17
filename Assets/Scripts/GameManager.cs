@@ -1,5 +1,6 @@
 using JetBrains.Annotations;
 using TMPro;
+using Unity.Multiplayer.PlayMode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEditor.Rendering.MaterialUpgrader;
@@ -15,7 +16,7 @@ public class GameManager : MonoBehaviour
     public GameObject DialogueObject;
     public GameObject DialogueImage;
     public TextMeshProUGUI dialogueText;
-
+    public PlanetObject currentPlanet;
     public int dialogueSentence = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -48,6 +49,10 @@ public class GameManager : MonoBehaviour
             PromptTextSetActive(false);
             isDialogueActive = true;
             DialogueObject.SetActive(true);
+            if (currentPlanet != null)
+            {
+                currentPlanet.IncrementDialogueIndex();
+            }
         }
     }
 

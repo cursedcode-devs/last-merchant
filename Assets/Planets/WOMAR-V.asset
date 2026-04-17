@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: WOMAR-V
   m_EditorClassIdentifier: Assembly-CSharp::PlanetScriptObject
   name: WOMAR-V
-  planetType: 0
+  planetTypeRecive: 2
+  planetTypeGive: 1
   startHp: 100
   planetColor: {r: 0.6698113, g: 0.1841757, b: 0.1484959, a: 1}
   sprite: {fileID: -1328850691031023745, guid: 572d9f978a9abeb44b3ca2cd97593273, type: 3}

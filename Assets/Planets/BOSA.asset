@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: BOSA
   m_EditorClassIdentifier: Assembly-CSharp::PlanetScriptObject
   name: BOSA
-  planetType: 0
+  planetTypeRecive: 0
+  planetTypeGive: 2
   startHp: 100
   planetColor: {r: 0.052420773, g: 0.5254902, b: 0.16186628, a: 1}
   sprite: {fileID: 2902276587135635055, guid: ddef3018a8100374ab2b937f7facb551, type: 3}

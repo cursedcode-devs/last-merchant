@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: PARNAS-C
   m_EditorClassIdentifier: Assembly-CSharp::PlanetScriptObject
   name: PARNAS-C
-  planetType: 0
+  planetTypeRecive: 1
+  planetTypeGive: 2
   startHp: 100
   planetColor: {r: 0.32306874, g: 0.34446225, b: 0.5660378, a: 1}
   sprite: {fileID: 4422666246308300601, guid: e668b3c5bb4736a4a96180f835abe4b6, type: 3}

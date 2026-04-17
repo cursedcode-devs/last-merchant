@@ -29,7 +29,8 @@ public class GameManager : MonoBehaviour
     public FMODUnity.EventReference dialogueSound;
 
     public int dialogueSentence = 0;
-
+    public bool tradeActive = false;
+    public int planetNumber = 10;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -79,25 +80,45 @@ public class GameManager : MonoBehaviour
 
     public void NextDialogue()
     {
-        if ( Keyboard.current.enterKey.wasPressedThisFrame )
+        if (Keyboard.current.enterKey.wasPressedThisFrame && tradeActive == false)
         {
             dialogueText.text=dialogue.dialogues[dialogueSentence];
             dialogueSentence++;
             FMODUnity.RuntimeManager.PlayOneShot(dialogueSound, this.transform.position);
         }
-        if (dialogueSentence == dialogue.dialogues.Length)
+        if (dialogueSentence == dialogue.dialogues.Length && tradeActive == false)
         {
-            dialogueSentence = 0;
-            isDialogueActive = false;
-            DialogueObject.SetActive(false);
+            dialogueText.text = currentPlanet.trade.tradeText;
+            tradeActive = true;
+        }
+        if (tradeActive)
+        {      
+            if (Keyboard.current.yKey.wasPressedThisFrame)
+            {
+                ResetDialogue();
+                currentPlanet.trade.GenerateTrade(currentPlanet.planetData.planetTypeRecive, currentPlanet.planetData.planetTypeGive);
+                currentPlanet.planet.AddHp(currentPlanet.trade.restoreHealth);
+            }
 
-            // Przywracamy domyślny kolor shadera po zakończeniu dialogu
+            if (Keyboard.current.nKey.wasPressedThisFrame)
+            {
+                ResetDialogue();
+            }
+        }
+    }
+
+    public void ResetDialogue()
+    {
+    // Przywracamy domyślny kolor shadera po zakończeniu dialogu
             if (crtMaterial != null)
             {
                 crtMaterial.SetColor(bloomPropertyName, originalBloomColor);
             }
-            
-        }
+        dialogueSentence = 0;
+        isDialogueActive = false;
+        tradeActive = false;
+        DialogueObject.SetActive(false);
+        dialogue = currentPlanet.planetData.dialogues[currentPlanet.whichDialogue];
     }
 
     public void PromptTextSetActive(bool isActive)

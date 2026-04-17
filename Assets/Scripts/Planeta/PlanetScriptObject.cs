@@ -4,7 +4,8 @@ using UnityEngine;
 public class PlanetScriptObject : ScriptableObject
 {
     [SerializeField] public string name;
-    [SerializeField] public PlanetTypes planetType;
+    [SerializeField] public PlanetTypes planetTypeRecive;
+    [SerializeField] public PlanetTypes planetTypeGive;
     [SerializeField] public int startHp;    //100 to maks
     [SerializeField] public Color planetColor;
     [SerializeField] public Sprite sprite;

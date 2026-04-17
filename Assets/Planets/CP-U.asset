@@ -16,6 +16,9 @@ MonoBehaviour:
   planetType: 0
   startHp: 100
   planetColor: {r: 0.8773585, g: 0.6792814, b: 0.1448469, a: 0}
-  sprite: {fileID: 0}
+  sprite: {fileID: 8309096688390797820, guid: 1b228357047eafa4f841b01df06503cc, type: 3}
   firstDialogue: {fileID: 11400000, guid: bfd4fc7f116dbbe45bc7b734c8ac91a5, type: 2}
   genericTrade: {fileID: 11400000, guid: a014bc321bf08b1448e8f452ee6cd054, type: 2}
+  dialogues:
+  - {fileID: 11400000, guid: 6dc059d7bf102ae4f81ab41b7810a576, type: 2}
+  - {fileID: 11400000, guid: a014bc321bf08b1448e8f452ee6cd054, type: 2}

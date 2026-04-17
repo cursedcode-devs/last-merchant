@@ -79,7 +79,7 @@ public class PlanetObject : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             Debug.Log("Wesz³o na planete");
-            manager.SetDialogue(planetData.firstDialogue);
+            manager.SetDialogue(planetData.dialogues[whichDialogue], planetData.sprite);
             manager.SetPlayerNearPlanet(true);
             manager.PromptTextSetActive(true);
         }

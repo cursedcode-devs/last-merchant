@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEditor.Rendering.MaterialUpgrader;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour
     public float time;
     Dialogue dialogue;
     public GameObject DialogueObject;
+    public GameObject DialogueImage;
     public TextMeshProUGUI dialogueText;
 
     public int dialogueSentence = 0;
@@ -42,6 +44,7 @@ public class GameManager : MonoBehaviour
         if (Keyboard.current.fKey.wasPressedThisFrame)
         {
             Debug.Log("Klikniêto f");
+            dialogueText.text = "";
             PromptTextSetActive(false);
             isDialogueActive = true;
             DialogueObject.SetActive(true);
@@ -69,9 +72,10 @@ public class GameManager : MonoBehaviour
         dialoguePromptText.gameObject.SetActive(isActive);
     }
 
-    public void SetDialogue(Dialogue dialogue)
+    public void SetDialogue(Dialogue dialogue, Sprite sprite)
     {
         this.dialogue = dialogue;
+        DialogueImage.GetComponent<SpriteRenderer>().sprite = sprite;
     }
 
     public void SetPlayerNearPlanet(bool near)

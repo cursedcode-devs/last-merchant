@@ -6,6 +6,7 @@ public class PlanetScriptObject : ScriptableObject
     [SerializeField] public string name;
     [SerializeField] public PlanetTypes planetType;
     [SerializeField] public int startHp;    //100 to maks
-
+    [SerializeField] public Dialogue firstDialogue;
+    [SerializeField] public Dialogue genericTrade;
     // [SerializeField] Quest quest;
 }

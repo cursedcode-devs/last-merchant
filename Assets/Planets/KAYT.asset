@@ -15,3 +15,5 @@ MonoBehaviour:
   name: 'KAYT '
   planetType: 0
   startHp: 100
+  firstDialogue: {fileID: 11400000, guid: bfd4fc7f116dbbe45bc7b734c8ac91a5, type: 2}
+  genericTrade: {fileID: 11400000, guid: a014bc321bf08b1448e8f452ee6cd054, type: 2}

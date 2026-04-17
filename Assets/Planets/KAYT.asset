@@ -15,5 +15,10 @@ MonoBehaviour:
   name: 'KAYT '
   planetType: 0
   startHp: 100
+  planetColor: {r: 0.8490566, g: 0.6622459, b: 0.31639373, a: 1}
+  sprite: {fileID: -6268213790514503953, guid: 8987af409b11b9b43a8c9e33ccdf4313, type: 3}
   firstDialogue: {fileID: 11400000, guid: bfd4fc7f116dbbe45bc7b734c8ac91a5, type: 2}
   genericTrade: {fileID: 11400000, guid: a014bc321bf08b1448e8f452ee6cd054, type: 2}
+  dialogues:
+  - {fileID: 11400000, guid: bfd4fc7f116dbbe45bc7b734c8ac91a5, type: 2}
+  - {fileID: 11400000, guid: a014bc321bf08b1448e8f452ee6cd054, type: 2}

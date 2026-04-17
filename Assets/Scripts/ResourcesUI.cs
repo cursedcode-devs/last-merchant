@@ -1,40 +1,57 @@
 using UnityEngine;
-using TMPro; 
+using UnityEngine.UI;
+using TMPro;
+
 public class ResourcesUI : MonoBehaviour
 {
+    [Header("Paliwo (Fuel)")]
+    [SerializeField] private Slider fuelSlider;
     [SerializeField] private TextMeshProUGUI fuelText;
-    [SerializeField] private TextMeshProUGUI partsText;
+
+    [Header("Jedzenie (Food)")]
+    [SerializeField] private Slider foodSlider;
     [SerializeField] private TextMeshProUGUI foodText;
+
+    [Header("Części (Parts)")]
+    [SerializeField] private Slider partsSlider;
+    [SerializeField] private TextMeshProUGUI partsText;
 
     void Start()
     {
-        PlayerManager.Instance.OnFuelChanged += HandleFuelChanged;
-        PlayerManager.Instance.OnPartsChanged += HandlePartsChanged;
-        PlayerManager.Instance.OnFoodChanged += HandleFoodChanged;
-        fuelText.text = $"Fuel: {PlayerManager.Instance.GetFuel()}";
-        partsText.text = $"Parts: {PlayerManager.Instance.GetParts()}";
-        foodText.text = $"Food: {PlayerManager.Instance.GetFood()}";
+        UpdateFuelUI(0, PlayerManager.Instance.GetFuel());
+        UpdateFoodUI(0, PlayerManager.Instance.GetFood());
+        UpdatePartsUI(0, PlayerManager.Instance.GetParts());
+
+        PlayerManager.Instance.OnFuelChanged += UpdateFuelUI;
+        PlayerManager.Instance.OnFoodChanged += UpdateFoodUI;
+        PlayerManager.Instance.OnPartsChanged += UpdatePartsUI;
     }
 
     void OnDisable()
     {
-        PlayerManager.Instance.OnFuelChanged -= HandleFuelChanged;
-        PlayerManager.Instance.OnPartsChanged -= HandlePartsChanged;
-        PlayerManager.Instance.OnFoodChanged -= HandleFoodChanged;
+        if (PlayerManager.Instance != null)
+        {
+            PlayerManager.Instance.OnFuelChanged -= UpdateFuelUI;
+            PlayerManager.Instance.OnFoodChanged -= UpdateFoodUI;
+            PlayerManager.Instance.OnPartsChanged -= UpdatePartsUI;
+        }
     }
 
-    void HandleFuelChanged(int oldFuel, int newFuel)
+    private void UpdateFuelUI(int oldVal, int newVal)
     {
-        fuelText.text = $"Fuel: {newFuel}";
+        fuelSlider.value = newVal;
+        fuelText.text = newVal.ToString();
     }
 
-    void HandlePartsChanged(int oldParts, int newParts)
+    private void UpdateFoodUI(int oldVal, int newVal)
     {
-        partsText.text = $"Parts: {newParts}";
+        foodSlider.value = newVal;
+        foodText.text = newVal.ToString();
     }
 
-    void HandleFoodChanged(int oldFood, int newFood)
+    private void UpdatePartsUI(int oldVal, int newVal)
     {
-        foodText.text = $"Food: {newFood}";
+        partsSlider.value = newVal;
+        partsText.text = newVal.ToString();
     }
 }

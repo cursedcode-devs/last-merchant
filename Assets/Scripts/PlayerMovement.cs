@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
     private int maxSpeed = 15;
     private int accelerationRate = 1;
     private int decelerationRate = 1;
-    private int currentSpeed;
+    public int currentSpeed;
 
     private bool acceleratePending;
     private bool deceleratePending;
@@ -23,27 +23,26 @@ public class PlayerMovement : MonoBehaviour
     {
         currentSpeed = 0;
     }
-
     private void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.UpArrow) && !acceleratePending)
+        if ((Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) && !acceleratePending)
         {
             StartCoroutine(DelayedAccelerate());
         }
-        else if (Input.GetKey(KeyCode.DownArrow) && !deceleratePending)
+        else if ((Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) && !deceleratePending)
         {
             StartCoroutine(DelayedDecelerate());
         }
-        else if (Input.GetKey(KeyCode.RightArrow) && !turnRightPending)
+        else if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) && !turnRightPending)
         {
             StartCoroutine(DelayedTurnRight());
         }
-        else if (Input.GetKey(KeyCode.LeftArrow) && !turnLeftPending)
+        else if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) && !turnLeftPending)
         {
             StartCoroutine(DelayedTurnLeft());
         }
 
-        transform.Translate(Vector3.up * currentSpeed * Time.deltaTime);
+        transform.Translate(Vector3.up * currentSpeed * Time.fixedDeltaTime);
     }
 
     private IEnumerator DelayedAccelerate()

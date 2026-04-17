@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI dialoguePromptText;
 
+    [SerializeField] private PlayerMovement playerMovement;
     public bool playerNearPlanet = false;
     public bool isDialogueActive = false;
     public float time;
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            playerMovement.currentSpeed = 0;
             NextDialogue();
         }
     }
@@ -45,8 +47,7 @@ public class GameManager : MonoBehaviour
         if (!playerNearPlanet) return;
         if (Keyboard.current.fKey.wasPressedThisFrame)
         {
-            
-            Debug.Log("Klikniêto f");
+            Debug.Log("Kliknij to f");
             dialogueText.text = "";
             PromptTextSetActive(false);
             isDialogueActive = true;

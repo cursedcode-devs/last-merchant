@@ -1,9 +1,6 @@
-using JetBrains.Annotations;
 using TMPro;
-using Unity.Multiplayer.PlayMode;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEditor.Rendering.MaterialUpgrader;
 
 public class GameManager : MonoBehaviour
 {

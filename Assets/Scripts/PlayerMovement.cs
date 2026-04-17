@@ -15,6 +15,9 @@ public class PlayerMovement : MonoBehaviour
 
     private const float ACTION_DELAY = 0.2f;
     private const float TURN_DELAY = 0.1f;
+    public FMODUnity.EventReference accelerateSound;
+    public FMODUnity.EventReference startSound;
+    public FMODUnity.EventReference stopSound;
 
     private void Start()
     {
@@ -77,6 +80,7 @@ public class PlayerMovement : MonoBehaviour
 
     public int Accelerate()
     {
+        FMODUnity.RuntimeManager.PlayOneShot(accelerateSound, this.transform.position);
         if (currentSpeed < maxSpeed)
         {
             currentSpeed += accelerationRate;
@@ -87,6 +91,8 @@ public class PlayerMovement : MonoBehaviour
 
     public int Decelerate()
     {
+        FMODUnity.RuntimeManager.PlayOneShot(stopSound, this.transform.position);
+
         if (currentSpeed > -maxSpeed)
         {
             currentSpeed -= decelerationRate;

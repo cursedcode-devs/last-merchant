@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8f4aa388c713774386c59cb600b76c4, type: 3}
   m_Name: GenericHandel
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
-  dialogues: []
+  dialogues:
+  - "Witaj z powrotem, jak mog\u0119 ci pomoc?"
+  - "Chcia\u0142bym si\u0119 z tob\u0105 wymieni\u0107."
+  - 'Jasne, oto moja oferta:'

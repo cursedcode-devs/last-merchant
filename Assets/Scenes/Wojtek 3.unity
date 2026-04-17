@@ -178,8 +178,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Fuel amount :'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 054b8e3b7da2f94499b992eabe24ce0c, type: 2}
+  m_sharedMaterial: {fileID: -1629898688962337647, guid: 054b8e3b7da2f94499b992eabe24ce0c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -384,8 +384,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Jeste\u015B w zasigu. \nWci\u015Bnij [F], by porozmawia\u0107"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 054b8e3b7da2f94499b992eabe24ce0c, type: 2}
+  m_sharedMaterial: {fileID: -1629898688962337647, guid: 054b8e3b7da2f94499b992eabe24ce0c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -491,6 +491,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 286dce8782e507741bb378cd51a17536, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  crtMaterial: {fileID: 2100000, guid: 07707da9db40b0b4dbb0b295125ecf0e, type: 2}
+  bloomPropertyName: _Bloom_color
   dialoguePromptText: {fileID: 126183789}
   playerNearPlanet: 0
   isDialogueActive: 0
@@ -2697,7 +2699,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 054b8e3b7da2f94499b992eabe24ce0c, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2764,7 +2766,7 @@ MonoBehaviour:
   m_margin: {x: -674.8064, y: -77.81554, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1891619448

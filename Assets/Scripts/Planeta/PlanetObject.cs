@@ -98,6 +98,9 @@ public class PlanetObject : MonoBehaviour
             manager.SetDialogue(planetData.dialogues[whichDialogue], planetData.sprite);
             manager.SetPlayerNearPlanet(true);
             manager.PromptTextSetActive(true);
+
+            // Przekazujemy planete do GameManagera
+            manager.SetCurrentPlanet(planetData);
         }
     }
 
@@ -110,6 +113,7 @@ public class PlanetObject : MonoBehaviour
            // manager.currentPlanet = null;
             manager.SetPlayerNearPlanet(false);
             manager.PromptTextSetActive(false);
+            manager.SetCurrentPlanet(null);
         }
     }
 }

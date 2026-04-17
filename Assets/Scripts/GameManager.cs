@@ -7,6 +7,14 @@ using static UnityEditor.Rendering.MaterialUpgrader;
 
 public class GameManager : MonoBehaviour
 {
+    // --- NOWE ZMIENNE DO SHADERA ---
+    [Header("Ustawienia CRT")]
+    [SerializeField] private Material crtMaterial;
+    [SerializeField] private string bloomPropertyName = "_Bloom_color";
+
+    private Color originalBloomColor;
+    private PlanetScriptObject currentPlanetS;
+    // -------------------------------
     [SerializeField] private TextMeshProUGUI dialoguePromptText;
 
     public bool playerNearPlanet = false;
@@ -24,6 +32,11 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         PromptTextSetActive(false);
+        // Zapisujemy domyœlny kolor z materia³u na starcie gry
+        if (crtMaterial != null)
+        {
+            originalBloomColor = crtMaterial.GetColor(bloomPropertyName);
+        }
     }
 
     // Update is called once per frame
@@ -56,6 +69,11 @@ public class GameManager : MonoBehaviour
             isDialogueActive = true;
             DialogueObject.SetActive(true);
             currentPlanet.IncrementDialogueIndex();
+            // Zmieniamy kolor shadera na kolor planety
+            if (crtMaterial != null && currentPlanet != null)
+            {
+                crtMaterial.SetColor(bloomPropertyName, currentPlanetS.planetColor);
+            }
         }
     }
 
@@ -89,6 +107,10 @@ public class GameManager : MonoBehaviour
 
     public void ResetDialogue()
     {
+        if (crtMaterial != null)
+        {
+            crtMaterial.SetColor(bloomPropertyName, originalBloomColor);
+        }
         dialogueSentence = 0;
         isDialogueActive = false;
         tradeActive = false;
@@ -111,5 +133,10 @@ public class GameManager : MonoBehaviour
     public void SetPlayerNearPlanet(bool near)
     {
         playerNearPlanet = near;
+    }
+
+    public void SetCurrentPlanet(PlanetScriptObject planet)
+    {
+        currentPlanetS = planet;
     }
 }

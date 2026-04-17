@@ -16,7 +16,7 @@ MonoBehaviour:
   planetTypeRecive: 0
   planetTypeGive: 2
   startHp: 100
-  planetColor: {r: 0.052420773, g: 0.5254902, b: 0.16186628, a: 0}
+  planetColor: {r: 0.052420773, g: 0.5254902, b: 0.16186628, a: 1}
   sprite: {fileID: 2902276587135635055, guid: ddef3018a8100374ab2b937f7facb551, type: 3}
   firstDialogue: {fileID: 11400000, guid: bfd4fc7f116dbbe45bc7b734c8ac91a5, type: 2}
   genericTrade: {fileID: 11400000, guid: a014bc321bf08b1448e8f452ee6cd054, type: 2}

@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     private int accelerationRate = 1;
     private int decelerationRate = 1;
     private int currentSpeed;
+    public bool canMove = true;
 
     private bool acceleratePending;
     private bool deceleratePending;
@@ -26,21 +27,27 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.UpArrow) && !acceleratePending)
+        if (!canMove) return;
+
+        if ((Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) && !acceleratePending)
         {
             StartCoroutine(DelayedAccelerate());
         }
-        else if (Input.GetKey(KeyCode.DownArrow) && !deceleratePending)
+        else if ((Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) && !deceleratePending)
         {
             StartCoroutine(DelayedDecelerate());
         }
-        else if (Input.GetKey(KeyCode.RightArrow) && !turnRightPending)
+        else if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) && !turnRightPending)
         {
             StartCoroutine(DelayedTurnRight());
         }
-        else if (Input.GetKey(KeyCode.LeftArrow) && !turnLeftPending)
+        else if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) && !turnLeftPending)
         {
             StartCoroutine(DelayedTurnLeft());
+        }
+        else if (Input.GetKey(KeyCode.Space))
+        {
+            stopPlayer();
         }
 
         transform.Translate(Vector3.up * currentSpeed * Time.deltaTime);
@@ -75,6 +82,16 @@ public class PlayerMovement : MonoBehaviour
         turnLeftPending = true;
         yield return new WaitForSeconds(TURN_DELAY);
         TurnLeft();
+        turnLeftPending = false;
+    }
+
+    public void stopPlayer()
+    {
+        StopAllCoroutines();
+        currentSpeed = 0;
+        acceleratePending = false;
+        deceleratePending = false;
+        turnRightPending = false;
         turnLeftPending = false;
     }
 

@@ -753,6 +753,7 @@ MonoBehaviour:
     Path: event:/Lenora_Dialogue
   dialoguePromptText: {fileID: 126183789}
   playerManager: {fileID: 152029041}
+  playerMovement: {fileID: 152029042}
   playerNearPlanet: 0
   isDialogueActive: 0
   time: 0
@@ -954,6 +955,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 340c6acc0154761c78cc305ee627307b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  canMove: 1
   accelerateSound:
     Guid:
       Data1: 0
@@ -1156,8 +1158,8 @@ MonoBehaviour:
   NonRigidbodyVelocity: 0
   Params: []
   OverrideAttenuation: 0
-  OverrideMinDistance: -1
-  OverrideMaxDistance: -1
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &218812822
 GameObject:
   m_ObjectHideFlags: 0

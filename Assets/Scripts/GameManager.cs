@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     // -------------------------------
     [SerializeField] private TextMeshProUGUI dialoguePromptText;
     public PlayerManager playerManager;
+    public PlayerMovement playerMovement;
     public bool playerNearPlanet = false;
     public bool isDialogueActive = false;
     public float time;
@@ -32,7 +33,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         PromptTextSetActive(false);
-        // Zapisujemy domyœlny kolor z materia³u na starcie gry
+        // Zapisujemy domyï¿½lny kolor z materiaï¿½u na starcie gry
         if (crtMaterial != null)
         {
             originalBloomColor = crtMaterial.GetColor(bloomPropertyName);
@@ -67,7 +68,10 @@ public class GameManager : MonoBehaviour
         }
         if (Keyboard.current.fKey.wasPressedThisFrame)
         {
-            Debug.Log("Klikniêto f");
+            Debug.Log("Klikniï¿½to f");
+            // sprawiamy zeby gracz nie mogl latac podczas dialogu, zerujemy speed i zatrzymujemy rutyny
+            if (playerMovement != null) playerMovement.canMove = false;
+            playerMovement.stopPlayer();
             currentPlanet.planet.GetHp();
             dialogueText.text = "";
             PromptTextSetActive(false);
@@ -163,6 +167,7 @@ public class GameManager : MonoBehaviour
         tradeActive = false;
         DialogueObject.SetActive(false);
         dialogue = currentPlanet.planetData.dialogues[currentPlanet.whichDialogue];
+        if (playerMovement != null) playerMovement.canMove = true;
     }
 
     public void PromptTextSetActive(bool isActive)

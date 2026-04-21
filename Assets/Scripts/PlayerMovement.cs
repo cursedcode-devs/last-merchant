@@ -28,6 +28,11 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         if (!canMove) return;
+        if (currentSpeed < 0)
+        {
+            currentSpeed = 0;
+            StopAllCoroutines();
+        }
 
         if ((Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) && !acceleratePending)
         {
@@ -110,9 +115,14 @@ public class PlayerMovement : MonoBehaviour
     {
         FMODUnity.RuntimeManager.PlayOneShot(stopSound, this.transform.position);
 
-        if (currentSpeed > -maxSpeed)
+        if (currentSpeed > 0)
         {
-            currentSpeed -= decelerationRate;
+            currentSpeed = currentSpeed - (2 * decelerationRate);
+            if (currentSpeed < 0)
+            {
+                currentSpeed = 0;
+                StopAllCoroutines();
+            }
             PlayerManager.Instance?.ConsumeFuel(0.2f);
         }
         return currentSpeed;

@@ -11,7 +11,7 @@ public class ResourceUI : MonoBehaviour
         PlayerManager.Instance.OnFuelChanged += HandleFuelChanged;
         PlayerManager.Instance.OnPartsChanged += HandlePartsChanged;
         PlayerManager.Instance.OnFoodChanged += HandleFoodChanged;
-        fuelText.text = $"Fuel: {PlayerManager.Instance.GetFuel()}";
+        fuelText.text = $"Fuel: {PlayerManager.Instance.GetFuel():0}";
         partsText.text = $"Parts: {PlayerManager.Instance.GetParts()}";
         foodText.text = $"Food: {PlayerManager.Instance.GetFood()}";
     }
@@ -25,7 +25,7 @@ public class ResourceUI : MonoBehaviour
 
     void HandleFuelChanged(float oldFuel, float newFuel)
     {
-        fuelText.text = $"Fuel: {newFuel}";
+        fuelText.text = $"Fuel: {newFuel:0}";
     }
 
     void HandlePartsChanged(int oldParts, int newParts)

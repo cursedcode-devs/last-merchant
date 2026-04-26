@@ -15,6 +15,8 @@ public class PlayerManager : MonoBehaviour
     public event Action<int, int> OnFoodChanged;
     public event Action<int, int> OnPartsChanged;
 
+    public bool isImmortal = false;
+
     void Awake()
 {
     if (Instance == null)
@@ -47,6 +49,7 @@ public class PlayerManager : MonoBehaviour
 
     public bool ConsumeParts(int amount)
     {
+        if (isImmortal) return false;
         if (player.GetParts() < amount) return false;
         player.AddParts(-amount);
         return true;

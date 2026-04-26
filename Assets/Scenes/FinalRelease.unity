@@ -150,8 +150,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CenterPointer
   player: {fileID: 152029046}
-  mapCenter: {x: 0, y: 0, z: 0}
   radius: 3
+  scanSFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!212 &97170857
 SpriteRenderer:
   serializedVersion: 2
@@ -3873,6 +3879,14 @@ PrefabInstance:
       propertyPath: dialoguePromptText
       value: 
       objectReference: {fileID: 126183789}
+    - target: {fileID: 646121259222772090, guid: 48f3ecb47d562d44f8a38530b267788a, type: 3}
+      propertyPath: minFoodConsumeInterval
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646121259222772090, guid: 48f3ecb47d562d44f8a38530b267788a, type: 3}
+      propertyPath: initialFoodConsumeInterval
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 656092467008391280, guid: 48f3ecb47d562d44f8a38530b267788a, type: 3}
       propertyPath: m_Name
       value: GameManager

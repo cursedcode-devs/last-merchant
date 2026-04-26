@@ -1,4 +1,4 @@
-﻿using TMPro;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,6 +14,15 @@ public class PlanetObject : MonoBehaviour
     private float maxHealthBarWidth = 5f;
     private float lastTimeDamaged = 0f;
     public Trade trade;
+
+    [Header("Ranges")]
+    public float radioRange = 5f;
+    public float scanRange = 20f;
+
+    public static System.Collections.Generic.List<PlanetObject> allPlanets = new System.Collections.Generic.List<PlanetObject>();
+
+    void OnEnable() { allPlanets.Add(this); }
+    void OnDisable() { allPlanets.Remove(this); }
 
     public void IncrementDialogueIndex()
     {
@@ -42,6 +51,9 @@ public class PlanetObject : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        CircleCollider2D col = GetComponent<CircleCollider2D>();
+        if (col != null) col.radius = radioRange;
+
         planet = new Planet(planetData.startHp, planetData.planetTypeRecive, planetData.planetTypeGive);
 
         trade = new Trade(planetData.planetTypeRecive, planetData.planetTypeGive);

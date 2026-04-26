@@ -29,6 +29,17 @@ public class GameManager : MonoBehaviour
     public int dialogueSentence = 0;
     public bool tradeActive = false;
     public int planetNumber = 10;
+    
+    [Header("Survival Settings")]
+    [Tooltip("Czas (w sekundach) co jaki gracz traci 1 jednostkę jedzenia na starcie gry")]
+    public float initialFoodConsumeInterval = 10f;
+    [Tooltip("Minimalny czas (w sekundach) między utratą jedzenia (maksymalny poziom trudności)")]
+    public float minFoodConsumeInterval = 2f;
+    [Tooltip("O ile sekund skraca się czas między utratą jedzenia z każdą sekundą gry")]
+    public float foodConsumeDecreaseRate = 0.01f;
+    
+    private float currentFoodConsumeInterval;
+    
     private float lastFoodDiminish;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -40,6 +51,8 @@ public class GameManager : MonoBehaviour
             originalBloomColor = defaultBloomColor;
             crtMaterial.SetColor(bloomPropertyName, originalBloomColor);
         }
+        
+        currentFoodConsumeInterval = initialFoodConsumeInterval;
     }
 
     // Update is called once per frame
@@ -48,13 +61,21 @@ public class GameManager : MonoBehaviour
         if (!isDialogueActive)
         {
             time += Time.deltaTime;
+            
+            // Zwiększanie trudności: zmniejszanie czasu między znikaniem jedzenia
+            if (currentFoodConsumeInterval > minFoodConsumeInterval)
+            {
+                currentFoodConsumeInterval -= foodConsumeDecreaseRate * Time.deltaTime;
+                currentFoodConsumeInterval = Mathf.Max(currentFoodConsumeInterval, minFoodConsumeInterval);
+            }
+            
             fPress();
         }
         else
         {
             NextDialogue();
         }
-        if (PlayerManager.Instance.GetFood() > 0 && (time - lastFoodDiminish) > 10f)
+        if (PlayerManager.Instance.GetFood() > 0 && (time - lastFoodDiminish) > currentFoodConsumeInterval)
         {
             PlayerManager.Instance?.ConsumeFood(1);
             lastFoodDiminish = time;
@@ -78,6 +99,7 @@ public class GameManager : MonoBehaviour
             dialogueText.text = "";
             PromptTextSetActive(false);
             isDialogueActive = true;
+            if (PlayerManager.Instance != null) PlayerManager.Instance.isImmortal = true;
             DialogueObject.SetActive(true);
             currentPlanet.IncrementDialogueIndex();
             // Zmieniamy kolor shadera na kolor planety
@@ -166,6 +188,7 @@ public class GameManager : MonoBehaviour
         }
         dialogueSentence = 0;
         isDialogueActive = false;
+        if (PlayerManager.Instance != null) PlayerManager.Instance.isImmortal = false;
         tradeActive = false;
         DialogueObject.SetActive(false);
         dialogue = currentPlanet.planetData.dialogues[currentPlanet.whichDialogue];

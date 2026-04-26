@@ -28,19 +28,7 @@ public class ResourcePickup : MonoBehaviour
         spawner = owner;
     }
 
-    void Update()
-    {
-        if (playerInRange)
-        {
-            Debug.Log("Player in pickup range.");
-
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                Debug.Log("F pressed on pickup.");
-                Collect();
-            }
-        }
-    }
+    // Update method removed because we now collect automatically.
 
     void Collect()
     {
@@ -104,29 +92,10 @@ public class ResourcePickup : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Something entered trigger: " + other.name);
-
         if (other.CompareTag("Player"))
         {
-            playerInRange = true;
-
-            if (pickupPrompt != null)
-                pickupPrompt.gameObject.SetActive(true);
-
-            Debug.Log("Player entered pickup range.");
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            playerInRange = false;
-
-            if (pickupPrompt != null)
-                pickupPrompt.gameObject.SetActive(false);
-
-            Debug.Log("Player left pickup range.");
+            Debug.Log("Player collected pickup automatically.");
+            Collect();
         }
     }
 }

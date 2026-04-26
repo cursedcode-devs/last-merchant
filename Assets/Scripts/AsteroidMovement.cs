@@ -11,13 +11,19 @@ public class AsteroidMovement : MonoBehaviour
 
     public EdgeCollider2D border;
 
+    [Header("Progressive Spawning")]
+    public float initialSpawnDelay = 10f;
+    public float minSpawnDelay = 2f;
+    public float spawnDelayDecreaseRate = 0.05f;
+    public int maxAsteroidsOnScreen = 300;
+
     [HideInInspector] public float borderRadiusX;
     [HideInInspector] public float borderRadiusY;
     [HideInInspector] public Vector3 borderCenter;
 
-    [HideInInspector] public Vector3 herdVelocity;
-
     private List<Asteroid> asteroids = new List<Asteroid>();
+    private float currentSpawnDelay;
+    private float spawnTimer;
 
     void Awake()
     {
@@ -30,20 +36,36 @@ public class AsteroidMovement : MonoBehaviour
         borderRadiusX = bounds.extents.x;
         borderRadiusY = bounds.extents.y;
 
-        SpawnHerd();
+        currentSpawnDelay = initialSpawnDelay;
+        spawnTimer = 0f; // Od razu spawnujemy pierwszy rój na starcie
+    }
+
+    void Update()
+    {
+        // Stopniowo zmniejszaj czas między spawnami rojów
+        if (currentSpawnDelay > minSpawnDelay)
+        {
+            currentSpawnDelay -= spawnDelayDecreaseRate * Time.deltaTime;
+            currentSpawnDelay = Mathf.Max(currentSpawnDelay, minSpawnDelay);
+        }
+
+        spawnTimer -= Time.deltaTime;
+        if (spawnTimer <= 0f)
+        {
+            SpawnHerd();
+            spawnTimer = currentSpawnDelay;
+        }
     }
 
     public void OnAsteroidDestroyed(Asteroid asteroid)
     {
         asteroids.Remove(asteroid);
-
-        if (asteroids.Count == 0)
-            SpawnHerd();
     }
 
     void SpawnHerd()
     {
-        asteroids.Clear();
+        if (asteroids.Count >= maxAsteroidsOnScreen)
+            return;
 
         float angle = Random.Range(0f, Mathf.PI * 2f);
 
@@ -55,7 +77,7 @@ public class AsteroidMovement : MonoBehaviour
 
         Vector3 inward = (borderCenter - spawnCenter).normalized;
 
-        herdVelocity = inward * herdSpeed;
+        Vector3 herdVelocity = inward * herdSpeed;
 
         for (int i = 0; i < asteroidCount; i++)
         {
@@ -65,7 +87,7 @@ public class AsteroidMovement : MonoBehaviour
 
             Vector3 offset = Random.insideUnitCircle * spawnRadius;
 
-            asteroid.Init(this, spawnCenter + offset);
+            asteroid.Init(this, spawnCenter + offset, herdVelocity);
 
             asteroids.Add(asteroid);
         }

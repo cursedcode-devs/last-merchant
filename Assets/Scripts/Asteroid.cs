@@ -15,16 +15,18 @@ public class Asteroid : MonoBehaviour
     private AsteroidMovement spawner;
     private Vector3 localOffset;
     private float lastDamageTime = -999f;
+    private Vector3 currentVelocity;
 
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    public void Init(AsteroidMovement spawnerRef, Vector3 startPos)
+    public void Init(AsteroidMovement spawnerRef, Vector3 startPos, Vector3 velocity)
     {
         spawner = spawnerRef;
         transform.position = startPos;
+        currentVelocity = velocity;
         localOffset = startPos - spawner.transform.position;
         InvokeRepeating(nameof(Animate), animationSpeed, animationSpeed);
     }
@@ -33,7 +35,7 @@ public class Asteroid : MonoBehaviour
     {
         if (spawner == null) return;
 
-        transform.position += spawner.herdVelocity * Time.deltaTime;
+        transform.position += currentVelocity * Time.deltaTime;
 
         Vector3 pos = transform.position - spawner.borderCenter;
         float ex = pos.x / spawner.borderRadiusX;

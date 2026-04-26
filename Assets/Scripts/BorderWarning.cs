@@ -5,7 +5,7 @@ public class BorderWarning : MonoBehaviour
 {
     public TextMeshProUGUI warningText;
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerExit2D(Collider2D other)
     {
         if (!other.CompareTag("Player")) return;
 
@@ -13,4 +13,11 @@ public class BorderWarning : MonoBehaviour
             warningText.gameObject.SetActive(true);
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!other.CompareTag("Player")) return;
+
+        if (warningText != null)
+            warningText.gameObject.SetActive(false);
+    }
 }

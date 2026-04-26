@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     private Color originalBloomColor;
     private PlanetScriptObject currentPlanetS;
+    [SerializeField] private Color defaultBloomColor = new Color(1.195026f, 0.39800557f, 0f, 1f);
     // -------------------------------
     [SerializeField] private TextMeshProUGUI dialoguePromptText;
     public PlayerManager playerManager;
@@ -33,10 +34,11 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         PromptTextSetActive(false);
-        // Zapisujemy domy�lny kolor z materia�u na starcie gry
+        // Zapisujemy domylny kolor z materiau na starcie gry
         if (crtMaterial != null)
         {
-            originalBloomColor = crtMaterial.GetColor(bloomPropertyName);
+            originalBloomColor = defaultBloomColor;
+            crtMaterial.SetColor(bloomPropertyName, originalBloomColor);
         }
     }
 

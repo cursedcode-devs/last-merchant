@@ -17,18 +17,10 @@ public class PlayerManager : MonoBehaviour
 
     public bool isImmortal = false;
 
-    void Awake()
+void Awake()
 {
-    if (Instance == null)
-    {
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-        player = new Player(startFuel, startFood, startParts); 
-    }
-    else
-    {
-        Destroy(gameObject);
-    }
+    Instance = this;
+    player = new Player(startFuel, startFood, startParts); 
 }
     public void RaiseFuelChanged(float oldValue, float newValue)
     {

@@ -27,6 +27,9 @@ public class GameManager : MonoBehaviour
     [Header("Hint UI Elements")]
     public GameObject nextDialogueHintObj;
     public GameObject tradeDialogueHintObj;
+    
+    [Header("Warning UI Elements")]
+    public TextMeshProUGUI planetWarningsText;
 
     public PlayerManager playerManager;
     public PlayerMovement playerMovement;
@@ -92,6 +95,12 @@ public class GameManager : MonoBehaviour
             PlayerManager.Instance?.ConsumeFood(1);
             lastFoodDiminish = time;
         }
+
+        UpdatePlanetWarnings();
+        
+        // --- DO USUNIĘCIA W PRZYSZŁOŚCI ---
+        DebugReducePlanetHealth();
+        // ----------------------------------
     }
 
     public void fPress()
@@ -234,4 +243,56 @@ public class GameManager : MonoBehaviour
     {
         currentPlanetS = planet;
     }
+
+    private void UpdatePlanetWarnings()
+    {
+        if (planetWarningsText == null) return;
+        
+        string warnings = "";
+        foreach (var p in PlanetObject.allPlanets)
+        {
+            if (p == null || p.planetData == null || p.planet == null) continue;
+            
+            float hp = p.planet.GetHp();
+            float maxHp = p.planetData.startHp;
+            
+            if (hp <= 0)
+            {
+                warnings += $"{p.planetData.name} wymarło\n";
+            }
+            else if (hp <= maxHp * 0.2f)
+            {
+                warnings += $"{p.planetData.name} jest zagrożone\n";
+            }
+        }
+        planetWarningsText.text = warnings;
+    }
+
+    // --- DEBUG: REDUKCJA ŻYCIA PLANET DO 21% (DO USUNIĘCIA W PRZYSZŁOŚCI) ---
+    private void DebugReducePlanetHealth()
+    {
+        if (Keyboard.current == null) return;
+        
+        var keys = new UnityEngine.InputSystem.Controls.KeyControl[] {
+            Keyboard.current.digit1Key, Keyboard.current.digit2Key, Keyboard.current.digit3Key,
+            Keyboard.current.digit4Key, Keyboard.current.digit5Key, Keyboard.current.digit6Key,
+            Keyboard.current.digit7Key, Keyboard.current.digit8Key, Keyboard.current.digit9Key,
+            Keyboard.current.digit0Key
+        };
+
+        for (int i = 0; i < keys.Length; i++)
+        {
+            if (keys[i].wasPressedThisFrame && i < PlanetObject.allPlanets.Count)
+            {
+                var p = PlanetObject.allPlanets[i];
+                if (p != null && p.planet != null && p.planetData != null)
+                {
+                    int targetHp = Mathf.FloorToInt(p.planetData.startHp * 0.21f);
+                    p.planet.SetHp(targetHp);
+                    Debug.Log($"[DEBUG] Zmniejszono życie planety {p.planetData.name} do {targetHp} (21%). Za chwile zniknie punkt hp i pokaze sie ostrzezenie.");
+                }
+            }
+        }
+    }
+    // ------------------------------------------------------------------------
 }

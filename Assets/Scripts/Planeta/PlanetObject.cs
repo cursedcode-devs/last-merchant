@@ -1,4 +1,4 @@
-using TMPro;
+Ôªøusing TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -31,10 +31,10 @@ public class PlanetObject : MonoBehaviour
         Sprite rectSprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0f, 0.5f), 100f);
 
         sr.sprite = rectSprite;
-        sr.color = Color.green;
+        sr.color = Color.white;
         healthBar.transform.localScale = new Vector3(maxHealthBarWidth, 1f, 1f);
 
-        Vector3 vector = new Vector3(-0.1f, 0.25f, 0f);
+        Vector3 vector = new Vector3(-0.1f, 0.2f, 0f);
         Quaternion quat = Quaternion.identity;
         healthBar.transform.SetLocalPositionAndRotation(vector, quat);
     }
@@ -49,15 +49,17 @@ public class PlanetObject : MonoBehaviour
         maxHealth = planetData.startHp;
 
         initHealthBar();
-        // 1. Tworzymy nowy pusty obiekt w scenie i nadajemy mu nazwÍ
+        // 1. Tworzymy nowy pusty obiekt w scenie i nadajemy mu nazwƒô
         GameObject textObject = new GameObject(planetData.name + " Text");
         textObject.transform.SetParent(this.transform, false);
         nameText = textObject.AddComponent<TextMeshPro>();
         nameText.text = planetData.name;
+        TMP_FontAsset fontAsset = Resources.Load<TMP_FontAsset>("Fonts/Jersey10-Regular SDF");
+        if (fontAsset != null) { nameText.font = fontAsset; }
         nameText.alignment = TextAlignmentOptions.Center;
-        nameText.fontSize = 1f;
+        nameText.fontSize = 1.5f;
 
-        Vector3 vector = new Vector3(0f, -0.25f, 0f);
+        Vector3 vector = new Vector3(0f, -0.2f, 0f);
         Quaternion quat = Quaternion.identity;
         nameText.transform.SetLocalPositionAndRotation(vector, quat);
     }
@@ -90,10 +92,10 @@ public class PlanetObject : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Wesz≥o na planete NIE GRACZ");
+        Debug.Log("Wesz≈Ço na planete NIE GRACZ");
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("Wesz≥o na planete");
+            Debug.Log("Wesz≈Ço na planete");
             manager.currentPlanet = this;
             manager.SetDialogue(planetData.dialogues[whichDialogue], planetData.sprite);
             manager.SetPlayerNearPlanet(true);
@@ -106,10 +108,10 @@ public class PlanetObject : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("Wesz≥o na planete NIE GRACZ");
+        Debug.Log("Wesz≈Ço na planete NIE GRACZ");
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("Wesz≥o na planete");
+            Debug.Log("Wesz≈Ço na planete");
            // manager.currentPlanet = null;
             manager.SetPlayerNearPlanet(false);
             manager.PromptTextSetActive(false);

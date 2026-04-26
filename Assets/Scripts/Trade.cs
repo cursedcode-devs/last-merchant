@@ -27,7 +27,7 @@ public class Trade
         {
             case PlanetTypes.Parts:
                 {
-                    tradeText = "Daj mi " + give + " cz�ci, ";
+                    tradeText = "Daj mi " + give + " cz\u0119\u015Bci, ";
                     break;
                 }
             case PlanetTypes.Food:
@@ -46,7 +46,7 @@ public class Trade
         {
             case PlanetTypes.Parts:
                 {
-                    tradeText += "a ja dam ci " + recive + " cz�ci";
+                    tradeText += "a ja dam ci " + recive + " cz\u0119\u015Bci";
                     break;
                 }
             case PlanetTypes.Food:

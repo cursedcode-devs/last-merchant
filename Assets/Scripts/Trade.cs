@@ -27,7 +27,7 @@ public class Trade
         {
             case PlanetTypes.Parts:
                 {
-                    tradeText = "Daj mi " + give + " czêœci, ";
+                    tradeText = "Daj mi " + give + " czï¿½ci, ";
                     break;
                 }
             case PlanetTypes.Food:
@@ -46,22 +46,22 @@ public class Trade
         {
             case PlanetTypes.Parts:
                 {
-                    tradeText += "a ja ci dam " + recive + " czêœci";
+                    tradeText += "a ja dam ci " + recive + " czï¿½ci";
                     break;
                 }
             case PlanetTypes.Food:
                 {
-                    tradeText += "a ja ci dam " + recive + " jedzenia";
+                    tradeText += "a ja dam ci " + recive + " jedzenia";
                     break;
                 }
             case PlanetTypes.Fuel:
                 {
-                    tradeText += "a ja ci dam " + recive + " paliwa";
+                    tradeText += "a ja dam ci " + recive + " paliwa";
                     break;
                 }
         }
 
-        tradeText += " Wciœnij Y, by zaakceptowaæ wymianê, N by odmówiæ.";
+
         isTradeGenereted = true;
     }
 }

@@ -92,6 +92,33 @@ public class PlanetObject : MonoBehaviour
             }
             lastTimeDamaged = manager.time;
         }
+
+        // Sprawdzanie dystansu zamiast polegania na colliderach (omija problem wielu colliderow na planecie)
+        if (manager.playerMovement != null && planet.GetHp() > 0)
+        {
+            float dist = Vector3.Distance(transform.position, manager.playerMovement.transform.position);
+            
+            // Jeśli gracz jest w zasięgu radioRange i planeta nie jest jeszcze wybrana jako cel
+            if (dist <= radioRange)
+            {
+                if (manager.currentPlanet != this)
+                {
+                    manager.currentPlanet = this;
+                    manager.SetDialogue(planetData.dialogues[whichDialogue], planetData.sprite);
+                    manager.SetPlayerNearPlanet(true);
+                    manager.PromptTextSetActive(true);
+                    manager.SetCurrentPlanet(planetData);
+                }
+            }
+            // Jeśli gracz wyszedł z zasięgu, a ta planeta była aktywnym celem
+            else if (dist > radioRange && manager.currentPlanet == this)
+            {
+                manager.SetPlayerNearPlanet(false);
+                manager.PromptTextSetActive(false);
+                manager.currentPlanet = null;
+                manager.SetCurrentPlanet(null);
+            }
+        }
     }
 
     private void UpdateHealthBarUI()
@@ -100,34 +127,5 @@ public class PlanetObject : MonoBehaviour
         float healthPercentage = currentHp / (float)maxHealth;
         healthPercentage = Mathf.Clamp01(healthPercentage);
         healthBar.transform.localScale = new Vector3(maxHealthBarWidth * healthPercentage, 1f, 1f);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log("Weszło na planete NIE GRACZ");
-        if (collision.CompareTag("Player"))
-        {
-            Debug.Log("Weszło na planete");
-            manager.currentPlanet = this;
-            manager.SetDialogue(planetData.dialogues[whichDialogue], planetData.sprite);
-            manager.SetPlayerNearPlanet(true);
-            manager.PromptTextSetActive(true);
-
-            // Przekazujemy planete do GameManagera
-            manager.SetCurrentPlanet(planetData);
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        Debug.Log("Weszło na planete NIE GRACZ");
-        if (collision.CompareTag("Player"))
-        {
-            Debug.Log("Weszło na planete");
-           // manager.currentPlanet = null;
-            manager.SetPlayerNearPlanet(false);
-            manager.PromptTextSetActive(false);
-            manager.SetCurrentPlanet(null);
-        }
     }
 }

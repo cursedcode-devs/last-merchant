@@ -34,6 +34,7 @@ public class Asteroid : MonoBehaviour
     void Update()
     {
         if (spawner == null) return;
+        if (GameManager.Instance != null && GameManager.Instance.isDialogueActive) return;
 
         transform.position += currentVelocity * Time.deltaTime;
 

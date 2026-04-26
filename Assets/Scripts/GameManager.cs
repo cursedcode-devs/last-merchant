@@ -4,6 +4,13 @@ using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
+
+    void Awake()
+    {
+        Instance = this;
+    }
+
     // --- NOWE ZMIENNE DO SHADERA ---
     [Header("Ustawienia CRT")]
     [SerializeField] private Material crtMaterial;
@@ -16,6 +23,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Color defaultBloomColor = new Color(1.195026f, 0.39800557f, 0f, 1f);
     // -------------------------------
     [SerializeField] private TextMeshProUGUI dialoguePromptText;
+    
+    [Header("Hint UI Elements")]
+    public GameObject nextDialogueHintObj;
+    public GameObject tradeDialogueHintObj;
+
     public PlayerManager playerManager;
     public PlayerMovement playerMovement;
     public bool playerNearPlanet = false;
@@ -101,6 +113,8 @@ public class GameManager : MonoBehaviour
             isDialogueActive = true;
             if (PlayerManager.Instance != null) PlayerManager.Instance.isImmortal = true;
             DialogueObject.SetActive(true);
+            if (nextDialogueHintObj != null) nextDialogueHintObj.SetActive(true);
+            if (tradeDialogueHintObj != null) tradeDialogueHintObj.SetActive(false);
             currentPlanet.IncrementDialogueIndex();
             // Zmieniamy kolor shadera na kolor planety
             if (crtMaterial != null && currentPlanet != null)
@@ -113,7 +127,7 @@ public class GameManager : MonoBehaviour
 
     public void NextDialogue()
     {
-        if (Keyboard.current.enterKey.wasPressedThisFrame && tradeActive == false)
+        if (Keyboard.current.fKey.wasPressedThisFrame && tradeActive == false)
         {
             dialogueText.text = dialogue.dialogues[dialogueSentence];
             dialogueSentence++;
@@ -123,6 +137,8 @@ public class GameManager : MonoBehaviour
         {
             dialogueText.text = currentPlanet.trade.tradeText;
             tradeActive = true;
+            if (nextDialogueHintObj != null) nextDialogueHintObj.SetActive(false);
+            if (tradeDialogueHintObj != null) tradeDialogueHintObj.SetActive(true);
         }
         if (tradeActive)
         {
@@ -191,6 +207,8 @@ public class GameManager : MonoBehaviour
         if (PlayerManager.Instance != null) PlayerManager.Instance.isImmortal = false;
         tradeActive = false;
         DialogueObject.SetActive(false);
+        if (nextDialogueHintObj != null) nextDialogueHintObj.SetActive(false);
+        if (tradeDialogueHintObj != null) tradeDialogueHintObj.SetActive(false);
         dialogue = currentPlanet.planetData.dialogues[currentPlanet.whichDialogue];
         if (playerMovement != null) playerMovement.canMove = true;
     }

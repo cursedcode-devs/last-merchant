@@ -42,6 +42,8 @@ public class AsteroidMovement : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance != null && GameManager.Instance.isDialogueActive) return;
+
         // Stopniowo zmniejszaj czas między spawnami rojów
         if (currentSpawnDelay > minSpawnDelay)
         {

@@ -835,7 +835,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7420698188654408271, guid: 57e8f0e81c1fa7e48b9ff436e83d7b67, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7617203858590608264, guid: 57e8f0e81c1fa7e48b9ff436e83d7b67, type: 3}
       propertyPath: m_LocalScale.x
@@ -6186,7 +6186,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7420698188654408271, guid: 57e8f0e81c1fa7e48b9ff436e83d7b67, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7617203858590608264, guid: 57e8f0e81c1fa7e48b9ff436e83d7b67, type: 3}
       propertyPath: m_LocalScale.x
@@ -6579,6 +6579,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 754915897}
     - target: {fileID: 646121259222772090, guid: 48f3ecb47d562d44f8a38530b267788a, type: 3}
+      propertyPath: maxPlanetSpawnRadius
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 646121259222772090, guid: 48f3ecb47d562d44f8a38530b267788a, type: 3}
       propertyPath: tradeDialogueHintObj
       value: 
       objectReference: {fileID: 1036791146}
@@ -6587,8 +6591,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 646121259222772090, guid: 48f3ecb47d562d44f8a38530b267788a, type: 3}
+      propertyPath: minDistanceBetweenPlanets
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 646121259222772090, guid: 48f3ecb47d562d44f8a38530b267788a, type: 3}
       propertyPath: initialFoodConsumeInterval
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 646121259222772090, guid: 48f3ecb47d562d44f8a38530b267788a, type: 3}
+      propertyPath: minPlanetDistanceFromCenter
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 656092467008391280, guid: 48f3ecb47d562d44f8a38530b267788a, type: 3}
       propertyPath: m_Name

@@ -67,9 +67,20 @@ public class GameManager : MonoBehaviour
     private float currentFoodConsumeInterval;
     
     private float lastFoodDiminish;
+
+    [Header("Planet Spawning")]
+    [Tooltip("Maksymalny promień (odległość od środka), w którym mogą pojawić się planety")]
+    [SerializeField] private float maxPlanetSpawnRadius = 100f;
+    [Tooltip("Minimalna odległość od środka (0,0), aby unikać pojawiania się na graczu")]
+    [SerializeField] private float minPlanetDistanceFromCenter = 25f;
+    [Tooltip("Minimalna odległość między poszczególnymi planetami")]
+    [SerializeField] private float minDistanceBetweenPlanets = 20f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        RandomizePlanets();
+
         PromptTextSetActive(false);
         // Zapisujemy domylny kolor z materiau na starcie gry
         if (crtMaterial != null)
@@ -81,6 +92,70 @@ public class GameManager : MonoBehaviour
         currentFoodConsumeInterval = initialFoodConsumeInterval;
         currentCountdown = gameDuration;
         UpdateTimerUI();
+    }
+
+    private void RandomizePlanets()
+    {
+        PlanetObject[] planets = FindObjectsByType<PlanetObject>(FindObjectsSortMode.None);
+        System.Collections.Generic.List<Vector3> placedPositions = new System.Collections.Generic.List<Vector3>();
+
+        int globalAttempts = 0;
+        bool allPlaced = false;
+
+        while (!allPlaced && globalAttempts < 100)
+        {
+            globalAttempts++;
+            placedPositions.Clear();
+            allPlaced = true;
+
+            foreach (var p in planets)
+            {
+                Vector3 pos = Vector3.zero;
+                bool validPosition = false;
+                int attempts = 0;
+
+                while (!validPosition && attempts < 200)
+                {
+                    attempts++;
+                    Vector2 randomDir = Random.insideUnitCircle.normalized;
+                    float distance = Random.Range(minPlanetDistanceFromCenter, maxPlanetSpawnRadius);
+                    pos = new Vector3(randomDir.x * distance, randomDir.y * distance, 0f);
+
+                    validPosition = true;
+
+                    foreach (var placed in placedPositions)
+                    {
+                        if (Vector3.Distance(pos, placed) < minDistanceBetweenPlanets)
+                        {
+                            validPosition = false;
+                            break;
+                        }
+                    }
+                }
+
+                if (!validPosition)
+                {
+                    allPlaced = false;
+                    break;
+                }
+
+                placedPositions.Add(pos);
+            }
+
+            if (allPlaced)
+            {
+                for (int i = 0; i < planets.Length; i++)
+                {
+                    Transform targetTransform = planets[i].transform.parent != null ? planets[i].transform.parent : planets[i].transform;
+                    targetTransform.position = placedPositions[i];
+                }
+            }
+        }
+        
+        if (!allPlaced)
+        {
+            Debug.LogError("Nie udało się rozmieścić planet z zachowaniem ustalonych odległości! Zmniejsz wymagane odstępy lub zwiększ promień w inspektorze.");
+        }
     }
 
     // Update is called once per frame

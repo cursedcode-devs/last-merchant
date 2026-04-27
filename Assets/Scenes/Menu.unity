@@ -442,7 +442,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d9fca193a33dc06449c86a225b22c953, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 915943556}
   m_SourcePrefab: {fileID: 100100000, guid: d9fca193a33dc06449c86a225b22c953, type: 3}
 --- !u!4 &148090159 stripped
 Transform:
@@ -1221,6 +1224,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 456110740}
+  - component: {fileID: 456110741}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -1241,10 +1245,31 @@ Transform:
   m_LocalScale: {x: 108, y: 108, z: 108}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 853990905}
   - {fileID: 1451192366}
   - {fileID: 148090159}
   m_Father: {fileID: 1977625376}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &456110741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456110739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8746fa0ae1419294eabb0f1dd62df482, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlanetVisuals
+  planetModel: {fileID: 0}
+  planetBar: {fileID: 0}
+  rotationSpeed: 30
+  shrinkSpeed: 0.5
+  initialScale: {x: 0, y: 0, z: 0}
+  initialPosition: {x: 0, y: 0, z: 0}
+  planetMat: {fileID: 0}
+  isFinished: 0
 --- !u!1 &498361234
 GameObject:
   m_ObjectHideFlags: 0
@@ -2502,6 +2527,53 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &853990904
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 853990905}
+  - component: {fileID: 853990906}
+  m_Layer: 0
+  m_Name: menago
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &853990905
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853990904}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 392.5892, y: 82.8648, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 456110740}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &853990906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853990904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 895f35eed283d9847bd808d8d99138ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlanetBarManager
+  planetBarTransform: {fileID: 1451192366}
+  planetRenderer: {fileID: 915943554}
+  decreaseSpeed: 0.2
 --- !u!1 &855749304
 GameObject:
   m_ObjectHideFlags: 0
@@ -2683,6 +2755,29 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &915943553 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d9fca193a33dc06449c86a225b22c953, type: 3}
+  m_PrefabInstance: {fileID: 148090158}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &915943554 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: d9fca193a33dc06449c86a225b22c953, type: 3}
+  m_PrefabInstance: {fileID: 148090158}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &915943556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915943553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38054530094301c43aca81a3d7830ad9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MenuPlanet
+  rotationSpeed: 20
 --- !u!1 &995744381
 GameObject:
   m_ObjectHideFlags: 0
@@ -4079,7 +4174,7 @@ GameObject:
   - component: {fileID: 1451192366}
   - component: {fileID: 1451192367}
   m_Layer: 0
-  m_Name: Square
+  m_Name: planet bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4902,7 +4997,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1953384458
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5080,7 +5175,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1977625376
 RectTransform:
   m_ObjectHideFlags: 0

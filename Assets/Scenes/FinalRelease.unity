@@ -5605,7 +5605,7 @@ PrefabInstance:
       objectReference: {fileID: 1294472680795734238}
     - target: {fileID: 1344172758736649664, guid: 2bacaecf30196fa4293540fb08f29b0c, type: 3}
       propertyPath: spawnDelayDecreaseRate
-      value: 0.25
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 4753366601847059488, guid: 2bacaecf30196fa4293540fb08f29b0c, type: 3}
       propertyPath: m_Name

@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
     public int dialogueSentence = 0;
     public bool tradeActive = false;
     public int planetNumber = 10;
+    private int totalDeadPlanets = 0;
     
     [Header("Survival Settings")]
     [Tooltip("Czas (w sekundach) co jaki gracz traci 1 jednostkę jedzenia na starcie gry")]
@@ -229,24 +230,9 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (PlanetObject.allPlanets != null && PlanetObject.allPlanets.Count > 0)
+        if (totalDeadPlanets >= 5)
         {
-            int deadPlanetsCount = 0;
-            foreach (var p in PlanetObject.allPlanets)
-            {
-                if (p != null && p.planet != null)
-                {
-                    if (p.planet.GetHp() <= 0)
-                    {
-                        deadPlanetsCount++;
-                    }
-                }
-            }
-
-            if (deadPlanetsCount >= 5)
-            {
-                TriggerGameOver("Nie udało ci się utrzymać cywilizacji przy życiu\nWciśnij ESC aby wrócić do menu");
-            }
+            TriggerGameOver("Nie udało ci się utrzymać cywilizacji przy życiu\nWciśnij ESC aby wrócić do menu");
         }
     }
 
@@ -441,6 +427,13 @@ public class GameManager : MonoBehaviour
         if (playerMovement != null) playerMovement.canMove = true;
     }
 
+    public void OnPlanetDied()
+    {
+        totalDeadPlanets++;
+        planetNumber--;
+        Debug.Log($"Planeta wymarła! Łącznie wymarło: {totalDeadPlanets}");
+    }
+
     public void PromptTextSetActive(bool isActive)
     {
         if (dialoguePromptText == null) { return; }
@@ -468,6 +461,13 @@ public class GameManager : MonoBehaviour
         if (planetWarningsText == null) return;
         
         string warnings = "";
+        
+        // Możemy dodać informację o liczbie wymarłych planet
+        if (totalDeadPlanets > 0)
+        {
+            warnings += $"Wymarłe planety: {totalDeadPlanets}/5\n";
+        }
+
         foreach (var p in PlanetObject.allPlanets)
         {
             if (p == null || p.planetData == null || p.planet == null) continue;
@@ -475,11 +475,7 @@ public class GameManager : MonoBehaviour
             float hp = p.planet.GetHp();
             float maxHp = p.planetData.startHp;
             
-            if (hp <= 0)
-            {
-                warnings += $"{p.planetData.name} wymarło\n";
-            }
-            else if (hp <= maxHp * 0.2f)
+            if (hp > 0 && hp <= maxHp * 0.2f)
             {
                 warnings += $"{p.planetData.name} jest zagrożone\n";
             }

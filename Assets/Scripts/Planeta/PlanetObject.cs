@@ -14,6 +14,7 @@ public class PlanetObject : MonoBehaviour
     private float maxHealthBarWidth = 5f;
     private float lastTimeDamaged = 0f;
     public Trade trade;
+    private bool isDead = false;
 
     [Header("Ranges")]
     public float radioRange = 5f;
@@ -79,22 +80,20 @@ public class PlanetObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (manager.time >= lastTimeDamaged + 5 && planet.GetHp() > 0)
+        if (manager.time >= lastTimeDamaged + 5 && planet.GetHp() > 0 && !isDead)
         {
             planet.AddHp(-1);
             Debug.Log("Odejmowanie hp");
             UpdateHealthBarUI();
             if (planet.GetHp() <= 0)
             {
-                manager.planetNumber--;
-                healthBar.SetActive(false);
-                nameText.gameObject.SetActive(false);
+                Die();
             }
             lastTimeDamaged = manager.time;
         }
 
         // Sprawdzanie dystansu zamiast polegania na colliderach (omija problem wielu colliderow na planecie)
-        if (manager.playerMovement != null && planet.GetHp() > 0)
+        if (manager.playerMovement != null && planet.GetHp() > 0 && !isDead)
         {
             float dist = Vector3.Distance(transform.position, manager.playerMovement.transform.position);
             
@@ -127,5 +126,49 @@ public class PlanetObject : MonoBehaviour
         float healthPercentage = currentHp / (float)maxHealth;
         healthPercentage = Mathf.Clamp01(healthPercentage);
         healthBar.transform.localScale = new Vector3(maxHealthBarWidth * healthPercentage, 1f, 1f);
+    }
+
+    public void Die()
+    {
+        if (isDead) return;
+        isDead = true;
+
+        manager.OnPlanetDied();
+        healthBar.SetActive(false);
+        nameText.gameObject.SetActive(false);
+        
+        // Wyłączamy kolider, żeby gracz nie mógł już wlecieć w planetę
+        Collider2D col = GetComponent<Collider2D>();
+        if (col != null) col.enabled = false;
+        
+        // Jeśli ta planeta była aktualną planetą w managerze, czyścimy ją
+        if (manager.currentPlanet == this)
+        {
+            manager.SetPlayerNearPlanet(false);
+            manager.PromptTextSetActive(false);
+            manager.currentPlanet = null;
+            manager.SetCurrentPlanet(null);
+        }
+
+        StartCoroutine(DisappearCoroutine());
+    }
+
+    private System.Collections.IEnumerator DisappearCoroutine()
+    {
+        Vector3 initialScale = transform.localScale;
+        float duration = 2.0f;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / duration;
+            // Używamy SmoothStep dla ładniejszej animacji
+            float scale = Mathf.Lerp(1f, 0f, t * t); 
+            transform.localScale = initialScale * scale;
+            yield return null;
+        }
+
+        Destroy(gameObject);
     }
 }

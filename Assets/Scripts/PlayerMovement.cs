@@ -33,8 +33,7 @@ public class PlayerMovement : MonoBehaviour
         if (!canMove) return;
         if (currentSpeed < 0)
         {
-            currentSpeed = 0;
-            StopAllCoroutines();
+            stopPlayer();
         }
 
         if ((Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) && !acceleratePending)
@@ -139,8 +138,7 @@ public class PlayerMovement : MonoBehaviour
             currentSpeed = currentSpeed - (2 * decelerationRate);
             if (currentSpeed < 0)
             {
-                currentSpeed = 0;
-                StopAllCoroutines();
+                stopPlayer();
             }
             PlayerManager.Instance?.ConsumeFuel(0.2f);
         }

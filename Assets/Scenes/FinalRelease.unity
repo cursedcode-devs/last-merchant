@@ -2363,14 +2363,14 @@ RectTransform:
   m_GameObject: {fileID: 754915897}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 2.4, y: 2.4, z: 2.4}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 453670057}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 750, y: -410}
+  m_AnchoredPosition: {x: 828, y: -362}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &754915899
@@ -2393,7 +2393,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '[E] Dalej'
+  m_text: "[E] Dalej\n[Q] Pomi\u0144"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9b8af3504db09664abbe5fd51ca8de96, type: 2}
   m_sharedMaterial: {fileID: 2384671516809382782, guid: 9b8af3504db09664abbe5fd51ca8de96, type: 2}
@@ -2420,10 +2420,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42.6
-  m_fontSizeBase: 50
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
@@ -3222,7 +3222,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 512, y: -435}
+  m_AnchoredPosition: {x: 886, y: -365.2}
   m_SizeDelta: {x: 248.67, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1036791148
@@ -3245,7 +3245,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "[E] Handluj [Q] Odrzu\u0107"
+  m_text: "[E] Handluj\\n[Q] Odrzu\u0107"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9b8af3504db09664abbe5fd51ca8de96, type: 2}
   m_sharedMaterial: {fileID: 2384671516809382782, guid: 9b8af3504db09664abbe5fd51ca8de96, type: 2}
@@ -3272,10 +3272,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26.5
-  m_fontSizeBase: 50
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
@@ -5258,6 +5258,10 @@ PrefabInstance:
     - target: {fileID: 7407642711449318888, guid: 5aeb35191bf8363419a9b73f83ebd7ee, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7407642711449318888, guid: 5aeb35191bf8363419a9b73f83ebd7ee, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7777195534125667138, guid: 5aeb35191bf8363419a9b73f83ebd7ee, type: 3}
       propertyPath: m_Camera

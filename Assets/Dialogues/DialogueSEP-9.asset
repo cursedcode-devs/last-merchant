@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DialogueSEP-9
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   dialogues:
-  - "*S\u0142yszysz jak posta\u0107 wynurza si\u0119 z wody, a jej oczy patrz\u0105
+  - "*s\u0142yszysz jak posta\u0107 wynurza si\u0119 z wody, a jej oczy patrz\u0105
     w twoim kierunku*"
   - "- Ca\u0142kiem tu przyjemnie, chocia\u017C kwiatki patrz\u0105 na mnie, jakbym
     by\u0142 darmowym cateringiem na czwartkowy poranek."

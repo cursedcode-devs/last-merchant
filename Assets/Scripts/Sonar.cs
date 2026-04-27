@@ -39,6 +39,11 @@ public class Sonar : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance != null && GameManager.Instance.isDialogueActive)
+        {
+            timer = 0f;
+            return;
+        }
         ScanCone();
     }
 

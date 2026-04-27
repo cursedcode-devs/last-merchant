@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &48344441 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 656092467008391280, guid: 48f3ecb47d562d44f8a38530b267788a, type: 3}
+  m_PrefabInstance: {fileID: 7326985267528108492}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &92201469
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -347,12 +352,27 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 646121259222772090, guid: 48f3ecb47d562d44f8a38530b267788a, type: 3}
   m_PrefabInstance: {fileID: 7326985267528108492}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 48344441}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 286dce8782e507741bb378cd51a17536, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+--- !u!114 &144625419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48344441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b54ea1e11463f2469a0824f91cd9707, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlanetDifficultyManager
+  initialHealthReductionInterval: 2
+  minHealthReductionInterval: 2
+  reductionIntervalDecreaseRate: 0.015
 --- !u!114 &152029041 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8867347054453277170, guid: 74ebe492b468f0843b5fe71d19462d2e, type: 3}
@@ -4969,6 +4989,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1052701694902871325, guid: 5aeb35191bf8363419a9b73f83ebd7ee, type: 3}
+      propertyPath: m_text
+      value: 'Jedzenie:'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1052701694902871325, guid: 5aeb35191bf8363419a9b73f83ebd7ee, type: 3}
       propertyPath: m_fontSize
       value: 46.65
       objectReference: {fileID: 0}
@@ -5000,6 +5024,10 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2384671516809382782, guid: 9b8af3504db09664abbe5fd51ca8de96, type: 2}
+    - target: {fileID: 1052701694902871325, guid: 5aeb35191bf8363419a9b73f83ebd7ee, type: 3}
+      propertyPath: m_characterSpacing
+      value: -4.23
+      objectReference: {fileID: 0}
     - target: {fileID: 1052701694902871325, guid: 5aeb35191bf8363419a9b73f83ebd7ee, type: 3}
       propertyPath: m_enableAutoSizing
       value: 1
@@ -5197,6 +5225,10 @@ PrefabInstance:
       value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 5685864674961558835, guid: 5aeb35191bf8363419a9b73f83ebd7ee, type: 3}
+      propertyPath: m_text
+      value: 'Paliwo:'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5685864674961558835, guid: 5aeb35191bf8363419a9b73f83ebd7ee, type: 3}
       propertyPath: m_fontSize
       value: 46.65
       objectReference: {fileID: 0}
@@ -5302,7 +5334,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6704828372368127402, guid: 5aeb35191bf8363419a9b73f83ebd7ee, type: 3}
       propertyPath: m_text
-      value: 'Parts:'
+      value: "Cz\u0119\u015Bci:"
       objectReference: {fileID: 0}
     - target: {fileID: 6704828372368127402, guid: 5aeb35191bf8363419a9b73f83ebd7ee, type: 3}
       propertyPath: m_fontSize
@@ -5386,7 +5418,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7153463670857356032, guid: 5aeb35191bf8363419a9b73f83ebd7ee, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -589
+      value: -597
       objectReference: {fileID: 0}
     - target: {fileID: 7153463670857356032, guid: 5aeb35191bf8363419a9b73f83ebd7ee, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -6413,6 +6445,78 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7445998021889468401, guid: 74ebe492b468f0843b5fe71d19462d2e, type: 3}
+      propertyPath: stopSound.Path
+      value: event:/Spaceship_stop
+      objectReference: {fileID: 0}
+    - target: {fileID: 7445998021889468401, guid: 74ebe492b468f0843b5fe71d19462d2e, type: 3}
+      propertyPath: startSound.Path
+      value: event:/Spaceship_startFromPlanet
+      objectReference: {fileID: 0}
+    - target: {fileID: 7445998021889468401, guid: 74ebe492b468f0843b5fe71d19462d2e, type: 3}
+      propertyPath: accelerateSound.Path
+      value: event:/Spaceship_accelleration
+      objectReference: {fileID: 0}
+    - target: {fileID: 7445998021889468401, guid: 74ebe492b468f0843b5fe71d19462d2e, type: 3}
+      propertyPath: stopSound.Guid.Data1
+      value: -1668488102
+      objectReference: {fileID: 0}
+    - target: {fileID: 7445998021889468401, guid: 74ebe492b468f0843b5fe71d19462d2e, type: 3}
+      propertyPath: stopSound.Guid.Data2
+      value: 1224680180
+      objectReference: {fileID: 0}
+    - target: {fileID: 7445998021889468401, guid: 74ebe492b468f0843b5fe71d19462d2e, type: 3}
+      propertyPath: stopSound.Guid.Data3
+      value: 89683875
+      objectReference: {fileID: 0}
+    - target: {fileID: 7445998021889468401, guid: 74ebe492b468f0843b5fe71d19462d2e, type: 3}
+      propertyPath: stopSound.Guid.Data4
+      value: 577626643
+      objectReference: {fileID: 0}
+    - target: {fileID: 7445998021889468401, guid: 74ebe492b468f0843b5fe71d19462d2e, type: 3}
+      propertyPath: startSound.Guid.Data1
+      value: -259895449
+      objectReference: {fileID: 0}
+    - target: {fileID: 7445998021889468401, guid: 74ebe492b468f0843b5fe71d19462d2e, type: 3}
+      propertyPath: startSound.Guid.Data2
+      value: 1253424626
+      objectReference: {fileID: 0}
+    - target: {fileID: 7445998021889468401, guid: 74ebe492b468f0843b5fe71d19462d2e, type: 3}
+      propertyPath: startSound.Guid.Data3
+      value: -347793530
+      objectReference: {fileID: 0}
+    - target: {fileID: 7445998021889468401, guid: 74ebe492b468f0843b5fe71d19462d2e, type: 3}
+      propertyPath: startSound.Guid.Data4
+      value: -463324890
+      objectReference: {fileID: 0}
+    - target: {fileID: 7445998021889468401, guid: 74ebe492b468f0843b5fe71d19462d2e, type: 3}
+      propertyPath: accelerateSound.Guid.Data1
+      value: 56170472
+      objectReference: {fileID: 0}
+    - target: {fileID: 7445998021889468401, guid: 74ebe492b468f0843b5fe71d19462d2e, type: 3}
+      propertyPath: accelerateSound.Guid.Data2
+      value: 1277595270
+      objectReference: {fileID: 0}
+    - target: {fileID: 7445998021889468401, guid: 74ebe492b468f0843b5fe71d19462d2e, type: 3}
+      propertyPath: accelerateSound.Guid.Data3
+      value: 452780980
+      objectReference: {fileID: 0}
+    - target: {fileID: 7445998021889468401, guid: 74ebe492b468f0843b5fe71d19462d2e, type: 3}
+      propertyPath: accelerateSound.Guid.Data4
+      value: -1386811373
+      objectReference: {fileID: 0}
+    - target: {fileID: 8867347054453277170, guid: 74ebe492b468f0843b5fe71d19462d2e, type: 3}
+      propertyPath: startFood
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8867347054453277170, guid: 74ebe492b468f0843b5fe71d19462d2e, type: 3}
+      propertyPath: startFuel
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8867347054453277170, guid: 74ebe492b468f0843b5fe71d19462d2e, type: 3}
+      propertyPath: startParts
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 8977002628836227528, guid: 74ebe492b468f0843b5fe71d19462d2e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6649,7 +6753,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 656092467008391280, guid: 48f3ecb47d562d44f8a38530b267788a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 144625419}
   m_SourcePrefab: {fileID: 100100000, guid: 48f3ecb47d562d44f8a38530b267788a, type: 3}
 --- !u!1001 &8825929675044307922
 PrefabInstance:

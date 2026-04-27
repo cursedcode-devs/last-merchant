@@ -124,7 +124,8 @@ public class PlayerMovement : MonoBehaviour
         if (currentSpeed < maxSpeed)
         {
             currentSpeed += accelerationRate;
-            PlayerManager.Instance?.ConsumeFuel(0.2f);
+            float fuelMultiplier = FuelConsumptionManager.Instance != null ? FuelConsumptionManager.Instance.GetFuelMultiplier() : 1f;
+            PlayerManager.Instance?.ConsumeFuel(0.2f * fuelMultiplier);
         }
         return currentSpeed;
     }
@@ -140,7 +141,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 stopPlayer();
             }
-            PlayerManager.Instance?.ConsumeFuel(0.2f);
+            float fuelMultiplier = FuelConsumptionManager.Instance != null ? FuelConsumptionManager.Instance.GetFuelMultiplier() : 1f;
+            PlayerManager.Instance?.ConsumeFuel(0.2f * fuelMultiplier);
         }
         return currentSpeed;
     }
@@ -148,12 +150,14 @@ public class PlayerMovement : MonoBehaviour
     public void TurnRight()
     {
         transform.Rotate(0, 0, -10);
-        PlayerManager.Instance?.ConsumeFuel(0.1f);    
+        float fuelMultiplier = FuelConsumptionManager.Instance != null ? FuelConsumptionManager.Instance.GetFuelMultiplier() : 1f;
+        PlayerManager.Instance?.ConsumeFuel(0.1f * fuelMultiplier);    
     }
 
     public void TurnLeft()
     {
         transform.Rotate(0, 0, 10);
-        PlayerManager.Instance?.ConsumeFuel(0.1f);
+        float fuelMultiplier = FuelConsumptionManager.Instance != null ? FuelConsumptionManager.Instance.GetFuelMultiplier() : 1f;
+        PlayerManager.Instance?.ConsumeFuel(0.1f * fuelMultiplier);
     }
 }

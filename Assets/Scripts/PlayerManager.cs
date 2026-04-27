@@ -29,7 +29,6 @@ void Awake()
 
     public bool ConsumeFuel(float amount)
     {
-        if (player.GetFuel() < amount) return false;
         player.AddFuel(-amount);
         return true;
     }
@@ -42,7 +41,6 @@ void Awake()
     public bool ConsumeParts(int amount)
     {
         if (isImmortal) return false;
-        if (player.GetParts() < amount) return false;
         player.AddParts(-amount);
         return true;
     }
@@ -53,7 +51,6 @@ void Awake()
     }
     public bool ConsumeFood(int amount)
     {
-        if (player.GetFood() < amount) return false;
         player.AddFood(-amount);
         return true;
     }

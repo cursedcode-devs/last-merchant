@@ -18,7 +18,7 @@ public class PlanetObject : MonoBehaviour
 
     [Header("Ranges")]
     public float radioRange = 5f;
-    public float scanRange = 20f;
+    public float scanRange = 40f;
 
     public static System.Collections.Generic.List<PlanetObject> allPlanets = new System.Collections.Generic.List<PlanetObject>();
 
@@ -80,7 +80,8 @@ public class PlanetObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (manager.time >= lastTimeDamaged + 5 && planet.GetHp() > 0 && !isDead)
+        float reductionInterval = PlanetDifficultyManager.Instance != null ? PlanetDifficultyManager.Instance.GetCurrentInterval() : 5f;
+        if (manager.time >= lastTimeDamaged + reductionInterval && planet.GetHp() > 0 && !isDead)
         {
             planet.AddHp(-1);
             Debug.Log("Odejmowanie hp");

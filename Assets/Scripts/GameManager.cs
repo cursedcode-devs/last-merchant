@@ -202,7 +202,7 @@ public class GameManager : MonoBehaviour
         {
             NextDialogue();
         }
-        if (PlayerManager.Instance.GetFood() > 0 && (time - lastFoodDiminish) > currentFoodConsumeInterval)
+        if ((time - lastFoodDiminish) > currentFoodConsumeInterval)
         {
             PlayerManager.Instance?.ConsumeFood(1);
             lastFoodDiminish = time;

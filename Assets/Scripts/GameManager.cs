@@ -32,6 +32,10 @@ public class GameManager : MonoBehaviour
     [Header("Warning UI Elements")]
     public TextMeshProUGUI planetWarningsText;
 
+    [Header("Game Over UI")]
+    public GameObject gameOverPanel;
+    public bool isGameOver = false;
+
     public PlayerManager playerManager;
     public PlayerMovement playerMovement;
     public bool playerNearPlanet = false;
@@ -74,6 +78,16 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isGameOver)
+        {
+            if (Keyboard.current.escapeKey.wasPressedThisFrame)
+            {
+                Time.timeScale = 1f;
+                SceneManager.LoadScene("Menu");
+            }
+            return;
+        }
+
         if (Keyboard.current.escapeKey.wasPressedThisFrame)
         {
             SceneManager.LoadScene("Menu");
@@ -104,9 +118,65 @@ public class GameManager : MonoBehaviour
 
         UpdatePlanetWarnings();
         
+        CheckGameOverConditions();
+
         // --- DO USUNIĘCIA W PRZYSZŁOŚCI ---
         DebugReducePlanetHealth();
         // ----------------------------------
+    }
+
+    private void CheckGameOverConditions()
+    {
+        if (PlayerManager.Instance != null)
+        {
+            if (PlayerManager.Instance.GetFuel() <= 0 ||
+                PlayerManager.Instance.GetFood() <= 0 ||
+                PlayerManager.Instance.GetParts() <= 0)
+            {
+                TriggerGameOver("Zabrakło zasobów\nWciśnij ESC aby wrócić do menu");
+                return;
+            }
+        }
+
+        bool allPlanetsDead = true;
+        if (PlanetObject.allPlanets != null && PlanetObject.allPlanets.Count > 0)
+        {
+            foreach (var p in PlanetObject.allPlanets)
+            {
+                if (p != null && p.planet != null)
+                {
+                    if (p.planet.GetHp() > 0)
+                    {
+                        allPlanetsDead = false;
+                        break;
+                    }
+                }
+            }
+
+            if (allPlanetsDead)
+            {
+                TriggerGameOver("Cała cywilizacja wymarła\nWciśnij ESC aby wrócić do menu");
+            }
+        }
+    }
+
+    public void TriggerGameOver(string subtextMessage)
+    {
+        isGameOver = true;
+        if (gameOverPanel != null)
+        {
+            gameOverPanel.SetActive(true);
+            Transform subtextTransform = gameOverPanel.transform.Find("GameOverSubtext");
+            if (subtextTransform != null)
+            {
+                TextMeshProUGUI subtext = subtextTransform.GetComponent<TextMeshProUGUI>();
+                if (subtext != null)
+                {
+                    subtext.text = subtextMessage;
+                }
+            }
+        }
+        Time.timeScale = 0f;
     }
 
     public void fPress()

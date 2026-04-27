@@ -276,43 +276,64 @@ public class GameManager : MonoBehaviour
         {
             if (Keyboard.current.eKey.wasPressedThisFrame)
             {
+                int cost = currentPlanet.trade.GetGive();
+                bool hasEnough = true;
+
+                switch (currentPlanet.planetData.planetTypeGive)
+                {
+                    case PlanetTypes.Food:
+                        if (playerManager.GetFood() < cost) hasEnough = false;
+                        break;
+                    case PlanetTypes.Fuel:
+                        if (playerManager.GetFuel() < cost) hasEnough = false;
+                        break;
+                    case PlanetTypes.Parts:
+                        if (playerManager.GetParts() < cost) hasEnough = false;
+                        break;
+                }
+
+                if (!hasEnough)
+                {
+                    dialogueText.text = currentPlanet.trade.tradeText + "\nNie masz wystarczaj\u0105co zasob\u00F3w!</color>";
+                    return;
+                }
+
                 ResetDialogue();
                 switch(currentPlanet.planetData.planetTypeGive)
                 {
                     case PlanetTypes.Food:
                         {
-                            playerManager.AddFood(-currentPlanet.trade.GetRecive());
+                            playerManager.AddFood(-cost);
                             break;
                         }
                     case PlanetTypes.Fuel:
                         {
-                            int x = -currentPlanet.trade.GetRecive();
-                            playerManager.AddFuel((float)x);
+                            playerManager.AddFuel((float)-cost);
                             break;
                         }
                     case PlanetTypes.Parts:
                         {
-                            playerManager.AddParts(-currentPlanet.trade.GetRecive());
+                            playerManager.AddParts(-cost);
                             break;
                         }
                 }
 
+                int reward = currentPlanet.trade.GetRecive();
                 switch (currentPlanet.planetData.planetTypeRecive)
                 {
                     case PlanetTypes.Food:
                         {
-                            playerManager.AddFood(currentPlanet.trade.GetGive());
+                            playerManager.AddFood(reward);
                             break;
                         }
                     case PlanetTypes.Fuel:
                         {
-                            int x = currentPlanet.trade.GetGive();
-                            playerManager.AddFuel(x);
+                            playerManager.AddFuel((float)reward);
                             break;
                         }
                     case PlanetTypes.Parts:
                         {
-                            playerManager.AddParts(currentPlanet.trade.GetGive());
+                            playerManager.AddParts(reward);
                             break;
                         }
                 }

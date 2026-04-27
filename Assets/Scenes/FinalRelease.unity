@@ -833,6 +833,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Planets (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7420698188654408271, guid: 57e8f0e81c1fa7e48b9ff436e83d7b67, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7617203858590608264, guid: 57e8f0e81c1fa7e48b9ff436e83d7b67, type: 3}
       propertyPath: m_LocalScale.x
       value: 5
@@ -6536,7 +6540,7 @@ PrefabInstance:
       objectReference: {fileID: 1891619447}
     - target: {fileID: 646121259222772090, guid: 48f3ecb47d562d44f8a38530b267788a, type: 3}
       propertyPath: gameDuration
-      value: 10
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 646121259222772090, guid: 48f3ecb47d562d44f8a38530b267788a, type: 3}
       propertyPath: DialogueImage

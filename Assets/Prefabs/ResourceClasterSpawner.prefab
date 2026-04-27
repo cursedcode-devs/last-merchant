@@ -45,7 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ResourceClusterSpawner
   playArea: {fileID: 0}
-  pickupPrefab: {fileID: 0}
+  pickupPrefabs:
+  - {fileID: 3942458385899150097, guid: 068cc5ecbc235f94986803e2e2f6ac32, type: 3}
+  - {fileID: 3942458385899150097, guid: 50f3178e67976c945bad99325d094b07, type: 3}
+  - {fileID: 3942458385899150097, guid: 14f3244b9f46b9c43b1d7707342ee144, type: 3}
   spawnCount: 5
   pickupSpacing: 2
   maxAttempts: 50

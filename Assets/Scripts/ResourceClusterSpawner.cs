@@ -5,7 +5,7 @@ public class ResourceClusterSpawner : MonoBehaviour
 {
     [Header("Assign In Inspector")]
     [SerializeField] private EdgeCollider2D playArea;
-    [SerializeField] private ResourcePickup pickupPrefab;
+    [SerializeField] private ResourcePickup[] pickupPrefabs;
 
     [Header("Spawn Settings")]
     [SerializeField] private int spawnCount = 5;
@@ -47,8 +47,11 @@ public class ResourceClusterSpawner : MonoBehaviour
         if (!FindSpawnPoint(out pos))
             return;
 
+        if (pickupPrefabs == null || pickupPrefabs.Length == 0) return;
+        
+        ResourcePickup prefab = pickupPrefabs[Random.Range(0, pickupPrefabs.Length)];
         ResourcePickup obj =
-            Instantiate(pickupPrefab, pos, Quaternion.identity, transform);
+            Instantiate(prefab, pos, Quaternion.identity, transform);
 
         obj.Setup(this);
         spawned.Add(obj);
@@ -56,12 +59,11 @@ public class ResourceClusterSpawner : MonoBehaviour
 
     bool FindSpawnPoint(out Vector2 point)
     {
+        // Reduce the radius by 15% so pickups do not spawn on the edge
+        float radius = Mathf.Min(areaBounds.extents.x, areaBounds.extents.y) * 0.85f;
         for (int i = 0; i < maxAttempts; i++)
         {
-            Vector2 p = new Vector2(
-                Random.Range(areaBounds.min.x, areaBounds.max.x),
-                Random.Range(areaBounds.min.y, areaBounds.max.y)
-            );
+            Vector2 p = (Vector2)areaBounds.center + Random.insideUnitCircle * radius;
 
             if (Physics2D.OverlapCircle(p, blockedRadius, blockedLayers))
                 continue;

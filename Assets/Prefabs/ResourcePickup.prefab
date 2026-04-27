@@ -85,7 +85,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.18414831, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -170,3 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ResourcePickup
   pickupPrompt: {fileID: 0}
+  resourceSprites:
+  - {fileID: 21300000, guid: ac3630aafd08c1d4dbba1ade1344b703, type: 3}
+  - {fileID: 21300000, guid: d286de5d1c4c4c7438e67facef4109b1, type: 3}
+  - {fileID: 21300000, guid: 5dd1d8cbe2ce7e64fa2538376b8c6278, type: 3}

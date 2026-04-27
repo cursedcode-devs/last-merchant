@@ -23,6 +23,8 @@ public class ResourcePickup : MonoBehaviour
             pickupPrompt.gameObject.SetActive(false);
     }
 
+    public int resourceType = 0; // 0 = Fuel, 1 = Food, 2 = Parts
+
     public void Setup(ResourceClusterSpawner owner)
     {
         spawner = owner;
@@ -49,7 +51,7 @@ public class ResourcePickup : MonoBehaviour
 
     void GiveRandomResource()
     {
-        int roll = Random.Range(0, 3);
+        int roll = resourceType;
 
         if (roll == 0)
         {

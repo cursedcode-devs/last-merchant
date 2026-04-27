@@ -14,6 +14,9 @@ public class PlayerMovement : MonoBehaviour
     private bool turnRightPending;
     private bool turnLeftPending;
 
+    private float dragTimer = 0f;
+    private float dragInterval = 1f;
+
     private const float ACTION_DELAY = 0.2f;
     private const float TURN_DELAY = 0.1f;
     public FMODUnity.EventReference accelerateSound;
@@ -53,6 +56,22 @@ public class PlayerMovement : MonoBehaviour
         else if (Input.GetKey(KeyCode.Space))
         {
             stopPlayer();
+        }
+
+        bool isAccelerating = Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W);
+        if (!isAccelerating && currentSpeed > 0)
+        {
+            dragTimer += Time.deltaTime;
+            if (dragTimer >= dragInterval)
+            {
+                currentSpeed -= decelerationRate;
+                if (currentSpeed < 0) currentSpeed = 0;
+                dragTimer = 0f;
+            }
+        }
+        else if (isAccelerating)
+        {
+            dragTimer = 0f;
         }
 
         transform.Translate(Vector3.up * currentSpeed * Time.deltaTime);

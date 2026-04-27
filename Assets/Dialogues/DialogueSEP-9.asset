@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: DialogueSEP-9
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   dialogues:
-  - "*S\u0142ycha\u0107 jak posta\u0107 wynurza si\u0119 z wody,a jej oczy patrz\u0105
+  - "*S\u0142yszysz jak posta\u0107 wynurza si\u0119 z wody, a jej oczy patrz\u0105
     w twoim kierunku*"
-  - "Ca\u0142kiem tu u was przyjemnie chocia\u017C kwiatki patrz\u0105 na mnie, jakbym
+  - "- Ca\u0142kiem tu przyjemnie, chocia\u017C kwiatki patrz\u0105 na mnie, jakbym
     by\u0142 darmowym cateringiem na czwartkowy poranek."
-  - "Zazwyczaj jedz\u0105 tych, kt\xF3rych nie sta\u0107 na op\u0142aty portowe,
+  - "- Zazwyczaj jedz\u0105 tych, kt\xF3rych nie sta\u0107 na op\u0142aty portowe,
     a ty wygl\u0105dasz na kogo\u015B kto ma jeszcze wszystkie organy na miejscu."
-  - "Wol\u0119 je zachowa\u0107, wi\u0119c sprzedaj mi troch\u0119 tego paliwa, zanim
-    zaczn\u0105 sprawdza\u0107 moj\u0105 cierpliwo\u015B\u0107."
-  - "Nie b\u0105d\u017A taki hop do przodu bo ci\u0119 rzuc\u0119 ro\u015Blinom,
-    niech ci b\u0119dzie, to s\u0105 moje towary:"
+  - "- Wol\u0119 je zachowa\u0107, wi\u0119c sprzedaj mi troch\u0119 tego paliwa,
+    zanim zaczn\u0105 sprawdza\u0107 moj\u0105 cierpliwo\u015B\u0107."
+  - "- Nie b\u0105d\u017A taki hop do przodu, bo rzuc\u0119 ci\u0119 ro\u015Blinom.
+    Niech ci b\u0119dzie, to s\u0105 moje towary:"

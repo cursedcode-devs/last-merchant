@@ -104,7 +104,7 @@ public class GameManager : MonoBehaviour
                 currentFoodConsumeInterval = Mathf.Max(currentFoodConsumeInterval, minFoodConsumeInterval);
             }
             
-            fPress();
+            ePress();
         }
         else
         {
@@ -179,14 +179,14 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
     }
 
-    public void fPress()
+    public void ePress()
     {
         if (!playerNearPlanet) return;
         if (currentPlanet.planet.GetHp() <= 0)
         {
             return;
         }
-        if (Keyboard.current.fKey.wasPressedThisFrame)
+        if (Keyboard.current.eKey.wasPressedThisFrame)
         {
             Debug.Log("Klikni�to f");
             // sprawiamy zeby gracz nie mogl latac podczas dialogu, zerujemy speed i zatrzymujemy rutyny
@@ -212,22 +212,33 @@ public class GameManager : MonoBehaviour
 
     public void NextDialogue()
     {
-        if (Keyboard.current.fKey.wasPressedThisFrame && tradeActive == false)
+        if (Keyboard.current.qKey.wasPressedThisFrame && tradeActive == false)
         {
-            dialogueText.text = dialogue.dialogues[dialogueSentence];
-            dialogueSentence++;
-            FMODUnity.RuntimeManager.PlayOneShot(dialogueSound, this.transform.position);
-        }
-        if (dialogueSentence == dialogue.dialogues.Length && tradeActive == false)
-        {
+            dialogueSentence = dialogue.dialogues.Length;
             dialogueText.text = currentPlanet.trade.tradeText;
             tradeActive = true;
             if (nextDialogueHintObj != null) nextDialogueHintObj.SetActive(false);
             if (tradeDialogueHintObj != null) tradeDialogueHintObj.SetActive(true);
         }
-        if (tradeActive)
+        else if (Keyboard.current.eKey.wasPressedThisFrame && tradeActive == false)
         {
-            if (Keyboard.current.yKey.wasPressedThisFrame)
+            if (dialogueSentence < dialogue.dialogues.Length)
+            {
+                dialogueText.text = dialogue.dialogues[dialogueSentence];
+                dialogueSentence++;
+                FMODUnity.RuntimeManager.PlayOneShot(dialogueSound, this.transform.position);
+            }
+            else if (dialogueSentence == dialogue.dialogues.Length)
+            {
+                dialogueText.text = currentPlanet.trade.tradeText;
+                tradeActive = true;
+                if (nextDialogueHintObj != null) nextDialogueHintObj.SetActive(false);
+                if (tradeDialogueHintObj != null) tradeDialogueHintObj.SetActive(true);
+            }
+        }
+        else if (tradeActive)
+        {
+            if (Keyboard.current.eKey.wasPressedThisFrame)
             {
                 ResetDialogue();
                 switch(currentPlanet.planetData.planetTypeGive)
@@ -274,7 +285,7 @@ public class GameManager : MonoBehaviour
                 currentPlanet.planet.AddHp(currentPlanet.trade.restoreHealth);
             }
 
-            if (Keyboard.current.nKey.wasPressedThisFrame)
+            if (Keyboard.current.qKey.wasPressedThisFrame)
             {
                 ResetDialogue();
             }

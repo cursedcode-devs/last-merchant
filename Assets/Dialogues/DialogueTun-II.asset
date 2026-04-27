@@ -13,16 +13,14 @@ MonoBehaviour:
   m_Name: DialogueTun-II
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   dialogues:
-  - "No no no, kogo ja widz\u0119. Co Ci\u0119 sprowadza do mojej rozpadaj\u0105cej
+  - "- No no no, kogo ja widz\u0119... Co ci\u0119 sprowadza do mojej rozpadaj\u0105cej
     si\u0119 ruiny?"
-  - "Znalaz\u0142em si\u0119 tu przypadkiem zwiedzaj\u0105c kosmos."
-  - "Rozumiem. Nie ma tu nic ciekawego. Tylko ja, moja w\u0119dka i od dawna puste
-    ju\u017C wody.  "
-  - "Co sta\u0142o ci si\u0119 w oko? "
-  - "Pewnej deszczowej nocy mia\u0142em branie na ogromnego 200 kilowego tu\u0144czyka.
-    Rozbuja\u0142 si\u0119 sztorm jakby mia\u0142 zwia\u0107 wszystko z powierzchni
-    i ledwo go utrzymywa\u0142em. ->To jak je straci\u0142e\u015B? "
-  - "Drapa\u0142em si\u0119 nast\u0119pnego dnia i zapomnia\u0142em, \u017Ce mam
-    w r\u0119ce d\u0142ugopis\u2026 niewa\u017Cne, co by\u015B chcia\u0142? "
-  - "A co mo\u017Cesz mi da\u0107?"
-  - "Mam tu jeszcze par\u0119 starych puszek, kt\xF3re mog\u0105 ci\u0119 zainteresowa\u0107. "
+  - "- Znalaz\u0142em si\u0119 tu przypadkiem, zwiedzaj\u0105c kosmos."
+  - "- Rozumiem. Nie ma tu nic ciekawego. Tylko ja, moja w\u0119dka i puste od dawna
+    wody.  "
+  - "- Co sta\u0142o ci si\u0119 w oko? "
+  - "- Pewnej deszczowej nocy mia\u0142em branie na ogromnego tu\u0144czyka. Rozbuja\u0142
+    si\u0119 sztorm, zwiewaj\u0105c wszystko z powierzchni. Ledwo go utrzyma\u0142em. "
+  - "- To jak straci\u0142e\u015B oko?"
+  - "- Drapa\u0142em si\u0119 i zapomnia\u0142em \u017Ce mam w r\u0119ce harpun\u2026
+    Niewa\u017Cne, mam dla ciebie ofert\u0119."

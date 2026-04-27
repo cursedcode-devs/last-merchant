@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: DialogueF.L.O.S.S.
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   dialogues:
-  - "Czego? Nie mam czasu, nie przeszkadzaj mi, nadzoruje prac\u0119."
-  - "S\u0142uchaj\u0105c tego huku mam wra\u017Cenie, \u017Ce tw\xF3j m\xF3zg w s\u0142oiku
-    ma gorsz\u0105 migren\u0119 ni\u017C ja po tygodniu w nadprzestrzeni."
-  - "Rytm... musi... trwa\u0107. Ka\u017Cde uderzenie to sekunda mojego przed\u0142u\u017Conego
+  - "- Czego? Nie mam czasu, nie przeszkadzaj mi, nadzoruj\u0119 prac\u0119."
+  - "- S\u0142uchaj\u0105c tego huku mam wra\u017Cenie, \u017Ce tw\xF3j m\xF3zg w
+    s\u0142oiku ma gorsz\u0105 migren\u0119 ni\u017C ja po tygodniu w nadprzestrzeni."
+  - "- Rytm... musi... trwa\u0107. Ka\u017Cde uderzenie to sekunda mojego przed\u0142u\u017Conego
     konania. Maszyny nie maj\u0105 lito\u015Bci, znaj\u0105 tylko normy produkcyjne."
-  - "Wygl\u0105dasz, jakby\u015B nie jad\u0142 od czas\xF3w, gdy ta planeta mia\u0142a
-    jeszcze atmosfer\u0119, a nie tylko opary smaru."
-  - "Mo\u017Ce i tak jest, ale przynajmniej moja fabryka jest najwi\u0119ksz\u0105
-    w tym sektorze. Brakuje mi tylko troch\u0119 paliwa aby wyrobi\u0107 norm\u0119.
-    Oto moja oferta: "
+  - "- Wygl\u0105dasz, jakby\u015B nie jad\u0142 od czas\xF3w, gdy ta planeta mia\u0142a
+    jeszcze atmosfer\u0119, a nie tylko opary."
+  - "- Mo\u017Ce i tak, ale przynajmniej moja fabryka jest najwi\u0119ksz\u0105 w
+    tym sektorze. Brakuje mi tylko troch\u0119 paliwa, aby wyrobi\u0107 norm\u0119.
+    Oto moja oferta:"

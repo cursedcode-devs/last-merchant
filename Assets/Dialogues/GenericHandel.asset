@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: GenericHandel
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   dialogues:
-  - "Witaj z powrotem, jak mog\u0119 ci pomoc?"
+  - "Witaj z powrotem, jak mog\u0119 ci pom\xF3c?"
   - "Chcia\u0142bym si\u0119 z tob\u0105 wymieni\u0107."
   - 'Jasne, oto moja oferta:'

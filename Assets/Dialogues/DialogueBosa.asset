@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: DialogueBosa
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   dialogues:
-  - "Witaj przybyszu, czego szukasz w naszej d\u017Cungli?"
-  - "Czy te czaszki przy \u015Bcie\u017Cce to nagroda pocieszenia?"
-  - "To nasi poprzedni klienci, kt\xF3rzy zbyt d\u0142ugo zastanawiali si\u0119 nad
-    cen\u0105. "
-  - "Ze mn\u0105 nie b\u0119dzie tego problemu. "
-  - "Zobaczymy, je\u015Bli zajmie Ci to d\u0142u\u017Cej ni\u017C 5 minut zwi\u0105\u017C\u0119
+  - "- Witaj przybyszu, czego szukasz w naszej d\u017Cungli?"
+  - "- Czy te czaszki przy \u015Bcie\u017Cce to nagroda pocieszenia?"
+  - "- To nasi poprzedni klienci, kt\xF3rzy zbyt d\u0142ugo zastanawiali si\u0119
+    nad cen\u0105. "
+  - "- Ze mn\u0105 nie b\u0119dzie tego problemu. "
+  - "- Zobaczymy, je\u015Bli zajmie Ci to d\u0142u\u017Cej ni\u017C 5 minut zwi\u0105\u017C\u0119
     ci\u0119 i spal\u0119 na stosie. Oto moja jedyna oferta:"

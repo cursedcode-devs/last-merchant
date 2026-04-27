@@ -138,24 +138,23 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        bool allPlanetsDead = true;
         if (PlanetObject.allPlanets != null && PlanetObject.allPlanets.Count > 0)
         {
+            int deadPlanetsCount = 0;
             foreach (var p in PlanetObject.allPlanets)
             {
                 if (p != null && p.planet != null)
                 {
-                    if (p.planet.GetHp() > 0)
+                    if (p.planet.GetHp() <= 0)
                     {
-                        allPlanetsDead = false;
-                        break;
+                        deadPlanetsCount++;
                     }
                 }
             }
 
-            if (allPlanetsDead)
+            if (deadPlanetsCount >= 5)
             {
-                TriggerGameOver("Cała cywilizacja wymarła\nWciśnij ESC aby wrócić do menu");
+                TriggerGameOver("Nie udało ci się utrzymać cywilizacji przy życiu\nWciśnij ESC aby wrócić do menu");
             }
         }
     }

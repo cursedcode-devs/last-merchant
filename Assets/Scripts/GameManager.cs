@@ -36,6 +36,12 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverPanel;
     public bool isGameOver = false;
 
+    [Header("Timer UI")]
+    public TextMeshProUGUI countdownTimerText;
+    [Tooltip("Czas gry w sekundach (domyślnie 300 = 5 minut)")]
+    public float gameDuration = 300f;
+    private float currentCountdown;
+
     public PlayerManager playerManager;
     public PlayerMovement playerMovement;
     public bool playerNearPlanet = false;
@@ -73,6 +79,8 @@ public class GameManager : MonoBehaviour
         }
         
         currentFoodConsumeInterval = initialFoodConsumeInterval;
+        currentCountdown = gameDuration;
+        UpdateTimerUI();
     }
 
     // Update is called once per frame
@@ -96,6 +104,14 @@ public class GameManager : MonoBehaviour
         if (!isDialogueActive)
         {
             time += Time.deltaTime;
+            currentCountdown -= Time.deltaTime;
+            UpdateTimerUI();
+
+            if (currentCountdown <= 0f)
+            {
+                TriggerGameOver("Udało ci się utrzymać cywilizację przy życiu!\nWciśnij ESC aby wrócić do menu", "<color=#33FF28>GRATULACJE</color>");
+                return;
+            }
             
             // Zwiększanie trudności: zmniejszanie czasu między znikaniem jedzenia
             if (currentFoodConsumeInterval > minFoodConsumeInterval)
@@ -159,12 +175,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void TriggerGameOver(string subtextMessage)
+    public void TriggerGameOver(string subtextMessage, string titleMessage = "KONIEC GRY")
     {
         isGameOver = true;
         if (gameOverPanel != null)
         {
             gameOverPanel.SetActive(true);
+            Transform titleTransform = gameOverPanel.transform.Find("GameOverText");
+            if (titleTransform != null)
+            {
+                TextMeshProUGUI title = titleTransform.GetComponent<TextMeshProUGUI>();
+                if (title != null)
+                {
+                    title.text = titleMessage;
+                }
+            }
+
             Transform subtextTransform = gameOverPanel.transform.Find("GameOverSubtext");
             if (subtextTransform != null)
             {
@@ -176,6 +202,17 @@ public class GameManager : MonoBehaviour
             }
         }
         Time.timeScale = 0f;
+    }
+
+    private void UpdateTimerUI()
+    {
+        if (countdownTimerText != null)
+        {
+            float displayTime = Mathf.Max(0, currentCountdown);
+            int minutes = Mathf.FloorToInt(displayTime / 60f);
+            int seconds = Mathf.FloorToInt(displayTime % 60f);
+            countdownTimerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        }
     }
 
     public void ePress()

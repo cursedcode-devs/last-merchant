@@ -187,8 +187,8 @@ MonoBehaviour:
   - {fileID: 141663873}
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278222330
+  m_fontColor: {r: 0.9811321, g: 0.4886211, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1373,8 +1373,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7445ea31376c3c344bf9efaa9ab84548, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScrollingBackground
-  scrollSpeedX: 0.1
-  scrollSpeedY: 0.1
+  scrollSpeedX: 1
+  scrollSpeedY: 1
 --- !u!212 &1295709225
 SpriteRenderer:
   serializedVersion: 2
@@ -1444,8 +1444,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.21, y: 0.21, z: 0.21}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

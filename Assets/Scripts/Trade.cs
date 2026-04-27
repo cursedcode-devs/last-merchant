@@ -21,41 +21,40 @@ public class Trade
 
     public void GenerateTrade(PlanetTypes planetTypesRecive, PlanetTypes planetTypesGive)
     {
-        int tradeTier = Random.Range(0, 3); // 0: Mały, 1: Średni, 2: Duży
+        int tradeTier = Random.Range(0, 3);
 
         switch (tradeTier)
         {
-            case 0: // Mała pomoc
+            case 0: // mala pomoc
                 give = Random.Range(5, 12);
                 recive = Mathf.RoundToInt(give * Random.Range(2.0f, 3.0f));
                 break;
-            case 1: // Standardowa wymiana
+            case 1: // standardowa wymiana
                 give = Random.Range(15, 25);
                 recive = Mathf.RoundToInt(give * Random.Range(1.5f, 2.0f));
                 break;
-            case 2: // Wielka ekspedycja
+            case 2: // wielka ekspedycja
                 give = Random.Range(30, 50);
                 recive = Mathf.RoundToInt(give * Random.Range(1.3f, 1.6f));
                 break;
         }
 
-        // Zabezpieczenie: gracz zawsze dostaje więcej niż daje (minimum +2 jednostki)
         if (recive < give + 2) recive = give + 2;
         switch (planetTypesGive)
         {
             case PlanetTypes.Parts:
                 {
-                    tradeText = "Daj mi " + give + " cz\u0119\u015Bci, ";
+                    tradeText = "Daj mi " + give + "  <voffset=0.2em><sprite name=\"parts\"></voffset>";
                     break;
                 }
             case PlanetTypes.Food:
                 {
-                    tradeText = "Daj mi " + give + " jedzenia, ";
+                    tradeText = "Daj mi " + give + "  <voffset=0.2em><sprite name=\"food\"></voffset>";
                     break;
                 }
             case PlanetTypes.Fuel:
                 {
-                    tradeText = "Daj mi " + give + " paliwa, ";
+                    tradeText = "Daj mi " + give + $"  <voffset=0.2em><sprite name=\"fuel\"></voffset>";
                     break;
                 }
         }
@@ -64,17 +63,17 @@ public class Trade
         {
             case PlanetTypes.Parts:
                 {
-                    tradeText += "a ja dam ci " + recive + " cz\u0119\u015Bci";
+                    tradeText += "a ja dam ci " + recive + "  <voffset=0.2em><sprite name=\"parts\"></voffset>";
                     break;
                 }
             case PlanetTypes.Food:
                 {
-                    tradeText += "a ja dam ci " + recive + " jedzenia";
+                    tradeText += "a ja dam ci " + recive + "  <voffset=0.2em><sprite name=\"food\"></voffset>";
                     break;
                 }
             case PlanetTypes.Fuel:
                 {
-                    tradeText += "a ja dam ci " + recive + " paliwa";
+                    tradeText += "a ja dam ci " + recive + $"  <voffset=0.2em><sprite name=\"fuel\"></voffset>";
                     break;
                 }
         }

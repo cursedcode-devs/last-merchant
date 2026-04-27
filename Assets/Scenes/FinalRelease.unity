@@ -371,8 +371,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlanetDifficultyManager
   initialHealthReductionInterval: 2
-  minHealthReductionInterval: 2
-  reductionIntervalDecreaseRate: 0.015
+  minHealthReductionInterval: 0.2
+  reductionIntervalDecreaseRate: 0.006
 --- !u!114 &152029041 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8867347054453277170, guid: 74ebe492b468f0843b5fe71d19462d2e, type: 3}

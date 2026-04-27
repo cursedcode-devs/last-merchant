@@ -3,7 +3,7 @@ using UnityEngine;
 public class CenterPointer : MonoBehaviour
 {
     [Header("Ustawienia Celu i Gracza")]
-    public Transform player; // Przeciagnij tu obiekt gracza z inspektora
+    public Transform player;
     
     [Header("Wyglad")]
     public float radius = 2f; // Odleglosc strzalki

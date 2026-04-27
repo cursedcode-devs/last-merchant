@@ -11,9 +11,10 @@ public class ResourceUI : MonoBehaviour
         PlayerManager.Instance.OnFuelChanged += HandleFuelChanged;
         PlayerManager.Instance.OnPartsChanged += HandlePartsChanged;
         PlayerManager.Instance.OnFoodChanged += HandleFoodChanged;
-        fuelText.text = $"Fuel: {PlayerManager.Instance.GetFuel():0}";
-        partsText.text = $"Parts: {PlayerManager.Instance.GetParts()}";
-        foodText.text = $"Food: {PlayerManager.Instance.GetFood()}";
+        fuelText.text = $"Paliwo: {PlayerManager.Instance.GetFuel():0}";
+        foodText.text = $"Jedzenie: {PlayerManager.Instance.GetFood()}";
+        partsText.text = $"Części: {PlayerManager.Instance.GetParts()}";
+        
     }
 
     void OnDisable()
@@ -25,17 +26,17 @@ public class ResourceUI : MonoBehaviour
 
     void HandleFuelChanged(float oldFuel, float newFuel)
     {
-        fuelText.text = $"Fuel: {newFuel:0}";
+        fuelText.text = $"Paliwo: {newFuel:0}";
     }
 
     void HandlePartsChanged(int oldParts, int newParts)
     {
-        partsText.text = $"Parts: {newParts}";
+        partsText.text = $"Części: {newParts}";
     }
 
     void HandleFoodChanged(int oldFood, int newFood)
     {
-        foodText.text = $"Food: {newFood}";
+        foodText.text = $"Jedzenie: {newFood}";
     }
 
 }

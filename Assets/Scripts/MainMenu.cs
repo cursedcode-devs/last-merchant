@@ -49,7 +49,6 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
-    // ---- Helpers ----
 
     private void SetMenuVisible(bool visible)
     {

@@ -59,7 +59,6 @@ public class ResourceClusterSpawner : MonoBehaviour
 
     bool FindSpawnPoint(out Vector2 point)
     {
-        // Reduce the radius by 15% so pickups do not spawn on the edge
         float radius = Mathf.Min(areaBounds.extents.x, areaBounds.extents.y) * 0.85f;
         for (int i = 0; i < maxAttempts; i++)
         {

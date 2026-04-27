@@ -49,7 +49,6 @@ public class PlanetObject : MonoBehaviour
         healthBar.transform.SetLocalPositionAndRotation(vector, quat);
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         CircleCollider2D col = GetComponent<CircleCollider2D>();
@@ -62,7 +61,6 @@ public class PlanetObject : MonoBehaviour
         maxHealth = planetData.startHp;
 
         initHealthBar();
-        // 1. Tworzymy nowy pusty obiekt w scenie i nadajemy mu nazwę
         GameObject textObject = new GameObject(planetData.name + " Text");
         textObject.transform.SetParent(this.transform, false);
         nameText = textObject.AddComponent<TextMeshPro>();
@@ -77,7 +75,6 @@ public class PlanetObject : MonoBehaviour
         nameText.transform.SetLocalPositionAndRotation(vector, quat);
     }
 
-    // Update is called once per frame
     void Update()
     {
         float reductionInterval = PlanetDifficultyManager.Instance != null ? PlanetDifficultyManager.Instance.GetCurrentInterval() : 5f;
@@ -93,12 +90,10 @@ public class PlanetObject : MonoBehaviour
             lastTimeDamaged = manager.time;
         }
 
-        // Sprawdzanie dystansu zamiast polegania na colliderach (omija problem wielu colliderow na planecie)
         if (manager.playerMovement != null && planet.GetHp() > 0 && !isDead)
         {
             float dist = Vector3.Distance(transform.position, manager.playerMovement.transform.position);
             
-            // Jeśli gracz jest w zasięgu radioRange i planeta nie jest jeszcze wybrana jako cel
             if (dist <= radioRange)
             {
                 if (manager.currentPlanet != this)
@@ -110,7 +105,6 @@ public class PlanetObject : MonoBehaviour
                     manager.SetCurrentPlanet(planetData);
                 }
             }
-            // Jeśli gracz wyszedł z zasięgu, a ta planeta była aktywnym celem
             else if (dist > radioRange && manager.currentPlanet == this)
             {
                 manager.SetPlayerNearPlanet(false);
@@ -138,11 +132,9 @@ public class PlanetObject : MonoBehaviour
         healthBar.SetActive(false);
         nameText.gameObject.SetActive(false);
         
-        // Wyłączamy kolider, żeby gracz nie mógł już wlecieć w planetę
         Collider2D col = GetComponent<Collider2D>();
         if (col != null) col.enabled = false;
         
-        // Jeśli ta planeta była aktualną planetą w managerze, czyścimy ją
         if (manager.currentPlanet == this)
         {
             manager.SetPlayerNearPlanet(false);
@@ -164,7 +156,6 @@ public class PlanetObject : MonoBehaviour
         {
             elapsed += Time.deltaTime;
             float t = elapsed / duration;
-            // Używamy SmoothStep dla ładniejszej animacji
             float scale = Mathf.Lerp(1f, 0f, t * t); 
             transform.localScale = initialScale * scale;
             yield return null;

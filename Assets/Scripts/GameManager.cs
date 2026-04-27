@@ -312,7 +312,7 @@ public class GameManager : MonoBehaviour
         if (Keyboard.current.qKey.wasPressedThisFrame && tradeActive == false)
         {
             dialogueSentence = dialogue.dialogues.Length;
-            dialogueText.text = currentPlanet.trade.tradeText;
+            UpdateTradeDialogueText();
             tradeActive = true;
             if (nextDialogueHintObj != null) nextDialogueHintObj.SetActive(false);
             if (tradeDialogueHintObj != null) tradeDialogueHintObj.SetActive(true);
@@ -327,7 +327,7 @@ public class GameManager : MonoBehaviour
             }
             else if (dialogueSentence == dialogue.dialogues.Length)
             {
-                dialogueText.text = currentPlanet.trade.tradeText;
+                UpdateTradeDialogueText();
                 tradeActive = true;
                 if (nextDialogueHintObj != null) nextDialogueHintObj.SetActive(false);
                 if (tradeDialogueHintObj != null) tradeDialogueHintObj.SetActive(true);
@@ -355,7 +355,7 @@ public class GameManager : MonoBehaviour
 
                 if (!hasEnough)
                 {
-                    dialogueText.text = currentPlanet.trade.tradeText + "\nNie masz wystarczaj\u0105co zasob\u00F3w!</color>";
+                    UpdateTradeDialogueText("Nie masz wystarczająco zasobów!");
                     return;
                 }
 
@@ -410,6 +410,26 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void UpdateTradeDialogueText(string errorMsg = "")
+    {
+        if (currentPlanet == null || currentPlanet.trade == null || playerManager == null) return;
+
+        string tradeMsg = currentPlanet.trade.tradeText;
+        
+        if (!string.IsNullOrEmpty(errorMsg))
+        {
+            tradeMsg += $"\n{errorMsg}";
+        }
+
+        // cursed code, siedziałem nad tym 3 godziny
+        else {tradeMsg += $"\n";}
+        string stats = $"\n\n" +
+                       $"<voffset=0.2em><sprite name=\"fuel\"></voffset>{playerManager.GetFuel():F0}     " +
+                       $"<voffset=0.2em><sprite name=\"food\"></voffset>{playerManager.GetFood()}     " +
+                       $"<voffset=0.2em><sprite name=\"parts\"></voffset>{playerManager.GetParts()}     ";
+        dialogueText.text = tradeMsg + stats;
+    }
+
     public void ResetDialogue()
     {
         if (crtMaterial != null)
@@ -462,7 +482,6 @@ public class GameManager : MonoBehaviour
         
         string warnings = "";
         
-        // Możemy dodać informację o liczbie wymarłych planet
         if (totalDeadPlanets > 0)
         {
             warnings += $"Wymarłe planety: {totalDeadPlanets}/5\n";

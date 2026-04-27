@@ -12,5 +12,4 @@ public class PlanetScriptObject : ScriptableObject
     [SerializeField] public Dialogue firstDialogue;
     [SerializeField] public Dialogue genericTrade;
     [SerializeField] public Dialogue[] dialogues;
-    // [SerializeField] Quest quest;
 }

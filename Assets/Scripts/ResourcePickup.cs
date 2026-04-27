@@ -23,14 +23,13 @@ public class ResourcePickup : MonoBehaviour
             pickupPrompt.gameObject.SetActive(false);
     }
 
-    public int resourceType = 0; // 0 = Fuel, 1 = Food, 2 = Parts
+    public int resourceType = 0;
 
     public void Setup(ResourceClusterSpawner owner)
     {
         spawner = owner;
     }
 
-    // Update method removed because we now collect automatically.
 
     void Collect()
     {

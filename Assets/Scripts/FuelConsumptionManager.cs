@@ -1,9 +1,6 @@
 using UnityEngine;
 
-/// <summary>
-/// Skrypt odpowiedzialny za zwiększanie poziomu trudności poprzez skalowanie zużycia paliwa
-/// podczas trwania rozgrywki. Inspirowany mechaniką zużycia jedzenia w GameManager.
-/// </summary>
+
 public class FuelConsumptionManager : MonoBehaviour
 {
     public static FuelConsumptionManager Instance;
@@ -49,18 +46,15 @@ public class FuelConsumptionManager : MonoBehaviour
 
     void Update()
     {
-        // Sprawdzamy stan gry w GameManager, aby nie zwiększać trudności w menu lub podczas dialogów
         if (GameManager.Instance != null && (GameManager.Instance.isGameOver || GameManager.Instance.isDialogueActive))
             return;
 
-        // 1. Zwiększanie mnożnika zużycia dla akcji (ruch, skręcanie)
         if (currentFuelMultiplier < maxFuelMultiplier)
         {
             currentFuelMultiplier += fuelMultiplierIncreaseRate * Time.deltaTime;
             currentFuelMultiplier = Mathf.Min(currentFuelMultiplier, maxFuelMultiplier);
         }
 
-        // 2. Skalowanie i obsługa pasywnego zużycia (jeśli włączone w inspektorze)
         if (usePassiveConsumption)
         {
             if (currentPassiveInterval > minPassiveInterval)
@@ -71,7 +65,6 @@ public class FuelConsumptionManager : MonoBehaviour
 
             if (PlayerManager.Instance != null && PlayerManager.Instance.GetFuel() > 0)
             {
-                // Używamy czasu z GameManager jeśli dostępny, w przeciwnym razie Time.time
                 float currentTime = GameManager.Instance != null ? GameManager.Instance.time : Time.time;
                 if ((currentTime - lastPassiveDiminish) > currentPassiveInterval)
                 {
@@ -82,10 +75,7 @@ public class FuelConsumptionManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Zwraca aktualny mnożnik zużycia paliwa.
-    /// Powinien być używany w PlayerMovement przy wywoływaniu ConsumeFuel.
-    /// </summary>
+
     public float GetFuelMultiplier()
     {
         return currentFuelMultiplier;

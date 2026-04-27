@@ -1,15 +1,16 @@
 using System;
-using UnityEditor.Tilemaps;
 using UnityEngine;
 
 [Serializable]
 public class Planet : ResourceManagers
 {
-    public PlanetTypes planetType;
+    public PlanetTypes planetTypeRecive;
+    public PlanetTypes planetTypeGive;
     [SerializeField] private int hp;
 
     public int GetHp() {  return hp; }
-    public PlanetTypes GetPlanetType() {  return planetType; }
+    public PlanetTypes GetPlanetTypeRecive() {  return planetTypeRecive; }
+    public PlanetTypes GetPlanetTypeGive() { return planetTypeGive; }
     public void SetHp(int hp) { this.hp = hp; }
     public void AddHp(int hp) { this.hp  += hp; }
 
@@ -20,9 +21,10 @@ public class Planet : ResourceManagers
         this.parts = parts;
     }
 
-    public Planet(int startHp, PlanetTypes planetType)
+    public Planet(int startHp, PlanetTypes planetTypeRecive, PlanetTypes planetTypeGive)
     {
         hp = startHp; 
-        this.planetType = planetType;
+        this.planetTypeRecive = planetTypeRecive;
+        this.planetTypeGive = planetTypeGive;
     }
 }

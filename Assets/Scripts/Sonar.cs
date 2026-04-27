@@ -29,16 +29,21 @@ public class Sonar : MonoBehaviour
         audioSource.pitch = 1f;
         audioSource.panStereo = 0f;
 
-        Debug.Log($"[Sonar] START — beepClip: {(beepClip == null ? "NULL ❌" : beepClip.name + " ✅")}");
-        Debug.Log($"[Sonar] START — AudioSource: {(audioSource == null ? "NULL ❌" : "found ✅")}");
+        Debug.Log($"[Sonar] START — beepClip: {(beepClip == null ? "NULL" : beepClip.name + " ok")}");
+        Debug.Log($"[Sonar] START — AudioSource: {(audioSource == null ? "NULL" : "found")}");
         int mask = LayerMask.GetMask("Planet");
-        Debug.Log($"[Sonar] START — Planet layer mask: {mask} {(mask == 0 ? "❌ (layer not found!)" : "✅")}");
+        Debug.Log($"[Sonar] START — Planet layer mask: {mask} {(mask == 0 ? "layer not found!" : "ok")}");
 
         Physics2D.queriesStartInColliders = false;
     }
 
     void Update()
     {
+        if (GameManager.Instance != null && GameManager.Instance.isDialogueActive)
+        {
+            timer = 0f;
+            return;
+        }
         ScanCone();
     }
 
@@ -105,7 +110,7 @@ public class Sonar : MonoBehaviour
     //{
     //    if (beepClip == null)
     //    {
-    //        Debug.LogError("[Sonar] PlayBeep called but beepClip is NULL ❌");
+    //        Debug.LogError("[Sonar] PlayBeep called but beepClip is NULL");
     //        return;
     //    }
 
@@ -113,7 +118,7 @@ public class Sonar : MonoBehaviour
     //    audioSource.panStereo = side;
     //    audioSource.PlayOneShot(beepClip, volume);
 
-    //    Debug.Log($"[Sonar] PlayOneShot fired ✅ | clip: {beepClip.name} | pitch: {audioSource.pitch:F2} | pan: {audioSource.panStereo:F2} | volume: {volume}");
+    //    Debug.Log($"[Sonar] PlayOneShot fired | clip: {beepClip.name} | pitch: {audioSource.pitch:F2} | pan: {audioSource.panStereo:F2} | volume: {volume}");
     //}
 
     Vector2 RotateVector(Vector2 v, float degrees)

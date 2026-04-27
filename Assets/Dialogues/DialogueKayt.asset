@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: DialogueKayt
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   dialogues:
-  - "Witaj wnusiu dawno nikogo tu nie by\u0142o. Zdejmij buty bo dywan pra\u0142am
-    i zapraszam do \u015Brodka."
-  - "Czy to prawda, \u017Ce ca\u0142a ta planeta nale\u017Cy tylko do Ciebie i stada
-    kot\xF3w?"
-  - "Tak, przynosz\u0105 wi\u0119cej myszy ni\u017C ja mog\u0119 kupi\u0107 za moj\u0105
-    marn\u0105 emerytur\u0119."
-  - "A ile masz kot\xF3w?"
-  - "Przy 31 przesta\u0142am ju\u017C liczy\u0107 moje s\u0142odziaki. Jedz\u0105
-    z dwa wory karmy tygodniowo."
-  - "Rozumiem. Potrzebuje co\u015B pani?"
-  - "Ja nie, ale moje koci\u0119ta potrzebuj\u0105 wi\u0119cej jedzenia, kt\xF3re
-    powoli si\u0119 ko\u0144czy. Zobaczmy co mo\u017Cemy zdzia\u0142a\u0107."
+  - "- Witaj wnusiu, dawno ci\u0119 tu nie by\u0142o. Zdejmij buty, bo pra\u0142am
+    dywan."
+  - "- Czy to prawda, \u017Ce ca\u0142a ta planeta nale\u017Cy tylko do ciebie i
+    stada kot\xF3w?"
+  - "- Tak, przynosz\u0105 wi\u0119cej myszy ni\u017C ja mog\u0119 kupi\u0107 za
+    moj\u0105 marn\u0105 emerytur\u0119."
+  - "- A ile masz kot\xF3w?"
+  - "- Przy 31 przesta\u0142am ju\u017C liczy\u0107. Jedz\u0105 z dwa wory karmy
+    tygodniowo."
+  - "- Rozumiem. Potrzebuje co\u015B pani?"
+  - "- Ja nie, ale moje koci\u0119ta potrzebuj\u0105 wi\u0119cej jedzenia. Zobaczmy
+    co mo\u017Cemy zdzia\u0142a\u0107."

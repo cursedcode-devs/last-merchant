@@ -11,33 +11,67 @@ public class PlayerManager : MonoBehaviour
 
     private Player player;
 
-    public event Action<int, int> OnFuelChanged;
+    public event Action<float, float> OnFuelChanged;
+    public event Action<int, int> OnFoodChanged;
+    public event Action<int, int> OnPartsChanged;
 
-    void Awake()
+    public bool isImmortal = false;
+
+void Awake()
 {
-    if (Instance == null)
-    {
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-        player = new Player(startFuel, startFood, startParts); 
-    }
-    else
-    {
-        Destroy(gameObject);
-    }
+    Instance = this;
+    player = new Player(startFuel, startFood, startParts); 
 }
-    public void RaiseFuelChanged(int oldValue, int newValue)
+    public void RaiseFuelChanged(float oldValue, float newValue)
     {
         OnFuelChanged?.Invoke(oldValue, newValue);
     }
 
-    public bool ConsumeFuel(int amount)
+    public bool ConsumeFuel(float amount)
     {
-        if (player.GetFuel() < amount) return false;
         player.AddFuel(-amount);
         return true;
     }
 
-    public int GetFuel() => player.GetFuel();
-    
+    public void RaisePartsChanged(int oldValue, int newValue)
+    {
+        OnPartsChanged?.Invoke(oldValue, newValue);
+    }
+
+    public bool ConsumeParts(int amount)
+    {
+        if (isImmortal) return false;
+        player.AddParts(-amount);
+        return true;
+    }
+
+    public void RaiseFoodChanged(int oldValue, int newValue)
+    {
+        OnFoodChanged?.Invoke(oldValue, newValue);
+    }
+    public bool ConsumeFood(int amount)
+    {
+        player.AddFood(-amount);
+        return true;
+    }
+
+    public void AddFuel(float amount)
+    {
+        player.AddFuel(amount);
+    }
+
+    public void AddFood(int amount)
+    {
+        player.AddFood(amount);
+    }
+
+    public void AddParts(int amount)
+    {
+        player.AddParts(amount);
+    }
+
+    public float GetFuel() => player.GetFuel();
+    public int GetParts() => player.GetParts();
+    public int GetFood() => player.GetFood();
+
 }

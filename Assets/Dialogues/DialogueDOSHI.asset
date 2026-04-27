@@ -12,4 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8f4aa388c713774386c59cb600b76c4, type: 3}
   m_Name: DialogueDOSHI
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
-  dialogues: []
+  dialogues:
+  - "- Hejka m\xF3j ty podr\xF3\u017Cniku hihihi..."
+  - "- Znowu to samo. Czy te kajdanki to element dekoracyjny, czy kolejna sugestia,
+    \u017Ce mam zosta\u0107 z tob\u0105 na zawsze?"
+  - "- To tylko zabezpieczenie. M\xF3wi\u0142e\u015B kiedy\u015B, \u017Ce we\u017Amiesz
+    mnie ze sob\u0105, nudzi mi si\u0119 ju\u017C na tej planecie. B\u0119d\u0119
+    robi\u0142a Ci herbatk\u0119."
+  - "- Herbata nie nap\u0119dzi mi statku, a tw\xF3j wzrok sprawia, \u017Ce zaraz
+    sprawdz\u0119 czy \u015Bluzy s\u0105 zaryglowane. Nie m\xF3wi\u0142em nigdy takich
+    bredni."
+  - "- A r\xF3b co chcesz! Ja b\u0119d\u0119 tu siedzie\u0107 i planowa\u0107 nasz\u0105
+    przysz\u0142o\u015B\u0107. Z dobroci serduszka mog\u0119 da\u0107 ci troszeczk\u0119
+    paliwa po dobrej cenie."

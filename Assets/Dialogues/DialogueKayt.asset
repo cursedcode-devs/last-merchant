@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8f4aa388c713774386c59cb600b76c4, type: 3}
-  m_Name: DialogueKayt
+  m_Name: DialogueKAYT
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   dialogues:
   - "- Witaj wnusiu, dawno ci\u0119 tu nie by\u0142o. Zdejmij buty, bo pra\u0142am

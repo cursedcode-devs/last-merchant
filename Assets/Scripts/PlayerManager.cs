@@ -5,9 +5,9 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager Instance;
 
-    [SerializeField] private int startFuel = 100;
-    [SerializeField] private int startFood = 100;
-    [SerializeField] private int startParts = 100;
+    [SerializeField] private int startFuel = 50;
+    [SerializeField] private int startFood = 50;
+    [SerializeField] private int startParts = 50;
 
     private Player player;
 
@@ -42,6 +42,9 @@ void Awake()
     {
         if (isImmortal) return false;
         player.AddParts(-amount);
+        if(player.GetParts() < 0){
+            player.SetParts(0);
+        }
         return true;
     }
 

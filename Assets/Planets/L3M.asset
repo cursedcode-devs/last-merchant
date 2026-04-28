@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f29a306f1b856674c8482fb2ec261213, type: 3}
-  m_Name: SEP-9
+  m_Name: L3M
   m_EditorClassIdentifier: Assembly-CSharp::PlanetScriptObject
-  name: SEP-9
-  planetTypeRecive: 0
-  planetTypeGive: 1
+  name: L3M
+  planetTypeRecive: 1
+  planetTypeGive: 2
   startHp: 100
-  planetColor: {r: 0.30892828, g: 0.8207547, b: 0.28261834, a: 1}
-  sprite: {fileID: -2037269849112367076, guid: e5d71655154092b47981918678841733, type: 3}
+  planetColor: {r: 0.32306874, g: 0.34446225, b: 0.5660378, a: 1}
+  sprite: {fileID: 4422666246308300601, guid: e668b3c5bb4736a4a96180f835abe4b6, type: 3}
   firstDialogue: {fileID: 11400000, guid: bfd4fc7f116dbbe45bc7b734c8ac91a5, type: 2}
   genericTrade: {fileID: 11400000, guid: a014bc321bf08b1448e8f452ee6cd054, type: 2}
   dialogues:
-  - {fileID: 11400000, guid: 87a44b83c5e32a74da7bb3b33257e6c1, type: 2}
+  - {fileID: 11400000, guid: d14d339df61941f48be61b03fd453ba3, type: 2}
   - {fileID: 11400000, guid: a014bc321bf08b1448e8f452ee6cd054, type: 2}

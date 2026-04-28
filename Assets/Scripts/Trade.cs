@@ -26,16 +26,19 @@ public class Trade
         switch (tradeTier)
         {
             case 0: // mala pomoc
-                give = Random.Range(5, 12);
+                give = Random.Range(5, 15);
                 recive = Mathf.RoundToInt(give * Random.Range(2.0f, 3.0f));
+                restoreHealth = 25;
                 break;
             case 1: // standardowa wymiana
-                give = Random.Range(15, 25);
+                give = Random.Range(15, 26);
                 recive = Mathf.RoundToInt(give * Random.Range(1.5f, 2.0f));
+                restoreHealth = 35;
                 break;
             case 2: // wielka ekspedycja
-                give = Random.Range(30, 50);
+                give = Random.Range(26, 41);
                 recive = Mathf.RoundToInt(give * Random.Range(1.3f, 1.6f));
+                restoreHealth = 50;
                 break;
         }
 

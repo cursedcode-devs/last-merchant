@@ -12,7 +12,10 @@ public class Planet : ResourceManagers
     public PlanetTypes GetPlanetTypeRecive() {  return planetTypeRecive; }
     public PlanetTypes GetPlanetTypeGive() { return planetTypeGive; }
     public void SetHp(int hp) { this.hp = hp; }
-    public void AddHp(int hp) { this.hp  += hp; }
+    public void AddHp(int hp) { 
+        this.hp  += hp;
+        if (this.hp > 100) this.hp = 100;
+    }
 
     public Planet(int fuel, int food, int parts)
     {

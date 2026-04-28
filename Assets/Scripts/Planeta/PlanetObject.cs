@@ -18,7 +18,7 @@ public class PlanetObject : MonoBehaviour
 
     [Header("Ranges")]
     public float radioRange = 5f;
-    public float scanRange = 40f;
+    public float scanRange = 50f;
 
     public static System.Collections.Generic.List<PlanetObject> allPlanets = new System.Collections.Generic.List<PlanetObject>();
 

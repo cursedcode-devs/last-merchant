@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class Player : ResourceManagers
 {
-    public float startFuel = 100;
-    public int startFood = 100;
-    public int startParts = 100;
 
     public Player(float fuel, int food, int parts)
     {

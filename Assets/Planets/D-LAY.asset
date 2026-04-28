@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f29a306f1b856674c8482fb2ec261213, type: 3}
-  m_Name: TAU CETI
+  m_Name: D-LAY
   m_EditorClassIdentifier: Assembly-CSharp::PlanetScriptObject
-  name: TAU CETI
+  name: D-LAY
   planetTypeRecive: 1
   planetTypeGive: 0
   startHp: 100

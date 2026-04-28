@@ -1262,14 +1262,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8746fa0ae1419294eabb0f1dd62df482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlanetVisuals
-  planetModel: {fileID: 0}
-  planetBar: {fileID: 0}
-  rotationSpeed: 30
-  shrinkSpeed: 0.5
-  initialScale: {x: 0, y: 0, z: 0}
-  initialPosition: {x: 0, y: 0, z: 0}
-  planetMat: {fileID: 0}
-  isFinished: 0
 --- !u!1 &498361234
 GameObject:
   m_ObjectHideFlags: 0

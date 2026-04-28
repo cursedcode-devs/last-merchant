@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8f4aa388c713774386c59cb600b76c4, type: 3}
-  m_Name: DialoguePARNAS-C
+  m_Name: DialogueL3M
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   dialogues:
   - "- Przylecia\u0142e\u015B, bo jeste\u015B zainspirowany nasz\u0105 poezj\u0105?"

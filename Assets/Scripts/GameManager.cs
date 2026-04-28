@@ -214,6 +214,7 @@ public class GameManager : MonoBehaviour
 
         // --- DO USUNIĘCIA W PRZYSZŁOŚCI ---
         DebugReducePlanetHealth();
+        DebugSpeedUpTime();
         // ----------------------------------
     }
 
@@ -343,13 +344,13 @@ public class GameManager : MonoBehaviour
                 switch (currentPlanet.planetData.planetTypeGive)
                 {
                     case PlanetTypes.Food:
-                        if (playerManager.GetFood() < cost) hasEnough = false;
+                        if (playerManager.GetFood() <= cost) hasEnough = false;
                         break;
                     case PlanetTypes.Fuel:
-                        if (playerManager.GetFuel() < cost) hasEnough = false;
+                        if (playerManager.GetFuel() <= cost) hasEnough = false;
                         break;
                     case PlanetTypes.Parts:
-                        if (playerManager.GetParts() < cost) hasEnough = false;
+                        if (playerManager.GetParts() <= cost) hasEnough = false;
                         break;
                 }
 
@@ -494,7 +495,7 @@ public class GameManager : MonoBehaviour
             float hp = p.planet.GetHp();
             float maxHp = p.planetData.startHp;
             
-            if (hp > 0 && hp <= maxHp * 0.2f)
+            if (hp > 0 && hp <= maxHp * 0.33f)
             {
                 warnings += $"{p.planetData.name} jest zagrożone\n";
             }
@@ -529,4 +530,23 @@ public class GameManager : MonoBehaviour
         }
     }
     // ------------------------------------------------------------------------
+
+    private void DebugSpeedUpTime()
+    {
+        if (Keyboard.current == null || isGameOver) return;
+
+        if (Keyboard.current.xKey.wasPressedThisFrame)
+        {
+            if (Time.timeScale == 1f)
+            {
+                Time.timeScale = 5f;
+                Debug.Log("[DEBUG] Przyspieszono czas x5");
+            }
+            else
+            {
+                Time.timeScale = 1f;
+                Debug.Log("[DEBUG] Przywrócono normalną prędkość czasu");
+            }
+        }
+    }
 }

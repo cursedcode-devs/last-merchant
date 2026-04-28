@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f29a306f1b856674c8482fb2ec261213, type: 3}
-  m_Name: WOMAR-V
+  m_Name: FR00
   m_EditorClassIdentifier: Assembly-CSharp::PlanetScriptObject
-  name: WOMAR-V
-  planetTypeRecive: 2
+  name: FR00
+  planetTypeRecive: 0
   planetTypeGive: 1
   startHp: 100
-  planetColor: {r: 0.6698113, g: 0.1841757, b: 0.1484959, a: 1}
-  sprite: {fileID: -1328850691031023745, guid: 572d9f978a9abeb44b3ca2cd97593273, type: 3}
+  planetColor: {r: 0.30892828, g: 0.8207547, b: 0.28261834, a: 1}
+  sprite: {fileID: -2037269849112367076, guid: e5d71655154092b47981918678841733, type: 3}
   firstDialogue: {fileID: 11400000, guid: bfd4fc7f116dbbe45bc7b734c8ac91a5, type: 2}
   genericTrade: {fileID: 11400000, guid: a014bc321bf08b1448e8f452ee6cd054, type: 2}
   dialogues:
-  - {fileID: 11400000, guid: 54dc93379acb77444a01b0d04a3f0918, type: 2}
+  - {fileID: 11400000, guid: 87a44b83c5e32a74da7bb3b33257e6c1, type: 2}
   - {fileID: 11400000, guid: a014bc321bf08b1448e8f452ee6cd054, type: 2}

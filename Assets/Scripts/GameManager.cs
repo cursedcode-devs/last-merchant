@@ -212,10 +212,9 @@ public class GameManager : MonoBehaviour
         
         CheckGameOverConditions();
 
-        // --- DO USUNIĘCIA W PRZYSZŁOŚCI ---
-        DebugReducePlanetHealth();
-        DebugSpeedUpTime();
-        // ----------------------------------
+        // --- DEBUG ---
+        //DebugReducePlanetHealth();
+        //DebugSpeedUpTime();
     }
 
     private void CheckGameOverConditions()
@@ -503,7 +502,6 @@ public class GameManager : MonoBehaviour
         planetWarningsText.text = warnings;
     }
 
-    // --- DEBUG: REDUKCJA ŻYCIA PLANET DO 21% (DO USUNIĘCIA W PRZYSZŁOŚCI) ---
     private void DebugReducePlanetHealth()
     {
         if (Keyboard.current == null) return;
@@ -529,7 +527,6 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    // ------------------------------------------------------------------------
 
     private void DebugSpeedUpTime()
     {
